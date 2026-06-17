@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/home/ServiceCard";
@@ -8,12 +9,7 @@ import NewsSection from "@/components/home/NewsSection";
 import Accreditations from "@/components/home/Accreditations";
 import { services } from "@/lib/services";
 
-export const metadata: Metadata = {
-  title:
-    "Our Services - House, Office & International Removals | Top Removals London",
-  description:
-    "Explore the full range of Top Removals services: house, office and international removals, man and van, packing, storage, crate hire, rubbish disposal, single-item deliveries and cleaning across London and the UK.",
-};
+export const metadata: Metadata = buildMetadata("services");
 
 export default function ServicesPage() {
   return (

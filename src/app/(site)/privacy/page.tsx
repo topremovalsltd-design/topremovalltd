@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import ArticleBody from "@/components/news/ArticleBody";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy - Top Removals",
-  description:
-    "How Top Removals collects, uses and protects your personal data in line with the GDPR — definitions, your rights as a data subject, cookies, and our use of third-party services.",
-};
+export const metadata: Metadata = buildMetadata("privacy");
 
 const body = `We are very delighted that you have shown interest in our enterprise. Data protection is of a particularly high priority for the management of the Top Removals Ltd. The use of the Internet pages of the Top Removals Ltd is possible without any indication of personal data; however, if a data subject wants to use special enterprise services via our website, processing of personal data could become necessary. If the processing of personal data is necessary and there is no statutory basis for such processing, we generally obtain consent from the data subject.
 

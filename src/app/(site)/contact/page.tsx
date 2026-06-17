@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/contact/ContactForm";
@@ -6,11 +7,7 @@ import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 import { PhoneIcon } from "@/components/ui/icons";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Top Removals",
-  description:
-    "Get in touch with Top Removals for a friendly, no-obligation chat about your move. Call us, send an enquiry, or visit our Purfleet base. London, national and international removals and storage.",
-};
+export const metadata: Metadata = buildMetadata("contact");
 
 const phones = [
   { label: "020 7205 2525", href: "tel:+442072052525" },

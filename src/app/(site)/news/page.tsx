@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
@@ -10,11 +11,7 @@ import { getDbPosts } from "@/lib/cms";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Moving News - Tips, Guides & Industry Insights | Top Removals",
-  description:
-    "The Top Removals blog — practical moving tips, office relocation guides and industry insights to help you plan a smoother house or business move in London and the UK.",
-};
+export const metadata: Metadata = buildMetadata("news");
 
 type Card = { slug: string; title: string; date: string; excerpt: string; cover: string };
 

@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Frequently Asked Questions about London Removals",
-  description:
-    "Answers to the most common questions about Top Removals' London moving services — surveys, booking, insurance, access, packing materials, long-distance moves, what we can't move and more.",
-};
+export const metadata: Metadata = buildMetadata("faq");
 
 const faqs: FaqItem[] = [
   {

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import PageBanner from "@/components/layout/PageBanner";
 import ArticleBody from "@/components/news/ArticleBody";
 import HtmlContent from "@/components/news/HtmlContent";
+import JsonLd from "@/components/seo/JsonLd";
+import { articleLd } from "@/lib/seo";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 import { getPostBySlug, getPostSlugs, AUTHOR_BIO } from "@/lib/news";
@@ -64,9 +66,11 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Top Removals`,
     description: post.excerpt,
+    alternates: { canonical: `/news/${slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: `/news/${slug}`,
       type: "article",
       images: post.coverImage ? [post.coverImage] : undefined,
     },
@@ -84,6 +88,16 @@ export default async function ArticlePage({
 
   return (
     <>
+      <JsonLd
+        data={articleLd({
+          title: post.title,
+          description: post.excerpt,
+          path: `/news/${slug}`,
+          date: post.date,
+          author: post.author,
+          image: post.coverImage,
+        })}
+      />
       <PageBanner
         title={post.title}
         crumbs={[

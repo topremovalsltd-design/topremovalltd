@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CtaBand from "@/components/home/CtaBand";
@@ -6,11 +7,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Check Out the Competitive Prices and Great Rates of Top Removals",
-  description:
-    "See Top Removals' competitive removal prices and rates — man and van hourly rates, packing materials, and London crate hire. Transparent pricing with no hidden costs. Request a free quote today.",
-};
+export const metadata: Metadata = buildMetadata("prices");
 
 const manAndVanColumns = ["Price", "1 Man", "2 Men", "3 Men"];
 const manAndVanRows: PricingRow[] = [

@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import ArticleBody from "@/components/news/ArticleBody";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Terms and Conditions - Top Removals",
-  description:
-    "The BAR Model Terms and Conditions in use by Top Removals Limited — our quotation, your responsibilities, liability, cancellation charges, payment and claims terms.",
-};
+export const metadata: Metadata = buildMetadata("terms");
 
 const body = `## Introduction
 

@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import CtaBand from "@/components/home/CtaBand";
 import { VanIcon } from "@/components/ui/icons";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Top Removals London Is Proud to Present Its Vehicle Fleet",
-  description:
-    "Top Removals runs a modern, eco-friendly vehicle fleet renewed every three years — from road-train trucks for international moves to lo-loader vans for local and UK-wide removals.",
-};
+export const metadata: Metadata = buildMetadata("our-fleet");
 
 type Vehicle = {
   model: string;

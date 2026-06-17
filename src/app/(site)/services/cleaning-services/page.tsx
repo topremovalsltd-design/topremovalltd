@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,11 +12,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "The Move In or Out Cleaning Services in London You Deserve",
-  description:
-    "Move in and move out cleaning across London with sister company Top Cleaners. End of tenancy, carpet, upholstery and after builders cleaning — fully insured and coordinated with your move. Free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("cleaning-services");
 
 const offerings = [
   "Pre and End of Tenancy Cleaning",
@@ -62,9 +60,11 @@ const tips: Tip[] = [
 export default function CleaningServicesPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("cleaning-services")} />
       <PageBanner
         title="Move In or Out Cleaning"
         subtitle="All London Covered"
+        h1={serviceH1["cleaning-services"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
@@ -9,11 +10,7 @@ import { getAreas } from "@/lib/cms";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Areas We Cover | Top Removals London",
-  description:
-    "Top Removals provides house, office and international removals and storage across London and the surrounding areas. Find your local service area.",
-};
+export const metadata: Metadata = buildMetadata("areas");
 
 export default async function AreasPage() {
   const areas = await getAreas();

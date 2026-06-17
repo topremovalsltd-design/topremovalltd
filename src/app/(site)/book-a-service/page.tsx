@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import BookingForm from "@/components/booking/BookingForm";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Book a Service | Top Removals London",
-  description:
-    "Book your house, office or international move with Top Removals. Fill in our quick booking form with your details, pick-up and delivery info and furniture list, and our team will be in touch.",
-};
+export const metadata: Metadata = buildMetadata("book-a-service");
 
 export default function BookAServicePage() {
   return (

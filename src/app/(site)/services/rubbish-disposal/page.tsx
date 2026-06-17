@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -11,11 +13,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Rubbish Disposal and House Clearance Offered by Top Removals",
-  description:
-    "Licensed rubbish collection, house and office clearance across London, 7 days a week. CRB-checked uniformed teams, transparent load-based pricing and full recycling. Get a free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("rubbish-disposal");
 
 const whatCanWeDo = [
   "Daily refuse collection",
@@ -112,9 +110,11 @@ const faqs: FaqItem[] = [
 export default function RubbishDisposalPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("rubbish-disposal")} />
       <PageBanner
         title="London Rubbish Collection and Disposal"
         subtitle="7 Days a Week Service"
+        h1={serviceH1["rubbish-disposal"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

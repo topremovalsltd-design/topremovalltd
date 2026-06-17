@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -11,11 +13,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Storage Services in London - Convinient, Safe and Secure",
-  description:
-    "Secure domestic and business storage in London with 24/7 CCTV and security staff. NGRS-certified, fully insured units and 20ft containers, no minimum term, prices from £10 per week. Get a free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("london-storage");
 
 const whatYouGain: CheckItem[] = [
   {
@@ -88,9 +86,11 @@ const tips: Tip[] = [
 export default function LondonStoragePage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("london-storage")} />
       <PageBanner
         title="Safe and Secure Storage Facility"
         subtitle="With Easy Access"
+        h1={serviceH1["london-storage"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

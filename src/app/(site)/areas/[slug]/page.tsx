@@ -21,6 +21,7 @@ export async function generateMetadata({
   return {
     title: `Removals in ${area.name} | Top Removals`,
     description: area.intro || `Top Removals services in ${area.name}.`,
+    alternates: { canonical: `/areas/${slug}` },
   };
 }
 

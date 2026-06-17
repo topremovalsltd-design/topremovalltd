@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -8,11 +9,7 @@ import NewsSection from "@/components/home/NewsSection";
 import Accreditations from "@/components/home/Accreditations";
 import { CheckIcon } from "@/components/ui/icons";
 
-export const metadata: Metadata = {
-  title: "Top Removals London - Your Trusted Moving Partner | About Us",
-  description:
-    "Learn about Top Removals London — a fully accredited, BAR and NGRS member moving company founded over a decade ago. Insured, professional removals and storage for any size move.",
-};
+export const metadata: Metadata = buildMetadata("about");
 
 const highlights = ["7 Days A Week", "Full Nationwide Coverage", "Affordable Rates"];
 

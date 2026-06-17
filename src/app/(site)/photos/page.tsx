@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import CtaBand from "@/components/home/CtaBand";
 import PhotoGallery, { type GalleryImage } from "@/components/gallery/PhotoGallery";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Moving Photos from Top Removals",
-  description:
-    "A photo gallery of Top Removals at work — movers wrapping and protecting furniture, packed and labelled boxes, secure storage and loaded vehicles across London and the UK.",
-};
+export const metadata: Metadata = buildMetadata("photos");
 
 // Placeholder gallery — swap these for the client's real photos in /public/gallery/.
 const altText = [

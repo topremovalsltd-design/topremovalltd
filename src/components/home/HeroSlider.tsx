@@ -84,9 +84,9 @@ export default function HeroSlider() {
               className={`max-w-2xl ${i === current ? "animate-fade-slide-up" : ""}`}
               key={i === current ? `active-${i}` : `idle-${i}`}
             >
-              <h1 className="text-3xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="text-3xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 {slide.heading}
-              </h1>
+              </h2>
               <p className="mt-3 text-2xl font-bold uppercase tracking-wide text-brand-orange sm:text-3xl md:text-4xl">
                 {slide.subheading}
               </p>

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -9,11 +11,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Reputable Single Item / E-bay Deliveries and Courier Service",
-  description:
-    "Single item collection, delivery and furniture assembly across the UK and worldwide. Same-day and next-day eBay/Gumtree courier service in London. Pianos, wardrobes and bulky items handled with care. Free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("single-item-deliveries");
 
 const benefits = [
   "Furniture assembly/disassembly",
@@ -54,8 +52,10 @@ const faqs: FaqItem[] = [
 export default function SingleItemDeliveriesPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("single-item-deliveries")} />
       <PageBanner
         title="Single Item Collection, Delivery and Furniture Assembly"
+        h1={serviceH1["single-item-deliveries"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -11,11 +13,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Packing Services in London, Fragile pack, Full Pack, Exports Wrap",
-  description:
-    "Professional full and partial packing services in London and across the UK. Fragile packing, export wrap and blanket wrap by trained packers using high-quality materials. Fully insured. Get a free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("packing-service");
 
 const whatCanWeDo = [
   "Pack fast and efficient your home or business for a domestic or international relocation",
@@ -89,9 +87,11 @@ const tips: Tip[] = [
 export default function PackingServicePage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("packing-service")} />
       <PageBanner
         title="Full or Partial Packing Options Available"
         subtitle="Export Pack and Wrap Services Offered"
+        h1={serviceH1["packing-service"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

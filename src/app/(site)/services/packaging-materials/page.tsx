@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -12,11 +14,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Packaging Materials, Removal Boxes and Moving Supplies",
-  description:
-    "High-quality removal boxes, bubble wrap, tape, wardrobe and mattress covers with free delivery on larger orders. NGRS-accredited moving supplies for any relocation. Get a free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("packaging-materials");
 
 const whyPurchase = [
   "You will get high-quality supplies that can uphold the weight of your belongings.",
@@ -104,9 +102,11 @@ const tips: Tip[] = [
 export default function PackagingMaterialsPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("packaging-materials")} />
       <PageBanner
         title="Full Range of Packing Materials On Stock"
         subtitle="With Free Delivery"
+        h1={serviceH1["packaging-materials"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

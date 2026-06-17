@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -11,11 +13,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "International Moving Company in London - Top Removals",
-  description:
-    "International and overseas removals from London to Europe and worldwide. IAM-certified, with weekly road-train services, door-to-door moves, shipping, airfreight and secure storage. Free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("international-removals");
 
 const whatCanWeDo = [
   "Top Removals offers regular weekly road-train services to Scandinavia, Germany, Switzerland, Benelux.",
@@ -79,9 +77,11 @@ const tips: Tip[] = [
 export default function InternationalRemovalsPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("international-removals")} />
       <PageBanner
         title="London, National and International Removals and Storage"
         subtitle="Connecting Worlds"
+        h1={serviceH1["international-removals"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

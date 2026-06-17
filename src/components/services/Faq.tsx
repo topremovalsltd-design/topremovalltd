@@ -2,6 +2,8 @@
 
 import { useId, useState } from "react";
 import { ChevronDown } from "@/components/ui/icons";
+import JsonLd from "@/components/seo/JsonLd";
+import { faqLd } from "@/lib/seo";
 
 export type FaqItem = {
   question: string;
@@ -26,6 +28,7 @@ export default function Faq({ items, defaultOpen = 0, className = "" }: Props) {
 
   return (
     <div className={`mx-auto max-w-3xl divide-y divide-black/10 ${className}`}>
+      <JsonLd data={faqLd(items.map((it) => ({ question: it.question, answer: it.answer })))} />
       {items.map((item, i) => {
         const expanded = open === i;
         const btnId = `${baseId}-q-${i}`;

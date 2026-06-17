@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -11,12 +13,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  // TODO: confirm exact SEO title/description (not supplied in the brief).
-  title: "Office Removals in London | Business Relocation - Top Removals",
-  description:
-    "Professional office and business relocation across London, the UK and worldwide. Fully insured IT handling, crate hire, packing and WEEE-compliant disposal. Get a free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("office-removals");
 
 const whatCanWeOffer = [
   "We can easily relocate anything from one-man size office to an over 500 people office anywhere in the UK or around the Globe",
@@ -83,9 +80,11 @@ const tips: Tip[] = [
 export default function OfficeRemovalsPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("office-removals")} />
       <PageBanner
         title="We Do Office Relocation and Crate Hire"
         subtitle="Get a Free Online Quote in Under 2 Minutes!"
+        h1={serviceH1["office-removals"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

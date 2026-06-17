@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,11 +12,7 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "House Moving Services in London by Top Home Removals",
-  description:
-    "Fully insured house and domestic removals across London and the UK, 7 days a week. Packing, loading, transport and unpacking handled by our BAR-accredited movers. Get an online estimate today.",
-};
+export const metadata: Metadata = buildMetadata("house-removals");
 
 const includes = [
   "We can manage the whole process from top to bottom – packing, loading, transporting, unloading and unpacking one's belongings",
@@ -82,9 +80,11 @@ const tips: Tip[] = [
 export default function HouseRemovalsPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("house-removals")} />
       <PageBanner
         title="House and Domestic Removals"
         subtitle="7 Days a Week Service"
+        h1={serviceH1["house-removals"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

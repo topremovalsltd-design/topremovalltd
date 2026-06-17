@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Certificates - Top Removals",
-  description:
-    "The accreditations and certificates Top Removals is proud of — full BAR membership, NGRS, FORS, IAM, Checkatrade, the Environmental Agency, BS EN 12522 and more. Proof of our quality and trustworthiness.",
-};
+export const metadata: Metadata = buildMetadata("certificates");
 
 type Certificate = {
   title: string;

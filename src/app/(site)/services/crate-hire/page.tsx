@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,11 +12,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Crate Hire, Plastic Lidded Crates, IT Crates, For Hire from Top Removals",
-  description:
-    "Affordable plastic crate hire across the UK — standard lidded LC3 crates and secure IT crates for home and office moves. Eco-friendly, delivered and collected anytime. Get a free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("crate-hire");
 
 const crateTypes: Card[] = [
   {
@@ -65,9 +63,11 @@ const faqs: FaqItem[] = [
 export default function CrateHirePage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("crate-hire")} />
       <PageBanner
         title="Standard or IT Crates, Long Term or Short"
         subtitle="We Can Deliver Anywhere Anytime"
+        h1={serviceH1["crate-hire"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },

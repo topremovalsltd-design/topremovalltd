@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -12,11 +14,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
-export const metadata: Metadata = {
-  title: "Man and Van London - The Reliable Man with a Van Services",
-  description:
-    "Affordable man and van services across London and the surrounding areas, 7 days a week. Ideal for small, partial, single-item and same-day moves. Insurance included, transparent hourly rates. Free quote in under 2 minutes.",
-};
+export const metadata: Metadata = buildMetadata("man-and-van");
 
 const whyChoose = [
   "We maintain a fully renewed vehicle fleet ready to cater your needs",
@@ -88,9 +86,11 @@ const tips: Tip[] = [
 export default function ManAndVanPage() {
   return (
     <>
+      <JsonLd data={serviceLdFor("man-and-van")} />
       <PageBanner
         title="London Man and Van"
         subtitle="7 Days a Week Service"
+        h1={serviceH1["man-and-van"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
