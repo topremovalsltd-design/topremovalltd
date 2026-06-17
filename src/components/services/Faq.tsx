@@ -1,0 +1,70 @@
+"use client";
+
+import { useId, useState } from "react";
+import { ChevronDown } from "@/components/ui/icons";
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+type Props = {
+  items: FaqItem[];
+  /** Index of the item open by default (null = all closed). */
+  defaultOpen?: number | null;
+  className?: string;
+};
+
+/** Reusable, accessible expand/collapse FAQ accordion. */
+export default function Faq({ items, defaultOpen = 0, className = "" }: Props) {
+  const [open, setOpen] = useState<number | null>(defaultOpen);
+  const baseId = useId();
+
+  return (
+    <div className={`mx-auto max-w-3xl divide-y divide-black/10 ${className}`}>
+      {items.map((item, i) => {
+        const expanded = open === i;
+        const btnId = `${baseId}-q-${i}`;
+        const panelId = `${baseId}-a-${i}`;
+        return (
+          <div key={item.question}>
+            <h3>
+              <button
+                type="button"
+                id={btnId}
+                aria-expanded={expanded}
+                aria-controls={panelId}
+                onClick={() => setOpen(expanded ? null : i)}
+                className="flex w-full items-center justify-between gap-4 py-5 text-left"
+              >
+                <span className="text-base font-semibold text-brand-navy sm:text-lg">
+                  {item.question}
+                </span>
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${
+                    expanded ? "bg-brand-orange text-white" : "bg-brand-grey text-brand-navy"
+                  }`}
+                >
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform duration-300 ${
+                      expanded ? "rotate-180" : ""
+                    }`}
+                  />
+                </span>
+              </button>
+            </h3>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={btnId}
+              hidden={!expanded}
+              className="pb-5"
+            >
+              <p className="text-base leading-relaxed text-brand-charcoal/85">{item.answer}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
