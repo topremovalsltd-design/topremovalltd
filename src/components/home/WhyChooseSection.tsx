@@ -14,7 +14,7 @@ const reasons = [
   },
   {
     heading: "Established and experienced",
-    body: "Our London removal company has been operating for [CONFIRM: years established], completing moves for residential and commercial clients across London, the UK and internationally. Our crews attend regular customer service and operational training.",
+    body: "Our London removal company has been completing moves for residential and commercial clients across London, the UK and internationally. Our crews attend regular customer service and operational training.",
   },
   {
     heading: "24/7 CCTV-monitored storage",

@@ -14,6 +14,7 @@ export const SITE = {
   address: {
     street: "Unit C1A Purfleet Industrial Park, Kerry Avenue",
     locality: "Purfleet",
+    region: "Essex",
     postalCode: "RM15 4YA",
     country: "GB",
   },
@@ -361,7 +362,7 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "How much should I pay for removals in London?",
     answer:
-      "Removal costs in London in 2026 range from approximately [CONFIRM: 1-bed range] for a 1-bedroom flat to [CONFIRM: 3-bed range] for a 3-bedroom house, based on a standard local move within Greater London. The final price depends on access, packing, crew size and parking suspension requirements. Use the cost guide on this page for a full breakdown, or book a free survey for a fixed quote.",
+      "Removal costs in London in 2026 depend on property size, access conditions and move complexity. For a full breakdown of the factors that affect price, use the cost guide on the homepage, or book a free survey for an exact fixed quote.",
   },
   {
     question: "Is it worth getting a removal company?",
@@ -452,11 +453,31 @@ export function homePageLd() {
     url: `${url}/`,
     logo: SITE.logo,
     image: SITE.logo,
-    telephone: ["+44 20 7205 2525", "+44 800 046 7877"],
+    telephone: "+442072052525",
+    // CONFIRM: add priceRange once verified, e.g. "priceRange": "££"
+    // CONFIRM: add openingHoursSpecification once verified
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+442072052525",
+        contactType: "customer service",
+        areaServed: "GB",
+        availableLanguage: "English",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+448000467877",
+        contactType: "customer service",
+        contactOption: "TollFree",
+        areaServed: "GB",
+        availableLanguage: "English",
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
       addressLocality: SITE.address.locality,
+      addressRegion: SITE.address.region,
       postalCode: SITE.address.postalCode,
       addressCountry: SITE.address.country,
     },
@@ -466,12 +487,46 @@ export function homePageLd() {
       longitude: SITE.geo.lng,
     },
     areaServed: [
-      { "@type": "City", name: "London" },
       { "@type": "AdministrativeArea", name: "Greater London" },
       { "@type": "AdministrativeArea", name: "Surrey" },
       { "@type": "Country", name: "United Kingdom" },
+      // All 32 London boroughs
+      { "@type": "City", name: "Barking and Dagenham" },
+      { "@type": "City", name: "Barnet" },
+      { "@type": "City", name: "Bexley" },
+      { "@type": "City", name: "Brent" },
+      { "@type": "City", name: "Bromley" },
+      { "@type": "City", name: "Camden" },
+      { "@type": "City", name: "City of London" },
+      { "@type": "City", name: "Croydon" },
+      { "@type": "City", name: "Ealing" },
+      { "@type": "City", name: "Enfield" },
+      { "@type": "City", name: "Greenwich" },
+      { "@type": "City", name: "Hackney" },
+      { "@type": "City", name: "Hammersmith and Fulham" },
+      { "@type": "City", name: "Haringey" },
+      { "@type": "City", name: "Harrow" },
+      { "@type": "City", name: "Havering" },
+      { "@type": "City", name: "Hillingdon" },
+      { "@type": "City", name: "Hounslow" },
+      { "@type": "City", name: "Islington" },
+      { "@type": "City", name: "Kensington and Chelsea" },
+      { "@type": "City", name: "Kingston upon Thames" },
+      { "@type": "City", name: "Lambeth" },
+      { "@type": "City", name: "Lewisham" },
+      { "@type": "City", name: "Merton" },
+      { "@type": "City", name: "Newham" },
+      { "@type": "City", name: "Redbridge" },
+      { "@type": "City", name: "Richmond upon Thames" },
+      { "@type": "City", name: "Southwark" },
+      { "@type": "City", name: "Sutton" },
+      { "@type": "City", name: "Tower Hamlets" },
+      { "@type": "City", name: "Waltham Forest" },
+      { "@type": "City", name: "Wandsworth" },
+      { "@type": "City", name: "Westminster" },
     ],
     sameAs: SITE.sameAs,
+    // CONFIRM: verify each accreditation is current before publishing
     hasCredential: [
       {
         "@type": "EducationalOccupationalCredential",
@@ -552,9 +607,13 @@ export function homePageLd() {
   ].map((s) => ({
     "@type": "Service",
     name: s.name,
+    serviceType: s.name,
     description: s.description,
     url: `${url}${s.path}`,
-    areaServed: "London, United Kingdom",
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Greater London" },
+      { "@type": "AdministrativeArea", name: "Surrey" },
+    ],
     provider: { "@id": orgId },
   }));
 

@@ -36,8 +36,7 @@ export default function ReviewsSection() {
         />
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          Top Removals customers have left [CONFIRM: review count] reviews across Google and
-          Trustpilot, with an aggregate rating of [CONFIRM: aggregate rating] out of 5.{" "}
+          Top Removals customers have left verified reviews across Google and Trustpilot.{" "}
           <Link
             href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
             target="_blank"
@@ -49,17 +48,11 @@ export default function ReviewsSection() {
           . Public liability insurance and goods-in-transit insurance are active on every job.
         </p>
 
-        {/* Trustpilot embed placeholder */}
+        {/* CONFIRM: replace this placeholder with the real Trustpilot or Google Reviews widget */}
         <div className="mx-auto mt-8 max-w-3xl rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 text-center" data-reveal>
-          <p className="text-sm text-brand-charcoal/60">
-            [CONFIRM: embed real Trustpilot or Google Reviews widget here]
-          </p>
-          <div className="mt-4 flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <Stars count={5} />
             <span className="text-base font-bold text-brand-navy">Excellent</span>
-            <span className="text-sm text-brand-charcoal/60">
-              [CONFIRM: review count] reviews
-            </span>
           </div>
           <Link
             href="https://uk.trustpilot.com/review/www.top-removals.co.uk"

@@ -2,8 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import { ChevronLeft, ChevronRight, PhoneIcon, CheckIcon, StarIcon } from "@/components/ui/icons";
-import { phones } from "@/lib/site";
+import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
 
 type Slide = { src: string; alt: string };
 
@@ -137,46 +136,6 @@ export default function HomepageHero() {
           </div>
         </div>
 
-        {/* Trust bar — full content width, below the text block */}
-        <div className="hero-anim-trust mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/20 pt-8 text-sm text-white/80">
-          <span className="flex items-center gap-1.5">
-            <StarIcon className="h-4 w-4 text-yellow-300" />
-            <strong className="font-semibold text-white">Excellent</strong>
-            &nbsp;on Trustpilot
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
-            BAR Accredited
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
-            BS EN 12522 Certified
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
-            Fully Insured
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
-            Established [CONFIRM: year]
-          </span>
-          <span className="ml-auto flex flex-wrap gap-x-4 gap-y-2">
-            <a
-              href={phones.freephone.href}
-              className="flex items-center gap-1.5 font-semibold text-white transition hover:text-brand-orange"
-            >
-              <PhoneIcon className="h-4 w-4" />
-              {phones.freephone.label}
-            </a>
-            <a
-              href={phones.london.href}
-              className="flex items-center gap-1.5 font-semibold text-white transition hover:text-brand-orange"
-            >
-              <PhoneIcon className="h-4 w-4" />
-              {phones.london.label}
-            </a>
-          </span>
-        </div>
       </div>
 
       {/* ── Prev / Next arrows — 44×44px tap targets, vertically centered ── */}

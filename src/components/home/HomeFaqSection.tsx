@@ -12,18 +12,16 @@ const lk = "text-brand-orange underline underline-offset-2 hover:text-brand-navy
 const LINK_OVERRIDES: Record<string, React.ReactNode> = {
   "How much should I pay for removals in London?": (
     <>
-      Removal costs in London in 2026 range from approximately [CONFIRM: 1-bed range] for a
-      1-bedroom flat to [CONFIRM: 3-bed range] for a 3-bedroom house, based on a standard local
-      move within Greater London. The final price depends on access, packing, crew size and
-      parking suspension requirements. Use the{" "}
+      Removal costs in London in 2026 depend on property size, access conditions and move
+      complexity. For a full breakdown of the factors that affect price, see the{" "}
       <Link href="#cost" className={lk}>
         cost guide on this page
-      </Link>{" "}
-      for a full breakdown, or{" "}
+      </Link>
+      , or{" "}
       <Link href="/bookservice#quick-quote" className={lk}>
         book a free survey
       </Link>{" "}
-      for a fixed quote.
+      for an exact fixed quote.
     </>
   ),
 

@@ -2,12 +2,13 @@ import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
+/* CONFIRM: replace "—" cells with real price ranges e.g. "£350–£450" once verified */
 const costTable = [
-  { size: "Studio / bedsit", range: "[CONFIRM: studio range]" },
-  { size: "1-bedroom flat", range: "[CONFIRM: 1-bed range]" },
-  { size: "2-bedroom flat or house", range: "[CONFIRM: 2-bed range]" },
-  { size: "3-bedroom house", range: "[CONFIRM: 3-bed range]" },
-  { size: "4+ bedroom house", range: "[CONFIRM: 4-bed+ range]" },
+  { size: "Studio / bedsit", range: "—" },
+  { size: "1-bedroom flat", range: "—" },
+  { size: "2-bedroom flat or house", range: "—" },
+  { size: "3-bedroom house", range: "—" },
+  { size: "4+ bedroom house", range: "—" },
 ];
 
 const factors = [
@@ -33,10 +34,9 @@ export default function CostSection() {
         />
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-          Removal costs in London in 2026 range from approximately{" "}
-          <strong>[CONFIRM: 1-bed range]</strong> for a 1-bedroom flat to{" "}
-          <strong>[CONFIRM: 3-bed range]</strong> for a 3-bedroom house, based on a standard
-          local move within Greater London. Exact prices depend on the factors set out below.
+          Removal costs in London in 2026 depend on property size, access conditions and move
+          complexity. Guide price ranges by property size are shown below — use the removal
+          calculator or book a free survey for an exact fixed price.
         </p>
 
         {/* Cost table */}

@@ -3,6 +3,7 @@ import { buildMetadata, homePageLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 
 import HomepageHero from "@/components/home/HomepageHero";
+import HeroTrustBar from "@/components/home/HeroTrustBar";
 import QuoteSection from "@/components/home/QuoteSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import HouseRemovalsSection from "@/components/home/HouseRemovalsSection";
@@ -36,6 +37,7 @@ export default function HomePage() {
 
       {/* 1. Hero */}
       <HomepageHero />
+      <HeroTrustBar />
 
       {/* 2. Get an Instant Removal Quote */}
       <QuoteSection />
