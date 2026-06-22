@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { buildMetadata, homePageLd } from "@/lib/seo";
-import JsonLd from "@/components/seo/JsonLd";
+import { buildMetadata } from "@/lib/seo";
 
 import HomepageHero from "@/components/home/HomepageHero";
 import HeroTrustBar from "@/components/home/HeroTrustBar";
@@ -33,8 +32,6 @@ export const metadata: Metadata = buildMetadata("home");
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={homePageLd()} />
-
       {/* 1. Hero */}
       <HomepageHero />
       <HeroTrustBar />

@@ -9,21 +9,21 @@ export const SITE = {
   name: "Top Removals London",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  telephone: "+44 20 7205 2525",
+  telephone: "+442072052525",
   phones: ["020 7205 2525", "0800 046 7877"],
   address: {
     street: "Unit C1A Purfleet Industrial Park, Kerry Avenue",
     locality: "Purfleet",
     region: "Essex",
+    // CONFIRM: NAP conflict — footer says RM15 4YA, Trustpilot lists RM15 4YE. Resolve and use one postcode here, in the footer, on Trustpilot and on GMB.
     postalCode: "RM15 4YA",
     country: "GB",
   },
   geo: { lat: 51.4815, lng: 0.2361 },
   sameAs: [
-    "https://www.facebook.com/topremovals",
-    "https://twitter.com/topremovals",
-    "https://www.linkedin.com/company/top-removals/",
     "https://uk.trustpilot.com/review/www.top-removals.co.uk",
+    // CONFIRM: add the resolved canonical Google Maps place URL (resolve share link https://share.google/uDZ9ZSuyBZYCPAZIV → full maps.google.com/... URL)
+    // CONFIRM: add only real owned social and Companies House URLs — Facebook, Twitter, LinkedIn unverified and omitted
   ],
 };
 
@@ -222,39 +222,39 @@ const BUSINESS_AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Surrey" },
   { "@type": "Country", name: "United Kingdom" },
   // All 32 London boroughs
-  { "@type": "City", name: "Barking and Dagenham" },
-  { "@type": "City", name: "Barnet" },
-  { "@type": "City", name: "Bexley" },
-  { "@type": "City", name: "Brent" },
-  { "@type": "City", name: "Bromley" },
-  { "@type": "City", name: "Camden" },
-  { "@type": "City", name: "City of London" },
-  { "@type": "City", name: "Croydon" },
-  { "@type": "City", name: "Ealing" },
-  { "@type": "City", name: "Enfield" },
-  { "@type": "City", name: "Greenwich" },
-  { "@type": "City", name: "Hackney" },
-  { "@type": "City", name: "Hammersmith and Fulham" },
-  { "@type": "City", name: "Haringey" },
-  { "@type": "City", name: "Harrow" },
-  { "@type": "City", name: "Havering" },
-  { "@type": "City", name: "Hillingdon" },
-  { "@type": "City", name: "Hounslow" },
-  { "@type": "City", name: "Islington" },
-  { "@type": "City", name: "Kensington and Chelsea" },
-  { "@type": "City", name: "Kingston upon Thames" },
-  { "@type": "City", name: "Lambeth" },
-  { "@type": "City", name: "Lewisham" },
-  { "@type": "City", name: "Merton" },
-  { "@type": "City", name: "Newham" },
-  { "@type": "City", name: "Redbridge" },
-  { "@type": "City", name: "Richmond upon Thames" },
-  { "@type": "City", name: "Southwark" },
-  { "@type": "City", name: "Sutton" },
-  { "@type": "City", name: "Tower Hamlets" },
-  { "@type": "City", name: "Waltham Forest" },
-  { "@type": "City", name: "Wandsworth" },
-  { "@type": "City", name: "Westminster" },
+  { "@type": "AdministrativeArea", name: "Barking and Dagenham" },
+  { "@type": "AdministrativeArea", name: "Barnet" },
+  { "@type": "AdministrativeArea", name: "Bexley" },
+  { "@type": "AdministrativeArea", name: "Brent" },
+  { "@type": "AdministrativeArea", name: "Bromley" },
+  { "@type": "AdministrativeArea", name: "Camden" },
+  { "@type": "AdministrativeArea", name: "City of London" },
+  { "@type": "AdministrativeArea", name: "Croydon" },
+  { "@type": "AdministrativeArea", name: "Ealing" },
+  { "@type": "AdministrativeArea", name: "Enfield" },
+  { "@type": "AdministrativeArea", name: "Greenwich" },
+  { "@type": "AdministrativeArea", name: "Hackney" },
+  { "@type": "AdministrativeArea", name: "Hammersmith and Fulham" },
+  { "@type": "AdministrativeArea", name: "Haringey" },
+  { "@type": "AdministrativeArea", name: "Harrow" },
+  { "@type": "AdministrativeArea", name: "Havering" },
+  { "@type": "AdministrativeArea", name: "Hillingdon" },
+  { "@type": "AdministrativeArea", name: "Hounslow" },
+  { "@type": "AdministrativeArea", name: "Islington" },
+  { "@type": "AdministrativeArea", name: "Kensington and Chelsea" },
+  { "@type": "AdministrativeArea", name: "Kingston upon Thames" },
+  { "@type": "AdministrativeArea", name: "Lambeth" },
+  { "@type": "AdministrativeArea", name: "Lewisham" },
+  { "@type": "AdministrativeArea", name: "Merton" },
+  { "@type": "AdministrativeArea", name: "Newham" },
+  { "@type": "AdministrativeArea", name: "Redbridge" },
+  { "@type": "AdministrativeArea", name: "Richmond upon Thames" },
+  { "@type": "AdministrativeArea", name: "Southwark" },
+  { "@type": "AdministrativeArea", name: "Sutton" },
+  { "@type": "AdministrativeArea", name: "Tower Hamlets" },
+  { "@type": "AdministrativeArea", name: "Waltham Forest" },
+  { "@type": "AdministrativeArea", name: "Wandsworth" },
+  { "@type": "AdministrativeArea", name: "Westminster" },
 ];
 
 /** CONFIRM: verify each accreditation is current before publishing. */
@@ -278,15 +278,19 @@ const BUSINESS_CREDENTIALS = [
  */
 export function organizationLd() {
   return {
-    "@type": ["MovingCompany", "LocalBusiness"],
+    // CONFIRM: legal/brand name — reviews and footer suggest "Top Removals Ltd", Company No. 6874216; use the registered name
+    "@type": "MovingCompany", // inherits LocalBusiness and Organization; no type array needed
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
     url: `${SITE.url}/`,
     logo: SITE.logo,
-    image: SITE.logo,
+    // CONFIRM: image should be a real photo of crew or van, not the logo — set once confirmed
+    // CONFIRM: foundingDate — "Top Removals turns 10" signals founding year; add once confirmed
     telephone: SITE.telephone,
-    priceRange: "££",
-    // CONFIRM: add openingHoursSpecification once trading hours are verified
+    priceRange: "££", // CONFIRM this reflects reality
+    // CONFIRM: add openingHoursSpecification once trading hours are verified; omit rather than guess
+    // AggregateRating intentionally omitted: self-serving review markup is not eligible for LocalBusiness.
+    // Display reviews via the Trustpilot TrustBox widget instead.
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -523,100 +527,3 @@ export const HOME_HOWTO_STEPS: { name: string; text: string }[] = [
   },
 ];
 
-export function homePageLd() {
-  const url = SITE.url;
-  // The #organization node itself is emitted site-wide by organizationLd()
-  // (see siteGraphLd in the layout). Here we only reference it by @id so the
-  // homepage never re-declares a second, conflicting org entity.
-  const orgId = `${url}/#organization`;
-
-  const serviceItems = [
-    {
-      name: "House Removals London",
-      description:
-        "Full house removal service across London, Greater London and Surrey, including survey, packing, transport, unloading and reassembly.",
-      path: "/house-removals",
-    },
-    {
-      name: "Man and Van London",
-      description:
-        "Flexible man and van hire for small moves, single items and student relocations across London, with hourly and fixed-price options.",
-      path: "/man-and-van-london",
-    },
-    {
-      name: "Office Removals London",
-      description:
-        "Commercial and office relocation across London with crate hire, IT equipment transport and out-of-hours scheduling.",
-      path: "/office-removals",
-    },
-    {
-      name: "Professional Packing Services London",
-      description:
-        "Full and partial packing services using quality materials including bubble wrap, wardrobe boxes and packing paper.",
-      path: "/packing-service",
-    },
-    {
-      name: "Removals and Storage London",
-      description:
-        "24/7 CCTV-monitored, fully insured storage combined seamlessly with the removal service.",
-      path: "/storage",
-    },
-    {
-      name: "International Removals London",
-      description:
-        "European and overseas removals with export packing, shipping and customs clearance from London.",
-      path: "/international-removals",
-    },
-    {
-      name: "Specialist and Fragile Item Removals",
-      description:
-        "Piano, antique, fine art and high-value item removals by trained crews using hoists, custom crating and protective blankets.",
-      path: "/packing-service",
-    },
-  ].map((s) => ({
-    "@type": "Service",
-    name: s.name,
-    serviceType: s.name,
-    description: s.description,
-    url: `${url}${s.path}`,
-    areaServed: [
-      { "@type": "AdministrativeArea", name: "Greater London" },
-      { "@type": "AdministrativeArea", name: "Surrey" },
-    ],
-    provider: { "@id": orgId },
-  }));
-
-  const breadcrumb = {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${url}/` },
-    ],
-  };
-
-  const faq = {
-    "@type": "FAQPage",
-    mainEntity: HOME_FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
-
-  const howTo = {
-    "@type": "HowTo",
-    name: "How Our London Removals Process Works",
-    description:
-      "Step-by-step guide to booking and completing a removal with our London moving company.",
-    step: HOME_HOWTO_STEPS.map((s, i) => ({
-      "@type": "HowToStep",
-      position: i + 1,
-      name: s.name,
-      text: s.text,
-    })),
-  };
-
-  return {
-    "@context": "https://schema.org",
-    "@graph": [...serviceItems, breadcrumb, faq, howTo],
-  };
-}
