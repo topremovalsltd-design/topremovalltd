@@ -40,9 +40,9 @@ type MetaEntry = {
  */
 export const META: Record<string, MetaEntry> = {
   home: {
-    title: "Top Removals London - Moving, Packing & Storage Company",
+    title: "Removal Company London | House, Office & Storage Moves",
     description:
-      "Top Removals- trustworthy and skilled movers in the London area. Local and international removals packing and storage services, we have it all.",
+      "Top Removals is a trusted, fully insured removal company in London. House removals, man and van, office moves, packing and storage. Get a free quote today.",
     path: "/",
   },
   about: {
@@ -352,5 +352,243 @@ export function articleLd({
     author: { "@type": "Person", name: author },
     publisher: { "@id": `${SITE.url}/#organization` },
     mainEntityOfPage: `${SITE.url}${path}`,
+  };
+}
+
+/* ----------------------------- Homepage schema ---------------------------- */
+
+export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
+  {
+    question: "How much should I pay for removals in London?",
+    answer:
+      "Removal costs in London in 2026 range from approximately [CONFIRM: 1-bed range] for a 1-bedroom flat to [CONFIRM: 3-bed range] for a 3-bedroom house, based on a standard local move within Greater London. The final price depends on access, packing, crew size and parking suspension requirements. Use the cost guide on this page for a full breakdown, or book a free survey for a fixed quote.",
+  },
+  {
+    question: "Is it worth getting a removal company?",
+    answer:
+      "For full property moves, hiring a professional removal company saves time, reduces the risk of injury and provides insurance cover for your belongings. Van hire is cheaper upfront but places the entire physical and financial risk on you. For smaller single-item moves, a man and van service offers professional-grade cover at a lower cost than a full crew.",
+  },
+  {
+    question: "What is the cheapest way to move in London?",
+    answer:
+      "The cheapest option by upfront cost is van hire, but it excludes goods-in-transit insurance and requires significant physical effort. For insured moves, a man and van service is the lowest-cost professional option for small volumes. For full property moves, getting multiple fixed quotes from BAR-accredited companies ensures competitive pricing with proper cover.",
+  },
+  {
+    question: "What does a removal company do?",
+    answer:
+      "A removal company packs your belongings, wraps and protects furniture, loads the vehicle, transports everything to your new address and unloads at the destination. Full-service companies also provide packing materials, dismantle and reassemble furniture, arrange parking suspensions and offer storage between moves.",
+  },
+  {
+    question: "Do you provide man and van services?",
+    answer:
+      "Yes. Our man and van service is available across all London boroughs for small moves, single-item collections, student relocations and short-distance moves. Hourly and fixed-price options are available. Goods-in-transit insurance is included as standard.",
+  },
+  {
+    question: "Do you offer packing and storage?",
+    answer:
+      "Yes. Full and partial professional packing is available as an add-on to any removal. Secure 24/7 CCTV-monitored storage is available for short-term and long-term needs, with container and household storage options.",
+  },
+  {
+    question: "Are my belongings insured during the move?",
+    answer:
+      "Yes. Public liability insurance and goods-in-transit insurance are included on every job. If any item is damaged during the move, there is a clear claims process with a financial remedy.",
+  },
+  {
+    question: "What London areas do you cover?",
+    answer:
+      "Our removal crews cover all 32 London boroughs, Greater London and Surrey as standard. Nationwide and international moves are also covered. Find your local area on our areas page.",
+  },
+  {
+    question: "Do you handle parking suspensions and permits?",
+    answer:
+      "Yes. Parking suspensions are arranged by our operations team as part of move planning. Loading bay bookings, goods lift reservations and School Streets timing restrictions are all managed in advance of move day.",
+  },
+  {
+    question: "How do I get a removal quote?",
+    answer:
+      "Use the online removal calculator for an instant estimate, or book a free on-site or video survey for a fixed-price quote with no hidden fees. You can also call our team directly.",
+  },
+];
+
+export const HOME_HOWTO_STEPS: { name: string; text: string }[] = [
+  {
+    name: "Book a free survey",
+    text: "Choose a free on-site or video survey at a time that suits you. The surveyor assesses your property, measures furniture and notes any access requirements.",
+  },
+  {
+    name: "Receive a fixed quote",
+    text: "Within 24 hours of your survey, receive a written fixed-price quote. VAT, fuel and equipment are all included. No hidden fees.",
+  },
+  {
+    name: "Packing and materials",
+    text: "Choose full or partial packing. Materials are delivered to your address in advance of move day.",
+  },
+  {
+    name: "Access and parking arranged",
+    text: "Our operations team books any required parking suspension, loading bay or goods lift appointment for move day.",
+  },
+  {
+    name: "Move day",
+    text: "Our crew arrives and loads your belongings onto a fully insured vehicle. You are not required to be present during loading if you prefer.",
+  },
+  {
+    name: "Unloading and reassembly",
+    text: "At your new property, our team unloads, reassembles furniture and positions items as directed.",
+  },
+  {
+    name: "Storage if required",
+    text: "Short-term or long-term storage is available for any gap between moving out and moving in.",
+  },
+];
+
+export function homePageLd() {
+  const url = SITE.url;
+  const orgId = `${url}/#organization`;
+
+  const org = {
+    "@type": ["MovingCompany", "LocalBusiness"],
+    "@id": orgId,
+    name: "Top Removals",
+    url: `${url}/`,
+    logo: SITE.logo,
+    image: SITE.logo,
+    telephone: ["+44 20 7205 2525", "+44 800 046 7877"],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.locality,
+      postalCode: SITE.address.postalCode,
+      addressCountry: SITE.address.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SITE.geo.lat,
+      longitude: SITE.geo.lng,
+    },
+    areaServed: [
+      { "@type": "City", name: "London" },
+      { "@type": "AdministrativeArea", name: "Greater London" },
+      { "@type": "AdministrativeArea", name: "Surrey" },
+      { "@type": "Country", name: "United Kingdom" },
+    ],
+    sameAs: SITE.sameAs,
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "British Association of Removers (BAR)",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "National Guild of Removers and Storers (NGRS)",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "Fleet Operator Recognition Scheme (FORS)",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "International Association of Movers (IAM)",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "Checkatrade",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certification",
+        name: "CTSI Trading Standards Approved Code",
+      },
+    ],
+  };
+
+  const serviceItems = [
+    {
+      name: "House Removals London",
+      description:
+        "Full house removal service across London, Greater London and Surrey, including survey, packing, transport, unloading and reassembly.",
+      path: "/house-removals",
+    },
+    {
+      name: "Man and Van London",
+      description:
+        "Flexible man and van hire for small moves, single items and student relocations across London, with hourly and fixed-price options.",
+      path: "/man-and-van-london",
+    },
+    {
+      name: "Office Removals London",
+      description:
+        "Commercial and office relocation across London with crate hire, IT equipment transport and out-of-hours scheduling.",
+      path: "/office-removals",
+    },
+    {
+      name: "Professional Packing Services London",
+      description:
+        "Full and partial packing services using quality materials including bubble wrap, wardrobe boxes and packing paper.",
+      path: "/packing-service",
+    },
+    {
+      name: "Removals and Storage London",
+      description:
+        "24/7 CCTV-monitored, fully insured storage combined seamlessly with the removal service.",
+      path: "/storage",
+    },
+    {
+      name: "International Removals London",
+      description:
+        "European and overseas removals with export packing, shipping and customs clearance from London.",
+      path: "/international-removals",
+    },
+    {
+      name: "Specialist and Fragile Item Removals",
+      description:
+        "Piano, antique, fine art and high-value item removals by trained crews using hoists, custom crating and protective blankets.",
+      path: "/packing-service",
+    },
+  ].map((s) => ({
+    "@type": "Service",
+    name: s.name,
+    description: s.description,
+    url: `${url}${s.path}`,
+    areaServed: "London, United Kingdom",
+    provider: { "@id": orgId },
+  }));
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${url}/` },
+    ],
+  };
+
+  const faq = {
+    "@type": "FAQPage",
+    mainEntity: HOME_FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
+  const howTo = {
+    "@type": "HowTo",
+    name: "How Our London Removals Process Works",
+    description:
+      "Step-by-step guide to booking and completing a removal with our London moving company.",
+    step: HOME_HOWTO_STEPS.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [org, ...serviceItems, breadcrumb, faq, howTo],
   };
 }

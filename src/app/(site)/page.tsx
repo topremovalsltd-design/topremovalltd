@@ -1,45 +1,106 @@
 import type { Metadata } from "next";
-import HeroSlider from "@/components/home/HeroSlider";
-import CtaBand from "@/components/home/CtaBand";
+import { buildMetadata, homePageLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+
+import HomepageHero from "@/components/home/HomepageHero";
+import QuoteSection from "@/components/home/QuoteSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import WhatYouNeedToKnow from "@/components/home/WhatYouNeedToKnow";
-import RightChoice from "@/components/home/RightChoice";
-import Testimonials from "@/components/home/Testimonials";
-import NewsSection from "@/components/home/NewsSection";
+import HouseRemovalsSection from "@/components/home/HouseRemovalsSection";
+import ManAndVanSection from "@/components/home/ManAndVanSection";
+import OfficeRemovalsSection from "@/components/home/OfficeRemovalsSection";
+import StorageSection from "@/components/home/StorageSection";
+import PackingSection from "@/components/home/PackingSection";
+import InternationalSection from "@/components/home/InternationalSection";
+import CostSection from "@/components/home/CostSection";
+import VsVanHireSection from "@/components/home/VsVanHireSection";
+import SpecialistSection from "@/components/home/SpecialistSection";
+import AccessSection from "@/components/home/AccessSection";
+import AreasSiloSection from "@/components/home/AreasSiloSection";
+import WhyChooseSection from "@/components/home/WhyChooseSection";
 import StatsCounter from "@/components/home/StatsCounter";
-import Accreditations from "@/components/home/Accreditations";
-import { buildMetadata } from "@/lib/seo";
+import ReviewsSection from "@/components/home/ReviewsSection";
+import ProcessSection from "@/components/home/ProcessSection";
+import HomeFaqSection from "@/components/home/HomeFaqSection";
+import FinalCtaSection from "@/components/home/FinalCtaSection";
+import NewsSection from "@/components/home/NewsSection";
+import ClientAnimations from "@/components/home/ClientAnimations";
+import StickyQuoteBar from "@/components/home/StickyQuoteBar";
+import BackToTop from "@/components/home/BackToTop";
 
 export const metadata: Metadata = buildMetadata("home");
 
 export default function HomePage() {
   return (
     <>
-      <h1 className="sr-only">Welcome to Top Removals London</h1>
-      <HeroSlider />
+      <JsonLd data={homePageLd()} />
 
-      <CtaBand
-        heading="Are You Looking For A House Removal Quote?"
-        subtext="Estimate your house moving cost online now"
-        buttonLabel="Removal Calculator"
-        buttonHref="/removal-calculator"
-      />
+      {/* 1. Hero */}
+      <HomepageHero />
 
+      {/* 2. Get an Instant Removal Quote */}
+      <QuoteSection />
+
+      {/* 3. London Removal Services Overview */}
       <ServicesSection />
 
-      <CtaBand heading="Save Money On End Of Tenancy Cleaning And Carpet / Upholstery Cleaning Services" />
+      {/* 4. House Removals London */}
+      <HouseRemovalsSection />
 
-      <WhatYouNeedToKnow />
+      {/* 5. Man and Van London — highest priority */}
+      <ManAndVanSection />
 
-      <RightChoice />
+      {/* 6. Office and Commercial Removals — supporting */}
+      <OfficeRemovalsSection />
 
-      <Testimonials />
+      {/* 7. Removals and Storage — supporting */}
+      <StorageSection />
 
-      <NewsSection />
+      {/* 8. Packing Services — supporting */}
+      <PackingSection />
 
+      {/* 9. International Removals — supporting */}
+      <InternationalSection />
+
+      {/* 10. How Much Do Removals Cost — featured snippet */}
+      <CostSection />
+
+      {/* 11. Professional Removals vs Van Hire — open lane */}
+      <VsVanHireSection />
+
+      {/* 12. Specialist and Fragile Items — open lane */}
+      <SpecialistSection />
+
+      {/* 13. Moving in London: Access Intelligence — experience moat */}
+      <AccessSection />
+
+      {/* 14. London Areas We Cover — silo hub */}
+      <AreasSiloSection />
+
+      {/* 15. Why Choose Top Removals — E-E-A-T */}
+      <WhyChooseSection />
+
+      {/* Stats — social proof */}
       <StatsCounter />
 
-      <Accreditations />
+      {/* 16. Reviews, Insurance and Accreditations */}
+      <ReviewsSection />
+
+      {/* 17. Our Removals Process */}
+      <ProcessSection />
+
+      {/* 18. London Removals FAQs */}
+      <HomeFaqSection />
+
+      {/* 19. Final Quote CTA */}
+      <FinalCtaSection />
+
+      {/* Moving News blog — house/man-and-van content preferred */}
+      <NewsSection />
+
+      {/* Homepage-only UX enhancements */}
+      <ClientAnimations />
+      <StickyQuoteBar />
+      <BackToTop />
     </>
   );
 }

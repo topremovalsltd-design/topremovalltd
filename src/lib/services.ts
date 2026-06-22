@@ -18,7 +18,7 @@ export type ServiceDef = {
   href: string;
   description: string;
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
-  /** The six headline services featured on the homepage grid. */
+  /** The six headline services featured on the homepage grid — ordered by search volume. */
   featured?: boolean;
 };
 
@@ -26,39 +26,17 @@ export type ServiceDef = {
  * Single source of truth for all services. Consumed by:
  * the homepage grid (featured only), the /services overview page (all),
  * the Header dropdown and the footer — so routes stay consistent.
+ *
+ * Featured order follows keyword volume: House > Man & Van > Office > Packing > Storage > International.
  */
 export const services: ServiceDef[] = [
-  {
-    title: "International Services",
-    href: "/international-removals",
-    Icon: GlobeIcon,
-    featured: true,
-    description:
-      "If you need to relocate your home or business outside the UK, Top Removals can assist you in every way. Our professionally trained movers can bring your belongings where there are needed - across the Channel or the other side of the Globe.",
-  },
   {
     title: "House Removals",
     href: "/house-removals",
     Icon: HomeIcon,
     featured: true,
     description:
-      "Moving to Greater London or Surrey- Top Removals is here to attend to your every need. With professionalism and efficiency, our fully insured moving company is highly qualified to handle all types of domestic relocations.",
-  },
-  {
-    title: "Office Removals",
-    href: "/office-removals",
-    Icon: BuildingIcon,
-    featured: true,
-    description:
-      'Let us deal with the "How-to"s and "What-if"s that accompanied business relocations. With close to a decade of experience, Top Removals is adequately equipped to organise, pack and move any office and business to its final destination.',
-  },
-  {
-    title: "Storage Services",
-    href: "/storage",
-    Icon: BoxIcon,
-    featured: true,
-    description:
-      "Top Removals offers affordable storage for all of your belongings. Our facilities have 24/7 security and are fully insured. It is the safest place in London to put your items when moving abroad or domestically.",
+      "Full house removals across London, Greater London and Surrey. Our fully insured crews handle every property type, from studio flats to detached houses, including survey, packing, transport and reassembly.",
   },
   {
     title: "Man and Van Services",
@@ -66,7 +44,15 @@ export const services: ServiceDef[] = [
     Icon: VanIcon,
     featured: true,
     description:
-      "Compatible prices and fast service are just some of the perks of Top Removals' Man and Van. Short-distance or same-day moves, we can do them both. Our motivated crews and renovated fleet are waiting for you.",
+      "Flexible man and van services across all London boroughs. Ideal for small moves, single-item collections, student relocations and short-distance hops. Hourly and fixed-price options available with goods-in-transit insurance included.",
+  },
+  {
+    title: "Office Removals",
+    href: "/office-removals",
+    Icon: BuildingIcon,
+    featured: true,
+    description:
+      "Commercial and office relocations across London with minimal downtime. Weekend and out-of-hours moves, crate hire, IT equipment transport and business continuity planning included.",
   },
   {
     title: "Packing Services",
@@ -74,7 +60,23 @@ export const services: ServiceDef[] = [
     Icon: PackageIcon,
     featured: true,
     description:
-      "Packing and unpacking of all types of items. Regardless of the shape or the size, Top Removals' professionals can wrap your home or office and safely transport it to the new location. We offer different types of packing methods and materials.",
+      "Full and partial professional packing for all property types. Quality materials delivered in advance: double-walled boxes, bubble wrap, wardrobe boxes and specialist wrapping for fragile and high-value items.",
+  },
+  {
+    title: "Storage Services",
+    href: "/storage",
+    Icon: BoxIcon,
+    featured: true,
+    description:
+      "24/7 CCTV-monitored, fully insured storage in London for short-term and long-term needs. Combine storage directly with your removal as one managed service.",
+  },
+  {
+    title: "International Services",
+    href: "/international-removals",
+    Icon: GlobeIcon,
+    featured: true,
+    description:
+      "European and overseas removals from London. Export-standard packing, shipping logistics, customs documentation and destination delivery across Europe and worldwide.",
   },
   {
     title: "Packaging Materials",
@@ -88,7 +90,7 @@ export const services: ServiceDef[] = [
     href: "/crate-hire",
     Icon: CrateIcon,
     description:
-      "Durable, stackable plastic crates available for hire - the eco-friendly, secure way to move your home or office without endless cardboard boxes.",
+      "Durable, stackable plastic crates available for hire — the eco-friendly, secure way to move your home or office without endless cardboard boxes.",
   },
   {
     title: "Rubbish Disposal",
@@ -102,14 +104,14 @@ export const services: ServiceDef[] = [
     href: "/single-item",
     Icon: TagIcon,
     description:
-      "Need to move just one item or deliver an eBay purchase? We offer affordable single-item and same-day delivery across London and the UK.",
+      "Need to move just one item or deliver an eBay purchase? Affordable single-item and same-day delivery across London and the UK.",
   },
   {
     title: "Cleaning Services",
     href: "/cleaning-services",
     Icon: SprayIcon,
     description:
-      "End of tenancy, carpet and upholstery cleaning to help you get your deposit back or prepare your new home - at money-saving rates.",
+      "End of tenancy, carpet and upholstery cleaning to help you get your deposit back or prepare your new home, at money-saving rates.",
   },
 ];
 

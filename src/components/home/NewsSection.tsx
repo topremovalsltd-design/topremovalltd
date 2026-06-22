@@ -14,12 +14,14 @@ export default function NewsSection() {
         <SectionHeading eyebrow="From our blog" title="Top Moving News" />
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {articles.map((article) => {
+          {articles.map((article, i) => {
             const href = `/news/${article.slug}`;
             return (
               <article
                 key={article.slug}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                data-reveal
+                data-delay={String(i + 1)}
               >
                 <Link href={href} className="relative block aspect-[16/10] overflow-hidden">
                   <Image

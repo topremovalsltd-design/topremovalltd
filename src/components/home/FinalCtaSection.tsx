@@ -1,0 +1,72 @@
+import Button from "@/components/ui/Button";
+import { PhoneIcon, CheckIcon } from "@/components/ui/icons";
+import { phones } from "@/lib/site";
+
+export default function FinalCtaSection() {
+  return (
+    <section
+      id="final-cta"
+      className="bg-brand-navy py-20 text-white"
+      aria-labelledby="final-cta-heading"
+    >
+      <div className="mx-auto max-w-[88rem] px-6 text-center" data-reveal>
+        <h2
+          id="final-cta-heading"
+          className="text-2xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-3xl md:text-4xl"
+        >
+          Get Your Free London Removal Quote Today
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/85">
+          Book your move today with a free, no-obligation removal quote. Use the instant
+          calculator for a budget estimate or book a free on-site or video survey for a fixed
+          price. Top Removals is fully insured and BAR accredited.
+        </p>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            Get a Free Quote
+          </Button>
+          <Button href="/bookservice" variant="outline-light" size="lg">
+            Removal Calculator
+          </Button>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-white/70">
+          <span className="flex items-center gap-1.5">
+            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            Fully insured
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            BAR accredited
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            No hidden fees
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            Free survey
+          </span>
+        </div>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3">
+          <a
+            href={phones.freephone.href}
+            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-orange"
+          >
+            <PhoneIcon className="h-4 w-4" />
+            {phones.freephone.label}
+          </a>
+          <a
+            href={phones.london.href}
+            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-orange"
+          >
+            <PhoneIcon className="h-4 w-4" />
+            {phones.london.label}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
