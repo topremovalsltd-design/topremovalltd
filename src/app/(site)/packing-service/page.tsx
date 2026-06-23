@@ -88,27 +88,22 @@ const packingOptions = [
   {
     title: "Full Packing Service",
     body: "Our teams pack everything in every room — crockery, glassware, clothes, linen, books, lamps, pictures and furniture. Each box is labelled with its contents and destination room. We arrive with all materials one or two days before your loading date.",
-    icon: "📦",
   },
   {
     title: "Partial Packing",
     body: "Choose specific rooms or item types — kitchen fragiles, bedroom wardrobes, home office archives. You pack the rest. Partial packing is priced separately and available as a standalone booking or an add-on to any removal.",
-    icon: "📋",
   },
   {
     title: "Fragile-Only Packing",
     body: "China, glassware, artwork and antiques packed to specialist standards: acid-free paper, extra bubble wrap, rigid crates. Ideal when you are confident packing general items yourself but want professionals to protect what matters most.",
-    icon: "🫙",
   },
   {
     title: "Unpacking with Waste Removal",
     body: "We unpack at the destination, place contents in the correct rooms, and remove all boxes, bubble wrap and paper. Top Removals is a UK Environment Agency registered waste carrier — all materials are recycled, nothing goes to landfill.",
-    icon: "♻️",
   },
   {
     title: "Materials and Consultation",
     body: "Prefer to pack yourself? We supply the correct box sizes, bubble wrap, paper and tape, and your coordinator advises on quantities and method. A cost-effective option for smaller, lower-value loads.",
-    icon: "🧾",
   },
 ];
 
@@ -397,8 +392,7 @@ export default function PackingServicePage() {
                 data-delay={String(i + 1)}
                 className="group flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <p className="text-2xl" aria-hidden="true">{opt.icon}</p>
-                <h3 className="mt-3 text-lg font-bold text-brand-navy">{opt.title}</h3>
+                <h3 className="text-lg font-bold text-brand-navy">{opt.title}</h3>
                 <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
                   {opt.body}
                 </p>
@@ -681,8 +675,7 @@ export default function PackingServicePage() {
               data-delay="1"
               className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
             >
-              <p className="text-2xl" aria-hidden="true">🛡️</p>
-              <h3 className="mt-3 text-base font-bold text-brand-navy">Goods-in-Transit Insurance</h3>
+              <h3 className="text-base font-bold text-brand-navy">Goods-in-Transit Insurance</h3>
               <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
                 All items handled by Top Removals packers are covered by goods-in-transit insurance.
                 Insurance options vary by service type and destination. Speak with your coordinator
@@ -694,8 +687,7 @@ export default function PackingServicePage() {
               data-delay="2"
               className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
             >
-              <p className="text-2xl" aria-hidden="true">🏅</p>
-              <h3 className="mt-3 text-base font-bold text-brand-navy">BAR Accredited Mover</h3>
+              <h3 className="text-base font-bold text-brand-navy">BAR Accredited Mover</h3>
               <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
                 Top Removals is a British Association of Removers (BAR) accredited member, meaning
                 we meet independently audited standards for packing, handling and customer
@@ -707,8 +699,7 @@ export default function PackingServicePage() {
               data-delay="3"
               className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
             >
-              <p className="text-2xl" aria-hidden="true">♻️</p>
-              <h3 className="mt-3 text-base font-bold text-brand-navy">EA Registered Waste Carrier</h3>
+              <h3 className="text-base font-bold text-brand-navy">EA Registered Waste Carrier</h3>
               <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
                 We are a UK Environment Agency registered waste carrier. After unpacking, all
                 cardboard, bubble wrap and paper is collected and recycled. No landfill. Responsible
