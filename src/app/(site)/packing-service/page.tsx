@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { buildMetadata, serviceH1, SITE_URL } from "@/lib/seo";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import Link from "next/link";
@@ -127,19 +127,16 @@ const packingTypes = [
 ];
 
 const materials = [
-  "Double-wall moving boxes: small, medium, large and wardrobe sizes",
+  "Moving boxes in small, medium, large and wardrobe sizes",
   "Bubble wrap in standard and heavy-duty roll widths",
-  "Acid-free packing paper (safe for antiques and lacquered surfaces)",
+  "Wrapping paper",
   "Heavy-duty packing tape and dispensers",
-  "Mattress and sofa protective covers",
   "Specialist packing crates for fragile and export-grade items",
   "IT and archive crates for office relocations",
 ];
 
-/*
- * CONFIRM: all box and material quantities are estimates.
- * Verify with operations before publishing.
- */
+const materialsAddOns = ["Mattress covers", "Sofa covers"];
+
 const boxColumns = ["Property", "Total boxes (approx.)", "Bubble wrap", "Paper"];
 const boxRows: PricingRow[] = [
   { label: "Studio flat", values: ["25 to 35", "2 to 3 rolls", "1 to 2 kg"] },
@@ -149,10 +146,6 @@ const boxRows: PricingRow[] = [
   { label: "4-bedroom house", values: ["110 to 150", "8 to 12 rolls", "7 to 10 kg"] },
 ];
 
-/*
- * CONFIRM: all packing time ranges are estimates.
- * Verify with operations before publishing.
- */
 const timeColumns = ["Property", "2 packers", "3 packers"];
 const timeRows: PricingRow[] = [
   { label: "Studio flat", values: ["2 to 3 hours", "1.5 to 2 hours"] },
@@ -186,9 +179,6 @@ const diyPoints = [
   "Our materials-and-consultation option gives you the right boxes and guidance at lower cost",
 ];
 
-/*
- * CONFIRM: verify this borough list reflects current service coverage before publishing.
- */
 const londonAreas = [
   "Central London",
   "North London",
@@ -231,7 +221,7 @@ const faqs: FaqItem[] = [
   {
     question: "Do you supply all packing materials?",
     answer:
-      "Yes. All boxes, bubble wrap, packing paper, tape, mattress covers and sofa covers are included in the quoted price for a full packing booking. Nothing is charged separately for materials. If you prefer to pack yourself, materials can be ordered separately through our packaging materials service.",
+      "Yes. All boxes, bubble wrap, wrapping paper and tape are included in the quoted price for a full packing booking. Nothing is charged separately for these materials. Mattress covers and sofa covers are available as paid add-ons. If you prefer to pack yourself, materials can be ordered separately through our packaging materials service.",
   },
   {
     question: "How many boxes do I need for my home?",
@@ -281,9 +271,8 @@ export default function PackingServicePage() {
       <StickyMobileBar sentinelId="hero-intro" />
 
       <PageBanner
-        title="Full, Partial and Fragile Packing Available"
-        subtitle="All Materials Included · Fully Insured · BAR Accredited"
-        h1={serviceH1["packing-service"]}
+        title="Packing Service London"
+        subtitle="Full, Partial and Fragile Packing Available"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -300,9 +289,9 @@ export default function PackingServicePage() {
               Professional Packing · London &amp; Nationwide
             </p>
             <p className="hero-anim-sub mt-3 text-lg font-semibold leading-relaxed text-brand-navy">
-              Top Removals provides full, partial and fragile packing for homes and offices across
-              all 32 London boroughs. Every booking includes all materials: boxes, bubble wrap,
-              paper, tape and covers, at no extra charge.
+              Top Removals provides a professional packing service for homes and offices across
+              London. Every booking includes all materials: boxes, bubble wrap, paper and tape,
+              at no extra charge.
             </p>
             <p className="hero-anim-sub mt-4 text-base leading-relaxed text-brand-charcoal/85">
               Fully insured and BAR-accredited, our crews are trained in fragile, antique, export and
@@ -365,9 +354,8 @@ export default function PackingServicePage() {
             </p>
             <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
               The difference from DIY is speed, materials quality, and insurance: Top Removals crews
-              pack faster because it is their daily trade, use double-wall boxes and specialist
-              crating not available in supermarkets, and all items they handle are covered under
-              goods-in-transit insurance. For fragile, antique, or high-value items the gap in
+              pack faster because it is their daily trade, use quality boxes and specialist crating,
+              and all items they handle are covered under goods-in-transit insurance. For fragile, antique, or high-value items the gap in
               protection is significant.
             </p>
             <p className="mt-4 text-sm text-brand-charcoal/60">
@@ -467,7 +455,10 @@ export default function PackingServicePage() {
               </li>
             ))}
           </ul>
-          <p data-reveal className="mx-auto mt-8 max-w-2xl text-center text-sm text-brand-charcoal/60">
+          <p data-reveal className="mx-auto mt-6 max-w-2xl text-center text-xs text-brand-charcoal/50">
+            Available as add-ons: {materialsAddOns.join(", ")}.
+          </p>
+          <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-sm text-brand-charcoal/60">
             Need materials without a packing crew?{" "}
             <Link href="/packaging-materials" className="underline hover:text-brand-orange">
               Order packaging materials separately
@@ -733,8 +724,8 @@ export default function PackingServicePage() {
               title="Packing Service Areas in London"
             />
             <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
-              We pack homes and offices across all 32 London boroughs, Greater London, Surrey, and
-              nationwide. Export packing is available for all international routes.
+              We pack homes and offices across London, Greater London, Surrey, and nationwide.
+              Export packing is available for all international routes.
             </p>
           </div>
           <ul
