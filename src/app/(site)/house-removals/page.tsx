@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -12,6 +13,7 @@ import PricingTable from "@/components/services/PricingTable";
 import CardGrid from "@/components/services/CardGrid";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 
 export const metadata: Metadata = buildMetadata("house-removals");
 
@@ -367,29 +369,111 @@ export default function HouseRemovalsPage() {
       />
 
       {/* S1 continued: intro + above-fold CTAs */}
-      <section className="bg-white py-12">
+      <section id="hero-intro" className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-[88rem] px-4">
-          <p className="max-w-3xl text-lg leading-relaxed text-brand-charcoal/90">
-            Top Removals moves homes across London with a{" "}
-            <strong>fully insured, BAR-accredited team</strong> operating seven days a week. Whether
-            you are moving a studio flat or a five-bedroom house, every job comes with a free
-            pre-move survey, a written fixed-price quote and end-to-end management: packing,
-            transport and unloading handled by trained professionals.
-          </p>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-brand-charcoal/80">
-            Get an instant estimate with the removal calculator, or book a free survey for an exact
-            fixed price with no hidden fees.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
-              Get a Free Quote
-            </Button>
-            <Button href="/bookservice" variant="navy" size="lg">
-              Removal Calculator
-            </Button>
-            <Button href="tel:+442072052525" variant="outline" size="lg">
-              020 7205 2525
-            </Button>
+          <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-16">
+
+            {/* Left: value prop + CTAs */}
+            <div>
+              <p className="max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
+                Top Removals moves homes across London with a{" "}
+                <strong>fully insured, BAR-accredited team</strong> operating seven days a week.
+                Whether you are moving a studio flat or a five-bedroom house, every job comes with a
+                free pre-move survey, a written fixed-price quote and end-to-end management:
+                packing, transport and unloading handled by trained professionals.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
+                Get an instant estimate, or book a free survey for an exact fixed price with no
+                hidden fees.
+              </p>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button
+                  href="/bookservice#quick-quote"
+                  variant="orange"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Get a Free Quote
+                </Button>
+                <Button
+                  href="/bookservice"
+                  variant="navy"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Estimate My Move
+                </Button>
+                <Button
+                  href="tel:+442072052525"
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  020 7205 2525
+                </Button>
+              </div>
+
+              <p className="mt-3 text-xs font-medium text-brand-charcoal/55">
+                Free survey. Fixed price. No obligation.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {["BAR Accredited", "Fully Insured", "7 Days a Week"].map((label) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
+                  >
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: trust panel with team photo */}
+            <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+              <div className="relative aspect-[16/9] w-full">
+                <Image
+                  src="/about/Top-Removals-Team.webp"
+                  alt="Top Removals crew ready for a London house move"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="bg-brand-grey p-6">
+                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
+                  Trusted and certified by
+                </p>
+                <ul className="space-y-2">
+                  {accreditations.map((name) => (
+                    <li key={name} className="flex items-center gap-2">
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <span className="text-sm text-brand-navy/85">{name}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
+                  <Link
+                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    Trustpilot reviews →
+                  </Link>
+                  <Link
+                    href="/certificates"
+                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    View certificates →
+                  </Link>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -474,6 +558,15 @@ export default function HouseRemovalsPage() {
               </div>
             </div>
           </div>
+
+          <div className="mt-10 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              Get a Free Quote
+            </Button>
+            <p className="text-xs font-medium text-brand-charcoal/55">
+              Free survey. Fixed price. No obligation.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -546,7 +639,7 @@ export default function HouseRemovalsPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/bookservice" variant="orange" size="md">
-                Removal Calculator
+                Estimate My Move
               </Button>
               <Button href="/bookservice#quick-quote" variant="navy" size="md">
                 Get a Fixed Quote
@@ -636,6 +729,10 @@ export default function HouseRemovalsPage() {
               </div>
             </div>
           </div>
+
+          <p className="mt-8 text-center text-xs font-medium text-brand-charcoal/55">
+            Both services include a free survey, fixed price and full insurance. No obligation.
+          </p>
         </div>
       </section>
 
@@ -724,7 +821,7 @@ export default function HouseRemovalsPage() {
         subtext="Free survey · written fixed price · no hidden fees · 7 days a week"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
-          { label: "Removal Calculator", href: "/bookservice", variant: "outline-light" },
+          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 
@@ -901,7 +998,7 @@ export default function HouseRemovalsPage() {
         subtext="Free survey · fixed price · no obligation · call 020 7205 2525"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
-          { label: "Removal Calculator", href: "/bookservice", variant: "outline-light" },
+          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 
@@ -915,6 +1012,11 @@ export default function HouseRemovalsPage() {
           <Faq items={faqs} defaultOpen={null} className="mt-10" />
         </div>
       </section>
+
+      {/* Mobile bottom spacer: prevents sticky bar from covering last content line */}
+      <div className="h-[72px] sm:hidden" aria-hidden="true" />
+
+      <StickyMobileBar sentinelId="hero-intro" />
     </>
   );
 }
