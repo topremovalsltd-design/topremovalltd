@@ -415,8 +415,8 @@ export default function ManAndVanPage() {
             >
               <div className="relative aspect-[16/9] w-full">
                 <Image
-                  src="/about/package.webp"
-                  alt="Top Removals van ready for a London man and van move"
+                  src="https://www.top-removals.co.uk/wp-content/uploads/2025/05/man-and-van-service-London.jpg"
+                  alt="man and van service London — Top Removals professional mover loading a van"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

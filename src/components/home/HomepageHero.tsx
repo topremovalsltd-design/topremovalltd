@@ -6,19 +6,19 @@ import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
 
 type Slide = { src: string; alt: string };
 
-// Real Top Removals photos. Subject positioned right via objectPosition so the
-// left dark gradient keeps text readable while the photo breathes on the right.
-// CONFIRM: source landscape crew/van shots to replace or extend these two stills.
 const SLIDES: Slide[] = [
   {
     src: "/about/package.webp",
-    alt: "Top Removals crew with their removal vehicle, ready for a London house move",
+    alt: "Top Removals removal van loaded and ready for a London house move",
   },
   {
     src: "/about/Top-Removals-Team.webp",
-    alt: "The Top Removals team at their London office",
+    alt: "Top Removals team — fully insured, BAR-accredited removal company London",
   },
-  /* CONFIRM: add landscape hero photo — crew loading a branded Luton van, subject on the right */
+  {
+    src: "https://www.top-removals.co.uk/wp-content/uploads/2023/03/moving-company.jpg",
+    alt: "Two Top Removals professionals carrying boxes to a removal van in London",
+  },
 ];
 
 const COUNT = SLIDES.length;

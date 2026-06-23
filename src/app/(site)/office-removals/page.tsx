@@ -405,10 +405,10 @@ export default function OfficeRemovalsPage() {
               data-reveal
               data-delay="1"
             >
-              <div className="relative aspect-[4/3] w-full bg-brand-grey">
+              <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/services/office-removals.svg"
-                  alt="Top Removals team managing a London office relocation"
+                  src="https://www.top-removals.co.uk/wp-content/uploads/2026/04/office-move-in-London.jpg"
+                  alt="office move in London — managed commercial relocation by Top Removals"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

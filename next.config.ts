@@ -34,6 +34,15 @@ const nextConfig: NextConfig = {
       permanent: true,
     }));
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.top-removals.co.uk",
+        pathname: "/wp-content/uploads/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

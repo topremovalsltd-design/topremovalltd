@@ -435,8 +435,8 @@ export default function HouseRemovalsPage() {
             <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
               <div className="relative aspect-[16/9] w-full">
                 <Image
-                  src="/about/Top-Removals-Team.webp"
-                  alt="Top Removals crew ready for a London house move"
+                  src="https://www.top-removals.co.uk/wp-content/uploads/2024/12/home-move-in-London.jpg"
+                  alt="house move in London — Top Removals fully insured house removal crew"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
