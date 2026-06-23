@@ -102,8 +102,21 @@
 .accordion-panel.is-open  { grid-template-rows: 1fr; }
 .accordion-inner          { overflow: hidden; min-height: 0; }
 
+/* Man and Van London: price cards mobile hover (page-scoped via data-mv-prices) */
+[data-mv-prices] .sm\:hidden > div {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+[data-mv-prices] .sm\:hidden > div:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
 /* Reduced motion — highest priority, always wins */
 @media (prefers-reduced-motion: reduce) {
+  [data-mv-prices] .sm\:hidden > div {
+    transition: none !important;
+    transform: none !important;
+  }
   .js [data-reveal],
   .js [data-reveal].in-view,
   .js .hero-anim-sub,

@@ -13,6 +13,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
+import ManAndVanAnimations from "@/components/services/ManAndVanAnimations";
 
 export const metadata: Metadata = buildMetadata("man-and-van");
 
@@ -345,18 +346,19 @@ export default function ManAndVanPage() {
 
             {/* Left: value prop + CTAs */}
             <div>
-              <p className="max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
+              {/* hero-anim-sub: fade-slides in once .js is on <html> (see ManAndVanAnimations) */}
+              <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
                 Top Removals provides man and van services across London from{" "}
                 <strong>£55 per hour</strong>, 7 days a week, with same-day and short-notice slots
                 available. One mover and a van suits a single item or studio flat; two movers handle
                 a 1 to 2-bedroom flat comfortably. Every booking is fully insured and fixed-price
                 from survey to delivery.
               </p>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
+              <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 Get a free quote in under 2 minutes, or book a service for a confirmed date.
               </p>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
                   variant="orange"
@@ -383,11 +385,11 @@ export default function ManAndVanPage() {
                 </Button>
               </div>
 
-              <p className="mt-3 text-xs font-medium text-brand-charcoal/55">
+              <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
                 Free quote. Fixed price. No obligation.
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
                   "Fully Insured",
                   "BAR Accredited",
@@ -406,7 +408,11 @@ export default function ManAndVanPage() {
             </div>
 
             {/* Right: trust panel + van photo */}
-            <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+            <div
+              className="overflow-hidden rounded-2xl border border-black/10 shadow-sm"
+              data-reveal
+              data-delay="1"
+            >
               <div className="relative aspect-[16/9] w-full">
                 <Image
                   src="/about/package.webp"
@@ -460,7 +466,10 @@ export default function ManAndVanPage() {
             eyebrow="Service definition"
             title="What Is a Man and Van Service in London?"
           />
-          <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+          <div
+            className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
+            data-reveal
+          >
             <p>
               A man and van service in London provides a professional driver, a fully equipped van
               and optional loading and unloading help, billed by the hour. Crew size and van size are
@@ -497,18 +506,24 @@ export default function ManAndVanPage() {
             date, as they depend on the specific route.
           </p>
 
-          <PricingTable
-            className="mx-auto mt-10 max-w-3xl"
-            columns={pricingColumns}
-            rows={pricingRows}
-          />
+          {/* data-mv-prices enables page-scoped hover on the mobile stacked cards */}
+          <div data-mv-prices data-reveal>
+            <PricingTable
+              className="mx-auto mt-10 max-w-3xl"
+              columns={pricingColumns}
+              rows={pricingRows}
+            />
+          </div>
 
           <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-brand-charcoal/60">
             Minimum 2 hours on all bookings. Additional hours charged at the hourly rate.
             VAT included.
           </p>
 
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl bg-brand-grey p-8">
+          <div
+            className="mx-auto mt-10 max-w-3xl rounded-2xl bg-brand-grey p-8"
+            data-reveal
+          >
             <h3 className="text-base font-bold uppercase tracking-wide text-brand-navy">
               What affects your man and van price?
             </h3>
@@ -568,10 +583,12 @@ export default function ManAndVanPage() {
                 van: "Luton van",
                 crew: "3 movers",
               },
-            ].map(({ title, body, van, crew }) => (
+            ].map(({ title, body, van, crew }, i) => (
               <div
                 key={title}
-                className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm"
+                data-reveal
+                data-delay={String(i + 1)}
+                className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <h3 className="text-sm font-bold text-brand-navy">{title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/80">{body}</p>
@@ -648,10 +665,12 @@ export default function ManAndVanPage() {
                 link: "/storage",
                 linkText: "Storage options →",
               },
-            ].map(({ title, body, link, linkText }) => (
+            ].map(({ title, body, link, linkText }, i) => (
               <div
                 key={title}
-                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-6 shadow-sm"
+                data-reveal
+                data-delay={String(i + 1)}
+                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-6 shadow-sm transition hover:shadow-md motion-reduce:transition-none"
               >
                 <h3 className="text-sm font-bold uppercase tracking-wide text-brand-navy">
                   {title}
@@ -681,7 +700,10 @@ export default function ManAndVanPage() {
             eyebrow="Urgent and short-notice"
             title="Same-Day and Short-Notice Man and Van London"
           />
-          <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+          <div
+            className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
+            data-reveal
+          >
             <p>
               Top Removals operates 7 days a week and keeps same-day and short-notice slots
               available for urgent bookings. Same-day capacity covers urgent flat moves, last-minute
@@ -760,7 +782,11 @@ export default function ManAndVanPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {/* Man and van */}
-            <div className="rounded-2xl border-2 border-brand-navy/10 bg-white p-8">
+            <div
+              className="rounded-2xl border-2 border-brand-navy/10 bg-white p-8 shadow-sm"
+              data-reveal
+              data-delay="1"
+            >
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                 Man and Van
               </div>
@@ -792,7 +818,11 @@ export default function ManAndVanPage() {
             </div>
 
             {/* Full removals */}
-            <div className="rounded-2xl border-2 border-brand-orange bg-brand-navy p-8 text-white">
+            <div
+              className="rounded-2xl border-2 border-brand-orange bg-brand-navy p-8 text-white"
+              data-reveal
+              data-delay="2"
+            >
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                 Full House Removals
               </div>
@@ -827,7 +857,10 @@ export default function ManAndVanPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-black/10 bg-white p-5">
+          <div
+            className="mx-auto mt-8 max-w-3xl rounded-2xl border border-black/10 bg-white p-5"
+            data-reveal
+          >
             <p className="text-sm font-semibold text-brand-navy">
               Man and van vs self-drive van hire
             </p>
@@ -870,10 +903,12 @@ export default function ManAndVanPage() {
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {accreditations.map(({ name, signal }) => (
+            {accreditations.map(({ name, signal }, i) => (
               <div
                 key={name}
-                className="rounded-xl border border-black/5 bg-brand-grey p-5"
+                data-reveal
+                data-delay={String(i + 1)}
+                className="rounded-2xl border border-black/5 bg-brand-grey p-6"
               >
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
@@ -888,8 +923,8 @@ export default function ManAndVanPage() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 mx-auto max-w-3xl">
-            <div className="rounded-xl bg-brand-navy p-6 text-white">
+          <div className="mt-10 mx-auto max-w-3xl grid gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl bg-brand-navy p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Goods-in-transit insurance
               </h3>
@@ -898,7 +933,7 @@ export default function ManAndVanPage() {
                 triggers a clear financial claims process, not a verbal assurance.
               </p>
             </div>
-            <div className="rounded-xl bg-brand-navy p-6 text-white">
+            <div className="rounded-2xl bg-brand-navy p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Public liability insurance
               </h3>
@@ -927,7 +962,10 @@ export default function ManAndVanPage() {
             eyebrow="London-wide coverage"
             title="London Areas We Cover and How We Handle Access"
           />
-          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+          <div
+            className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
+            data-reveal
+          >
             <p>
               Top Removals man and van crews cover all 32 London boroughs, Greater London and
               surrounding areas including Surrey, Essex and Kent. Nationwide moves are also handled
@@ -946,7 +984,7 @@ export default function ManAndVanPage() {
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {areaGroups.map((group) => (
-              <div key={group.direction}>
+              <div key={group.direction} data-reveal>
                 <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-navy">
                   {group.direction}
                 </h3>
@@ -1037,6 +1075,9 @@ export default function ManAndVanPage() {
 
       {/* Mobile bottom spacer: prevents sticky bar from covering FAQ content */}
       <div className="h-[72px] sm:hidden" aria-hidden="true" />
+
+      {/* Page-scoped animation driver — adds .js to <html> and wires data-reveal */}
+      <ManAndVanAnimations />
 
       <StickyMobileBar sentinelId="hero-intro" />
     </>
