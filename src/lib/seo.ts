@@ -83,9 +83,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/storage",
   },
   "packing-service": {
-    title: "Packing Services in London, Fragile pack, Full Pack, Exports Wrap",
+    title: "Packing Service London | Full, Partial & Fragile Packing | Top Removals",
     description:
-      "Don't do everything by yourself, Top Removals is here to help you with the professional packing of all of your valuables and belongings. Trust the experts!",
+      "Professional packing service in London. Full, partial and fragile packing with all materials included. Fully insured, BAR-accredited. Free quote in under 2 minutes.",
     path: "/packing-service",
   },
   "man-and-van": {
@@ -374,7 +374,7 @@ export const serviceH1: Record<string, string> = {
   "office-removals": "Office Removals London",
   "international-removals": "International Removals",
   "london-storage": "London Storage",
-  "packing-service": "Packing Service",
+  "packing-service": "Packing Service London",
   "man-and-van": "Man and Van London",
   "packaging-materials": "Packaging Materials",
   "crate-hire": "Crate Hire",

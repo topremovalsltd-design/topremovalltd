@@ -1,145 +1,333 @@
 import type { Metadata } from "next";
-import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
+import { buildMetadata, serviceH1, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
+import Link from "next/link";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
-import CheckList from "@/components/services/CheckList";
-import CardGrid, { type Card } from "@/components/services/CardGrid";
-import TipList, { type Tip } from "@/components/services/TipList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
-import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
+import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
+import PackingServiceAnimations from "@/components/services/PackingServiceAnimations";
 
 export const metadata: Metadata = buildMetadata("packing-service");
 
-const whatCanWeDo = [
-  "Pack fast and efficient your home or business for a domestic or international relocation",
-  "We can come to any part of the UK to prep and pack your belongings",
-  "Professional packing using high-quality materials, fitting all international standards",
-  "Offer you a variety of different insurance policies depending on the type of service you choose",
-  "Competitive prices and different deals depending on the services you need us to deliver",
-  "Collect all waste packing materials for disposal and recycling after unpacking your belongings",
+/* ── Schema ─────────────────────────────────────────────────────────────── */
+
+const processSteps = [
+  {
+    name: "Request a free quote",
+    text: "Contact us online, by phone, or WhatsApp. A coordinator responds within one hour during working hours to confirm scope, date, and access.",
+  },
+  {
+    name: "Pre-move survey",
+    text: "A video or on-site survey confirms room volumes, fragile items, specialist pieces, and the exact materials needed. A fixed quote is issued before any work begins.",
+  },
+  {
+    name: "Materials confirmed",
+    text: "Box counts, bubble wrap grades, crate sizes, and cover types are finalised. All materials arrive with the packing team on packing day — nothing is charged separately.",
+  },
+  {
+    name: "Packing day",
+    text: "Teams arrive at the agreed time with all materials. Every box is packed, sealed, and labelled with its contents and destination room before loading begins.",
+  },
+  {
+    name: "Delivery and optional unpacking",
+    text: "Boxes are placed in the correct rooms at the new address. If you have booked unpacking, contents are unpacked and all waste — boxes, wrap, and paper — is collected and recycled.",
+  },
 ];
 
-const packingOptions: Card[] = [
+const packingServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${SITE_URL}/packing-service#service`,
+  name: "Packing Service London",
+  serviceType: "Professional Packing Service",
+  description:
+    "Full, partial and fragile packing service across London. All materials included. Fully insured, BAR-accredited.",
+  url: `${SITE_URL}/packing-service`,
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Greater London" },
+    { "@type": "Country", name: "United Kingdom" },
+  ],
+  provider: { "@id": `${SITE_URL}/#organization` },
+  offers: {
+    "@type": "Offer",
+    name: "Professional Packing Labour and Materials",
+    description:
+      "Approximately £6 per carton packed, labour and all materials included. Subject to survey.",
+    priceCurrency: "GBP",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "6",
+      priceCurrency: "GBP",
+      unitText: "per carton",
+      description: "Packing labour and materials (boxes, bubble wrap, paper, tape) combined",
+    },
+  },
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How the Top Removals Packing Service Works",
+  description: "A five-step process from free quote to delivery and optional unpacking.",
+  step: processSteps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+  })),
+};
+
+/* ── Content data ────────────────────────────────────────────────────────── */
+
+const packingOptions = [
   {
     title: "Full Packing Service",
-    body: "With close to a decade of experience, our skilled teams are adept and proficient in all types of packing from the smallest of ornaments to the largest of items. We will prep everything from your domestic or business property with maximum efficiency and meticulous attention to detail.",
+    body: "Our teams pack everything in every room — crockery, glassware, clothes, linen, books, lamps, pictures and furniture. Each box is labelled with its contents and destination room. We arrive with all materials one or two days before your loading date.",
+    icon: "📦",
   },
   {
-    title: "Unpacking Service",
-    body: "Once we unload your belongings, we will unpack absolutely everything, so you don't have to. Waste removal is included in the unpacking service, as we are licenced by the UK's Environmental Agency. If you are relocating in London, we can arrange additional professional cleaning services for your home or office.",
+    title: "Partial Packing",
+    body: "Choose specific rooms or item types — kitchen fragiles, bedroom wardrobes, home office archives. You pack the rest. Partial packing is priced separately and available as a standalone booking or an add-on to any removal.",
+    icon: "📋",
   },
   {
-    title: "Packing Consultation",
-    body: "If you prefer to pack your belongings by yourself, we could still assist you with our expertise and professional packing materials. After you consult with your coordinator, you will receive a variety of sized boxes to ensure you have everything you could possibly need before the arrival of our moving teams.",
+    title: "Fragile-Only Packing",
+    body: "China, glassware, artwork and antiques packed to specialist standards: acid-free paper, extra bubble wrap, rigid crates. Ideal when you are confident packing general items yourself but want professionals to protect what matters most.",
+    icon: "🫙",
+  },
+  {
+    title: "Unpacking with Waste Removal",
+    body: "We unpack at the destination, place contents in the correct rooms, and remove all boxes, bubble wrap and paper. Top Removals is a UK Environment Agency registered waste carrier — all materials are recycled, nothing goes to landfill.",
+    icon: "♻️",
+  },
+  {
+    title: "Materials and Consultation",
+    body: "Prefer to pack yourself? We supply the correct box sizes, bubble wrap, paper and tape, and your coordinator advises on quantities and method. A cost-effective option for smaller, lower-value loads.",
+    icon: "🧾",
   },
 ];
 
-const packingTypes: Card[] = [
+const packingTypes = [
   {
     title: "Fragile Packing",
-    body: "Whenever we prepare valuable items, antiques or just delicate memorabilia, we add an extra layer of bubble wrap in addition to following a strict procedure of placing the objects in the packing crates. Thankfully Top Removals' skilled teams are no strangers to the refined art of fragile packing.",
+    body: "Every fragile item receives an extra layer of bubble wrap and is placed in a rigid crate following a strict procedure. Our crews are trained in fragile packing to the same standard used for international shipping.",
+  },
+  {
+    title: "Antiques and Artwork",
+    body: "High-value or irreplaceable pieces are packed with acid-free paper to prevent chemical transfer, specialist padding, and bespoke crating where required. Items are noted at the survey stage so the correct protection is confirmed in advance.",
   },
   {
     title: "Export Packing",
-    body: "This type of packing is very popular with our international shipments as it will ensure the safe transportation of your goods to their destination. Export packaging is the extra layer added to your crates to protect them while they are in transit. We use it during all of our international jobs including our weekly removals to Norway.",
+    body: "Crating and wrapping to international shipping standards. Required for all overseas relocations — including our weekly removals to Norway and regular European routes — where goods transit multiple handling points.",
   },
   {
     title: "Blanket Wrap",
-    body: "It is a method of packing where our teams will wrap your items in specialised thick blankets to protect them during the transportation. We use this technic with large pieces of furniture that can't be disassembled.",
+    body: "Large furniture that cannot be disassembled is wrapped in thick protective blankets before loading. Protects painted and lacquered surfaces, prevents scuffs in transit, and eliminates the need for boxes on oversized pieces.",
   },
+];
+
+const materials = [
+  "Double-wall moving boxes — small, medium, large and wardrobe sizes",
+  "Bubble wrap in standard and heavy-duty roll widths",
+  "Acid-free packing paper (safe for antiques and lacquered surfaces)",
+  "Heavy-duty packing tape and dispensers",
+  "Mattress and sofa protective covers",
+  "Specialist packing crates for fragile and export-grade items",
+  "IT and archive crates for office relocations",
+];
+
+const boxColumns = ["Property", "Total boxes (approx.)", "Bubble wrap", "Paper"];
+const boxRows: PricingRow[] = [
+  { label: "Studio flat", values: ["25–35", "2–3 rolls", "1–2 kg"] },
+  { label: "1-bedroom flat", values: ["35–50", "3–4 rolls", "2–3 kg"] },
+  { label: "2-bedroom flat", values: ["50–75", "4–6 rolls", "3–5 kg"] },
+  { label: "3-bedroom house", values: ["75–110", "6–8 rolls", "5–7 kg"] },
+  { label: "4-bedroom house", values: ["110–150", "8–12 rolls", "7–10 kg"] },
+];
+
+const timeColumns = ["Property", "2 packers", "3 packers"];
+const timeRows: PricingRow[] = [
+  { label: "Studio flat", values: ["2–3 hours", "1.5–2 hours"] },
+  { label: "1-bedroom flat", values: ["3–5 hours", "2–3 hours"] },
+  { label: "2-bedroom flat", values: ["5–7 hours", "3–5 hours"] },
+  { label: "3-bedroom house", values: ["Full day", "5–6 hours"] },
+  { label: "4-bedroom house", values: ["1.5 days", "Full day"] },
+];
+
+const costFactors = [
+  "Number of rooms and total box count",
+  "Full, partial or fragile-only scope",
+  "Specialist items — antiques, artwork, pianos, servers",
+  "Packing method — standard, export or blanket wrap",
+  "Whether unpacking is included",
+  "Booking packing with a removal (combined discount available)",
+];
+
+const proPoints = [
+  "Large or multi-bedroom property with high box counts",
+  "Fragile, antique or high-value items requiring specialist wrapping",
+  "Tight moving timeline — packers work faster than most households",
+  "Insurance policy requires professional packing for full liability cover",
+  "You want all materials included and waste removed after unpacking",
+];
+
+const diyPoints = [
+  "Small load — studio or 1-bed with low-value general items",
+  "Flexible timeline — you can pack over several weeks",
+  "Budget is the primary constraint and no fragile items are involved",
+  "Our materials-and-consultation option gives you the right boxes and guidance at lower cost",
+];
+
+const londonAreas = [
+  "Central London",
+  "North London",
+  "South London",
+  "East London",
+  "West London",
+  "Canary Wharf",
+  "Greenwich",
+  "Richmond",
+  "Wimbledon",
+  "Clapham",
+  "Islington",
+  "Hackney",
+  "Hammersmith",
+  "Fulham",
+  "Wandsworth",
+  "Lambeth",
+  "Southwark",
+  "Tower Hamlets",
+  "Barnet",
+  "Bromley",
 ];
 
 const faqs: FaqItem[] = [
   {
-    question:
-      "How is the price for packing/unpacking calculated and does it include the materials?",
+    question: "How much does a packing service cost in London?",
     answer:
-      "When estimating the price of the service, we take into consideration the method of packing, the number and type of materials that need to be used and the complexity of the whole procedure. When the customer books a complete service – packing, moving and materials, we can offer big discounts on the latter. As a rule of thumb, you can estimate the rate for the packing by multiplying the number of cartons needed by 6. So a 100 cartons pack job will cost approximately £600. This includes labour and all packing and wrapping materials – boxes, wrapping paper, bubble wrap, tape.",
-  },
-  {
-    question: "Does the packing service come with full insurance?",
-    answer:
-      "Yes, everything we handle is covered by the insurance we hold. However, speak to your moving coordinator about the different insurance options and policies available to you, depending on your destination.",
+      "As a rule of thumb, you can estimate the rate for the packing by multiplying the number of cartons needed by 6. So a 100-carton pack job will cost approximately £600. This includes labour and all packing and wrapping materials — boxes, wrapping paper, bubble wrap, tape. The exact total depends on scope, fragile content and any specialist handling. A free survey produces an accurate fixed quote.",
   },
   {
     question: "What is included in the full packing service?",
     answer:
-      "It includes packing all of the crockery, glassware, clothes, linen, lamps, books, pictures etc into cartons and marking the cartons for positioning them at your new home. If a customer has requested from us to do everything, we will come a day or two ahead of the scheduled loading date with all materials and complete the professional packing.",
+      "It includes packing all of the crockery, glassware, clothes, linen, lamps, books, pictures and so on into cartons and marking the cartons for positioning them at your new home. If a customer has requested us to do everything, we will come a day or two ahead of the scheduled loading date with all materials and complete the professional packing.",
+  },
+  {
+    question: "Do you supply all packing materials?",
+    answer:
+      "Yes. All boxes, bubble wrap, packing paper, tape, mattress covers and sofa covers are included in the quoted price for a full packing booking. Nothing is charged separately for materials. If you prefer to pack yourself, materials can be ordered separately through our packaging materials service.",
+  },
+  {
+    question: "How many boxes do I need for my home?",
+    answer:
+      "A studio flat typically needs 25 to 35 boxes. A 1-bedroom flat needs around 35 to 50. A 2-bedroom flat requires 50 to 75, and a 3-bedroom house around 75 to 110. The exact quantity is confirmed at the survey, as volume varies significantly depending on how much has accumulated in the property over the years.",
+  },
+  {
+    question: "How long does professional packing take?",
+    answer:
+      "A studio flat takes 2 to 3 hours for two packers. A 1-bedroom flat takes 3 to 5 hours. A 2-bedroom flat takes 5 to 7 hours. A 3-bedroom house typically takes a full day. Times increase when fragile or specialist items need extra wrapping. Three packers reduce times by roughly a third.",
+  },
+  {
+    question: "Do you pack fragile items and antiques?",
+    answer:
+      "Yes. Fragile items, antiques, artwork and glassware are packed using acid-free paper, an extra layer of bubble wrap, and a strict crating procedure. Our crews are trained in specialist fragile packing. High-value pieces can be noted at the survey stage so the appropriate protection method and crate type is confirmed in advance.",
+  },
+  {
+    question: "Can I choose partial packing for selected rooms only?",
+    answer:
+      "Yes. Partial packing covers selected rooms, specific item types, or a single category such as kitchen glassware or bedroom wardrobes. You pack everything else yourself. Partial packing is quoted separately and can be booked as a standalone service or as an add-on to any removal.",
+  },
+  {
+    question: "Do you offer an unpacking service?",
+    answer:
+      "Yes. The unpacking service places contents in the correct rooms, removes all packing waste and disposes of it responsibly. Top Removals is a registered UK Environment Agency waste carrier, so all cardboard, bubble wrap and paper is collected and recycled. Unpacking is quoted as an add-on to any packing booking.",
+  },
+  {
+    question: "Is it worth hiring professional packers?",
+    answer:
+      "Professional packing saves time and reduces the risk of breakage. It is worth it when you have fragile or high-value items, a large property, a tight moving timeline, or where your insurance policy requires professional packing for full liability cover. For small, low-value loads, a materials and consultation booking may be a better fit.",
+  },
+  {
+    question: "Are you insured for packing?",
+    answer:
+      "Yes, everything we handle is covered by the insurance we hold. However, speak to your moving coordinator about the different insurance options and policies available to you, depending on your destination.",
+  },
+  {
+    question: "Do you recycle packing waste after unpacking?",
+    answer:
+      "Yes. All packing materials — cardboard boxes, bubble wrap, paper and tape — are collected after unpacking and recycled under Top Removals' UK Environment Agency waste carrier registration. No landfill. All waste is documented and disposed of responsibly.",
   },
 ];
 
-const tips: Tip[] = [
-  {
-    title: "Prepare your items properly",
-    body: "All electrical appliances must be unplugged and cleaned. This includes washing machines, fridges, entertainment sets, etc. If there is a problem and you are unable or don't know how to disconnect your dishwasher, just inform our moving coordinator. The day of the packing Top Removals' teams will arrive with the necessary tool and do it for you, before wrapping neatly all of your belongings.",
-  },
-  {
-    title: "Don't try to move bulky furniture by yourself",
-    body: "Leave everything as it is. You don't have to move or dismantle anything in advance. The pieces that need to be disassembled will be discussed during the initial survey. When our packers come to your place, they will have their tool belts and will professionally wrap every single piece of furniture.",
-  },
-];
+/* ── Page component ──────────────────────────────────────────────────────── */
 
 export default function PackingServicePage() {
   return (
     <>
-      <JsonLd data={serviceLdFor("packing-service")} />
+      <JsonLd data={packingServiceSchema} />
+      <JsonLd data={howToSchema} />
+      <PackingServiceAnimations />
+      <StickyMobileBar sentinelId="hero-intro" />
+
       <PageBanner
-        title="Full or Partial Packing Options Available"
-        subtitle="Export Pack and Wrap Services Offered"
+        title="Full, Partial and Fragile Packing Available"
+        subtitle="All Materials Included · Fully Insured · BAR Accredited"
         h1={serviceH1["packing-service"]}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "Packing Service" },
+          { label: "Packing Service London" },
         ]}
       />
 
-      {/* Hero CTAs */}
-      <section className="bg-white pt-10">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <p className="text-lg font-bold uppercase tracking-wide text-brand-navy">
-            Get a Free Online Quote in Under 2 Minutes!
-          </p>
-          <div className="mt-4 flex flex-wrap gap-4">
-            <Button href="/bookservice#quick-quote" variant="outline" size="lg">
-              Quick Quote
-            </Button>
-            <Button href="/bookservice" variant="orange" size="lg">
-              Book a Service
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Intro */}
-      <section className="bg-white py-16">
-        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
+      {/* ── S1: Hero intro ─────────────────────────────────────────────── */}
+      <section className="bg-white pt-12 pb-0" id="hero-intro">
+        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-2 lg:gap-16 lg:pb-16">
+          {/* Left: copy */}
           <div>
-            <SectionHeading
-              align="left"
-              eyebrow="Packing Service"
-              title="What Does It Mean To Have Your Belongings Packed Professionally"
-            />
-            <p className="mt-8 text-base leading-relaxed text-brand-charcoal/85">
-              Experienced packers can wrap your belongings faster while ensuring everything is done
-              following all safety procedures. Top Removals&apos; teams are trained to deal with an
-              array of different items and situations. We can easily disassemble or assemble your
-              large pieces of furniture, wrap your valuable antiques or pack your office archives. As
-              one of London&apos;s top moving companies, all of the services we offer are held to high
-              standards. Our goal is to leave satisfied, happy customers, no matter the cost.
+            <p className="hero-anim-sub text-sm font-bold uppercase tracking-widest text-brand-orange">
+              Professional Packing · London &amp; Nationwide
+            </p>
+            <p className="hero-anim-sub mt-3 text-lg font-semibold leading-relaxed text-brand-navy">
+              Top Removals provides full, partial and fragile packing for homes and offices across
+              all 32 London boroughs. Every booking includes all materials — boxes, bubble wrap,
+              paper, tape and covers — at no extra charge.
+            </p>
+            <p className="hero-anim-sub mt-4 text-base leading-relaxed text-brand-charcoal/85">
+              Fully insured and BAR-accredited, our crews are trained in fragile, antique, export and
+              blanket-wrap packing to the same standards used for international shipments. A free
+              online quote takes under 2 minutes.
+            </p>
+
+            <div className="hero-anim-ctas mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+                Free Online Quote
+              </Button>
+              <Button href="/bookservice" variant="outline" size="lg">
+                Book a Service
+              </Button>
+            </div>
+
+            {/* Trust pills */}
+            <p className="hero-anim-trust mt-6 text-sm font-medium text-brand-charcoal/70">
+              Fully insured &nbsp;·&nbsp; BAR accredited &nbsp;·&nbsp; All materials included
+              &nbsp;·&nbsp; EA waste carrier
             </p>
           </div>
-          <div className="relative">
+
+          {/* Right: hero image */}
+          <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/services/packing-service.svg"
-                alt="Top Removals packers wrapping and boxing belongings"
+                src="https://www.top-removals.co.uk/wp-content/uploads/2025/05/packing-service.jpg"
+                alt="packing service London — Top Removals professional packer carefully wrapping belongings in bubble wrap"
                 fill
+                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
@@ -152,69 +340,461 @@ export default function PackingServicePage() {
         </div>
       </section>
 
-      {/* What can we do for you */}
+      {/* ── S2: What is professional packing ───────────────────────────── */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal className="mx-auto max-w-3xl">
+            <SectionHeading
+              align="left"
+              eyebrow="Professional packing"
+              title="What Does a Professional Packing Service Include?"
+            />
+            <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
+              A professional packing service means trained crews arrive at your property with all
+              materials, pack every item methodically, label each box for room placement, and leave
+              with waste after unpacking. In 2026 a full-service London packing job typically covers
+              crockery, glassware, clothes, linen, books, lamps, pictures and furniture — everything
+              from the smallest ornament to the largest wardrobe — and delivers it all clearly
+              labelled and ready to unpack.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
+              The difference from DIY is speed, materials quality, and insurance: Top Removals crews
+              pack faster because it is their daily trade, use double-wall boxes and specialist
+              crating not available in supermarkets, and all items they handle are covered under
+              goods-in-transit insurance. For fragile, antique, or high-value items the gap in
+              protection is significant.
+            </p>
+            <p className="mt-4 text-sm text-brand-charcoal/60">
+              See also:{" "}
+              <Link href="/packaging-materials" className="underline hover:text-brand-orange">
+                Packaging Materials
+              </Link>{" "}
+              &middot;{" "}
+              <Link href="/crate-hire" className="underline hover:text-brand-orange">
+                Crate Hire
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S3: Packing options ─────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Our service" title="What Can We Do for You" />
-          <CheckList items={whatCanWeDo} columns={2} className="mx-auto mt-12 max-w-5xl" />
+          <SectionHeading
+            eyebrow="Choose your service"
+            title="Packing Service Options"
+          />
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+            Full, partial, fragile-only, unpacking, or materials supply — choose the scope that fits
+            your move.
+          </p>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {packingOptions.map((opt, i) => (
+              <div
+                key={opt.title}
+                data-reveal
+                data-delay={String(i + 1)}
+                className="group flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              >
+                <p className="text-2xl" aria-hidden="true">{opt.icon}</p>
+                <h3 className="mt-3 text-lg font-bold text-brand-navy">{opt.title}</h3>
+                <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                  {opt.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Packing service options */}
+      {/* ── S4: Specialist packing types ────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Choose your service" title="Packing Service Options" />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            Top Removals can offer you a couple of different solutions for your home or office
-            relocation in the UK or worldwide.
+          <SectionHeading
+            eyebrow="Specialist methods"
+            title="Types of Professional Packing"
+          />
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+            Four specialist techniques for items that need more than a standard cardboard box.
           </p>
-          <CardGrid cards={packingOptions} className="mt-12" />
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {packingTypes.map((type, i) => (
+              <div
+                key={type.title}
+                data-reveal
+                data-delay={String(i + 1)}
+                className="group flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              >
+                <h3 className="text-base font-bold text-brand-navy">{type.title}</h3>
+                <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                  {type.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Types of professional packing */}
+      {/* ── S5: Materials ──────────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Packing methods" title="Types of Professional Packing" />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            There are a couple of ways to properly prepare the belongings of our customers for the
-            move. Top Removals&apos; specialists pride themselves as being extremely diligent when it
-            comes to packing as it is one of the most important steps of the entire relocation
-            process.
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="What we bring"
+              title="Packing Materials We Supply"
+            />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+              All materials are included in the packing quote — no surprises on moving day.
+            </p>
+          </div>
+          <ul
+            data-reveal
+            className="mx-auto mt-10 grid max-w-4xl list-none grid-cols-1 gap-4 sm:grid-cols-2"
+          >
+            {materials.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 rounded-xl border border-black/8 bg-white px-5 py-4 shadow-sm"
+              >
+                <span aria-hidden="true" className="mt-0.5 text-brand-orange">✓</span>
+                <span className="text-base leading-relaxed text-brand-charcoal/85">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p data-reveal className="mx-auto mt-8 max-w-2xl text-center text-sm text-brand-charcoal/60">
+            Need materials without a packing crew?{" "}
+            <Link href="/packaging-materials" className="underline hover:text-brand-orange">
+              Order packaging materials separately
+            </Link>{" "}
+            or{" "}
+            <Link href="/crate-hire" className="underline hover:text-brand-orange">
+              hire specialist crates
+            </Link>
+            .
           </p>
-          <CardGrid cards={packingTypes} className="mt-12" />
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* ── S6: How many boxes ─────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Good to know" title="FAQ" />
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Box guide"
+              title="How Many Boxes Does My Home Need?"
+            />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+              Approximate materials by property size. Your coordinator confirms exact quantities at
+              the survey — actual volumes vary with how much has accumulated in the property.
+            </p>
+          </div>
+          <div data-reveal>
+            <PricingTable
+              columns={boxColumns}
+              rows={boxRows}
+              className="mx-auto mt-10 max-w-4xl"
+            />
+          </div>
+          <p data-reveal className="mx-auto mt-6 max-w-2xl text-center text-sm text-brand-charcoal/60">
+            Figures are estimates for a typical property. Add 10–15% for homes with extensive
+            kitchens, large book collections, or significant accumulated storage.
+          </p>
+        </div>
+      </section>
+
+      {/* ── S7: How long packing takes ─────────────────────────────────── */}
+      <section className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Time guide"
+              title="How Long Does Professional Packing Take?"
+            />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+              Packing times by property size. Fragile-heavy or specialist items add time — your
+              coordinator builds this into the schedule.
+            </p>
+          </div>
+          <div data-reveal>
+            <PricingTable
+              columns={timeColumns}
+              rows={timeRows}
+              className="mx-auto mt-10 max-w-3xl"
+            />
+          </div>
+          <p data-reveal className="mx-auto mt-6 max-w-2xl text-center text-sm text-brand-charcoal/60">
+            Three packers reduce time by roughly a third. Fragile-only bookings typically take 20–30%
+            longer per box due to the additional wrapping layers.
+          </p>
+        </div>
+      </section>
+
+      {/* ── S8: Pricing (bold moment #3) ───────────────────────────────── */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Transparent pricing"
+            title="Packing Service Prices"
+          />
+
+          {/* Price mechanic — deliberate reveal */}
+          <div
+            data-reveal
+            data-delay="1"
+            className="mx-auto mt-10 max-w-2xl rounded-2xl border border-brand-orange/30 bg-brand-orange/5 px-8 py-8 text-center shadow-sm"
+          >
+            <p className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+              The per-carton rule
+            </p>
+            <p className="mt-4 text-4xl font-extrabold text-brand-navy">
+              Cartons × £6
+            </p>
+            <p className="mt-3 text-base leading-relaxed text-brand-charcoal/80">
+              Multiply the number of cartons your home needs by £6 for an accurate estimate.
+              A&nbsp;100-carton job costs approximately{" "}
+              <strong className="text-brand-navy">£600</strong> — labour and all packing materials
+              (boxes, bubble wrap, paper, tape) included. Nothing charged separately.
+            </p>
+            <p className="mt-4 text-sm text-brand-charcoal/60">
+              Final price is fixed after a free survey. Combined packing-and-removal bookings attract
+              a discount.{" "}
+              <Link href="/prices" className="underline hover:text-brand-orange">
+                See full prices
+              </Link>
+            </p>
+          </div>
+
+          {/* Cost factors */}
+          <div data-reveal data-delay="2" className="mx-auto mt-10 max-w-2xl">
+            <h3 className="text-base font-bold text-brand-navy">What affects the final price?</h3>
+            <ul className="mt-4 space-y-2">
+              {costFactors.map((f) => (
+                <li key={f} className="flex items-start gap-3 text-base leading-relaxed text-brand-charcoal/85">
+                  <span aria-hidden="true" className="mt-1 text-brand-orange">·</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-center">
+              <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                Get a fixed quote in 2 minutes
+              </Button>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S9: Professional vs DIY ─────────────────────────────────────── */}
+      <section className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Is it worth it?"
+              title="Professional Packing vs Packing Yourself"
+            />
+          </div>
+          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
+            <div
+              data-reveal
+              data-delay="1"
+              className="rounded-2xl border border-brand-navy/15 bg-white p-6 shadow-sm"
+            >
+              <h3 className="text-base font-bold text-brand-navy">When professional packing is worth it</h3>
+              <ul className="mt-4 space-y-3">
+                {proPoints.map((p) => (
+                  <li key={p} className="flex items-start gap-3 text-base leading-relaxed text-brand-charcoal/85">
+                    <span aria-hidden="true" className="mt-1 shrink-0 text-brand-orange">✓</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div
+              data-reveal
+              data-delay="2"
+              className="rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
+            >
+              <h3 className="text-base font-bold text-brand-navy">When DIY or partial packing fits</h3>
+              <ul className="mt-4 space-y-3">
+                {diyPoints.map((p) => (
+                  <li key={p} className="flex items-start gap-3 text-base leading-relaxed text-brand-charcoal/85">
+                    <span aria-hidden="true" className="mt-1 shrink-0 text-brand-charcoal/40">·</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S10: Process ────────────────────────────────────────────────── */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="How it works"
+            title="The Packing Process Step by Step"
+          />
+          <ol className="relative mx-auto mt-10 max-w-2xl space-y-8">
+            {processSteps.map((step, i) => (
+              <li
+                key={step.name}
+                data-reveal
+                data-delay={String(i + 1)}
+                className="relative flex gap-5 pl-2"
+              >
+                {i < processSteps.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[1.75rem] top-12 h-[calc(100%-1rem)] w-0.5 bg-brand-orange/25"
+                  />
+                )}
+                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-navy text-lg font-bold text-white shadow-md">
+                  {i + 1}
+                </span>
+                <div className="pt-2">
+                  <p className="text-base font-semibold text-brand-navy">{step.name}</p>
+                  <p className="mt-1 text-base leading-relaxed text-brand-charcoal/90">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── S11: Insurance, accreditations, recycling ──────────────────── */}
+      <section className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Why trust us"
+              title="Insurance, Accreditations and Responsible Disposal"
+            />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+              Three pillars that protect you before, during and after every packing job.
+            </p>
+          </div>
+          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+            <div
+              data-reveal
+              data-delay="1"
+              className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
+            >
+              <p className="text-2xl" aria-hidden="true">🛡️</p>
+              <h3 className="mt-3 text-base font-bold text-brand-navy">Goods-in-Transit Insurance</h3>
+              <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                All items handled by Top Removals packers are covered by goods-in-transit insurance.
+                Insurance options vary by service type and destination. Speak with your coordinator
+                about tailored cover for high-value items or antiques.
+              </p>
+            </div>
+            <div
+              data-reveal
+              data-delay="2"
+              className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
+            >
+              <p className="text-2xl" aria-hidden="true">🏅</p>
+              <h3 className="mt-3 text-base font-bold text-brand-navy">BAR Accredited Mover</h3>
+              <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                Top Removals is a British Association of Removers (BAR) accredited member, meaning
+                we meet independently audited standards for packing, handling and customer
+                protection on every job.
+              </p>
+            </div>
+            <div
+              data-reveal
+              data-delay="3"
+              className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
+            >
+              <p className="text-2xl" aria-hidden="true">♻️</p>
+              <h3 className="mt-3 text-base font-bold text-brand-navy">EA Registered Waste Carrier</h3>
+              <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                We are a UK Environment Agency registered waste carrier. After unpacking, all
+                cardboard, bubble wrap and paper is collected and recycled. No landfill. Responsible
+                disposal is documented and standard on every booking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S12: Areas ──────────────────────────────────────────────────── */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Where we work"
+              title="Packing Service Areas in London"
+            />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+              We pack homes and offices across all 32 London boroughs, Greater London, Surrey, and
+              nationwide. Export packing is available for all international routes.
+            </p>
+          </div>
+          <ul
+            data-reveal
+            className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+          >
+            {londonAreas.map((area) => (
+              <li
+                key={area}
+                className="rounded-lg border border-black/8 bg-brand-grey px-4 py-2.5 text-center text-sm font-medium text-brand-navy"
+              >
+                {area}
+              </li>
+            ))}
+          </ul>
+          <p data-reveal className="mx-auto mt-8 max-w-2xl text-center text-sm text-brand-charcoal/60">
+            Not in this list?{" "}
+            <Link href="/bookservice#quick-quote" className="underline hover:text-brand-orange">
+              Get a quote
+            </Link>{" "}
+            — we cover the full Greater London area and travel nationwide for large jobs.
+          </p>
+        </div>
+      </section>
+
+      {/* ── S13: Reviews ────────────────────────────────────────────────── */}
+      <section className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal className="mx-auto max-w-2xl text-center">
+            <SectionHeading
+              eyebrow="Customer reviews"
+              title="What Our Customers Say"
+            />
+            <p className="mt-6 text-base leading-relaxed text-brand-charcoal/80">
+              Top Removals is rated{" "}
+              <strong className="text-brand-navy">Excellent</strong> on Trustpilot based on verified
+              customer reviews. See all reviews on our{" "}
+              <a
+                href="https://www.trustpilot.com/review/top-removals.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-brand-orange"
+              >
+                Trustpilot profile
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S14: Final CTA ──────────────────────────────────────────────── */}
+      <CtaBand
+        heading="Ready to Book Your Packing Service in London?"
+        buttonLabel="Get a Free Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
+
+      {/* ── S15: FAQs ───────────────────────────────────────────────────── */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading eyebrow="Good to know" title="Packing Service FAQs" />
           <Faq items={faqs} className="mt-10" />
         </div>
       </section>
-
-      {/* Packing tips */}
-      <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Helpful advice" title="Packing Tips" />
-          <TipList tips={tips} numbered className="mt-12" />
-          <p className="mx-auto mt-10 max-w-4xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            If you need more useful home packing tips you can check out ultimate house moving guide.
-            There you will find all sorts of information like how to wrap your belongings, what
-            methods to implement or which are the best materials you can use.
-          </p>
-        </div>
-      </section>
-
-      <CtaBand
-        heading="Contact Us Now and Book Your Packing Services Today"
-        buttonLabel="Book a Service"
-        buttonHref="/bookservice"
-      />
-
-      <Testimonials />
-      <Accreditations />
     </>
   );
 }
