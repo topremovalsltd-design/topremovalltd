@@ -58,6 +58,8 @@ export const footerServices = [
   { label: "Rubbish Disposal", href: "/rubbish-disposal" },
   { label: "Single Item / E-bay Deliveries", href: "/single-item" },
   { label: "Cleaning Services", href: "/cleaning-services" },
+  { label: "Removals to Norway", href: "/removals-services-to-norway" },
+  { label: "Dormitory Move & Student Storage", href: "/dormitory-move-student-storage" },
 ];
 
 export const footerCompany = [

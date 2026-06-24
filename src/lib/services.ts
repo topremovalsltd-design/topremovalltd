@@ -113,6 +113,20 @@ export const services: ServiceDef[] = [
     description:
       "End of tenancy, carpet and upholstery cleaning to help you get your deposit back or prepare your new home, at money-saving rates.",
   },
+  {
+    title: "Removals to Norway",
+    href: "/removals-services-to-norway",
+    Icon: GlobeIcon,
+    description:
+      "Regular door-to-door removals from London to Norway. Weekly departures to Oslo, bi-weekly to Bergen and Stavanger, with full customs clearance and personal move coordinator.",
+  },
+  {
+    title: "Dormitory Move & Student Storage",
+    href: "/dormitory-move-student-storage",
+    Icon: BoxIcon,
+    description:
+      "Professional packing and moving for university dormitories, with secure 24/7 CCTV student storage. UK and international delivery available.",
+  },
 ];
 
 export const featuredServices = services.filter((s) => s.featured);

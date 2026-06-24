@@ -124,6 +124,18 @@ export const META: Record<string, MetaEntry> = {
       "Moving soon and frantically searching for a good cleaning company in London? Top Cleaners is the one to call! Our skilled teams can brighten every property.",
     path: "/cleaning-services",
   },
+  "removals-to-norway": {
+    title: "Removals to Norway - The Moving Experience You Won't Regret",
+    description:
+      "Top Removals offers regular removals from London to Norway. Weekly departures to Oslo, door-to-door service, personal move coordinator and full customs support.",
+    path: "/removals-services-to-norway",
+  },
+  "dormitory-move-student-storage": {
+    title: "Dormitory Packing, Moving and Student Storage | Top Removals London",
+    description:
+      "Top Removals provides professional dormitory packing, UK and international delivery and secure 24/7 student storage. Perfect for university and campus relocations.",
+    path: "/dormitory-move-student-storage",
+  },
   prices: {
     title: "Check Out the Competitive Prices and Great Rates of Top Removals",
     description:
@@ -381,6 +393,8 @@ export const serviceH1: Record<string, string> = {
   "rubbish-disposal": "Rubbish Disposal",
   "single-item-deliveries": "Single Item / E-bay Deliveries",
   "cleaning-services": "Cleaning Services",
+  "removals-to-norway": "Removals to Norway",
+  "dormitory-move-student-storage": "Dormitory Move and Student Storage",
 };
 
 export function serviceLdFor(id: keyof typeof META) {
