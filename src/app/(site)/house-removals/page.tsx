@@ -152,7 +152,7 @@ const addOnCards = [
   },
   {
     title: "Licensed waste disposal",
-    body: "Top Removals is a licensed waste carrier. Pre-move decluttering, single-item disposal or end-of-tenancy clearances arranged as part of the removal or separately.",
+    body: "Top Removals holds waste carrier licence CBDL25630. Pre-move decluttering, single-item disposal or end-of-tenancy clearances arranged as part of the removal or separately.",
   },
 ];
 
@@ -732,8 +732,10 @@ export default function HouseRemovalsPage() {
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             House removal costs in London vary by property size, access conditions, packing
-            requirements and distance. Indicative price bands by property size are shown below.
-            Every price is subject to a free pre-move survey. No two moves are identical.
+            requirements and distance. A studio flat starts from about £200 plus VAT; a
+            4 or 5-bedroom house reaches £2,000 to £3,000 plus VAT or more for a complex move.
+            Indicative price bands by property size are shown below. Every price is subject to
+            a free pre-move survey. No two moves are identical.
           </p>
 
           <PricingTable
@@ -776,19 +778,19 @@ export default function HouseRemovalsPage() {
         </div>
       </section>
 
-      {/* ── S6: Man and van vs full removals ── */}
+      {/* ── S6: Man and van vs full removals vs DIY van hire ── */}
       <section id="compare" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Choosing the right service"
-            title="Man and Van or Full House Removals: Which to Choose"
+            title="Man and Van, Full Removals or DIY Van Hire: Which to Choose"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            Both services are fully insured and quoted at a fixed price. The difference is in scope
-            and crew size. Use the guide below to pick the right option for your move.
+            Each option has a different cost profile, risk level and scope. Use the guide below
+            to match your move to the right service.
           </p>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {/* Man and van card */}
             <div className="rounded-2xl border-2 border-brand-navy/10 bg-white p-8">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
@@ -855,10 +857,42 @@ export default function HouseRemovalsPage() {
                 </Button>
               </div>
             </div>
+
+            {/* DIY van hire card */}
+            <div className="rounded-2xl border-2 border-brand-navy/10 bg-brand-grey p-8">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-charcoal px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+                DIY Van Hire
+              </div>
+              <p className="text-sm font-bold uppercase tracking-wide text-brand-navy">
+                This route fits only if:
+              </p>
+              <ul className="mt-4 space-y-3">
+                {[
+                  "You are moving very few, non-fragile items",
+                  "You have helpers available for loading and unloading",
+                  "You are comfortable driving a 3.5-tonne Luton van",
+                  "Budget is the absolute priority with no deadline pressure",
+                  "You accept goods-in-transit insurance is not included by default",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
+                    <CheckIcon
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-charcoal/30"
+                      strokeWidth={2.5}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-xs leading-relaxed text-brand-charcoal/55">
+                Rental cost, fuel, parking suspensions and damage excess are all separate
+                charges. For most London moves, a man and van costs less overall once time,
+                risk and extras are factored in.
+              </p>
+            </div>
           </div>
 
           <p className="mt-8 text-center text-xs font-medium text-brand-charcoal/55">
-            Both services include a free survey, fixed price and full insurance. No obligation.
+            Both professional services include a free survey, fixed price and full goods-in-transit insurance. No obligation.
           </p>
         </div>
       </section>

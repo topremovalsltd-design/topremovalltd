@@ -523,7 +523,8 @@ export default function PackingServicePage() {
             Available as add-ons: {materialsAddOns.join(", ")}.
           </p>
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-sm text-brand-charcoal/60">
-            Need materials without a packing crew?{" "}
+            Need materials without a packing crew? Individual prices when ordered separately: boxes
+            £5 each, wardrobe box £14, bubble wrap £10 per roll, tape £2, mattress cover £8.{" "}
             <Link href="/packaging-materials" className="underline hover:text-brand-orange">
               Order packaging materials separately
             </Link>{" "}

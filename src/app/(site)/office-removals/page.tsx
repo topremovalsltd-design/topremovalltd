@@ -621,8 +621,9 @@ export default function OfficeRemovalsPage() {
             <p>
               IT and server handling is the highest-risk element of any office move. Top Removals
               crews are trained to handle workstations, monitors, servers, UPS units, comms room
-              hardware and specialist equipment. All items are moved using anti-static IT crates
-              with cable bundles labelled and secured before packing.
+              hardware and specialist equipment. All items are moved in 165L anti-static IT crates.
+              Cable bundles are labelled and secured before packing. Crates are available to hire
+              at £4.50 per week.
             </p>
             <p>
               The process starts with your IT lead. Before packing, your IT team disconnects

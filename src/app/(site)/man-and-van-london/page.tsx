@@ -503,8 +503,9 @@ export default function ManAndVanPage() {
             title="Man and Van Prices in London"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            The rate you are quoted is the rate you pay. Fuel and mileage within Greater London are
-            included. Congestion zone and tunnel charges are confirmed in writing before the booking
+            The rate you are quoted is the rate you pay. Each booking includes the driver, van,
+            loading and unloading, goods-in-transit insurance, and fuel and mileage within Greater
+            London. Congestion zone and tunnel charges are confirmed in writing before the booking
             date, as they depend on the specific route.
           </p>
 

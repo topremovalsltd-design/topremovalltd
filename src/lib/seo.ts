@@ -71,9 +71,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/office-removals",
   },
   "international-removals": {
-    title: "International Moving Company in London - Top Removals",
+    title: "International Removals London | Europe & Worldwide | Top Removals",
     description:
-      "Seeking an affordable and reliable international moving company in London? Top Removals has all the resources to handle your long distance move",
+      "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. IAM accredited, door to door, insured.",
     path: "/international-removals",
   },
   "london-storage": {
@@ -95,15 +95,15 @@ export const META: Record<string, MetaEntry> = {
     path: "/man-and-van-london",
   },
   "packaging-materials": {
-    title: "Packaging Materials, Removal Boxes and Moving Supplies",
+    title: "Packing Materials London | Removal Boxes & Bubble Wrap | Top Removals",
     description:
-      "From study boxes, to bubble wrap, Top Removals can offer you all sorts of quality packing materials and moving supplies.Get your deal today!",
+      "Quality packing materials and removal boxes in London. Boxes, bubble wrap, tape, wardrobe and mattress covers with transparent prices. Free delivery over £120.",
     path: "/packaging-materials",
   },
   "crate-hire": {
-    title: "Crate Hire, Plastic Lidded Crates, IT Crates, For Hire from Top Removals",
+    title: "Crate Hire London | Plastic Moving & IT Crates | Top Removals",
     description:
-      "Get the eco-friendly option and hire a plastic lidded crate now. Top Removals has many different options and can offer you a big variety of crates for hire.",
+      "Plastic crate hire in London. Reusable lidded LC3 and IT crates from £2 a week, delivered and collected. Greener than cardboard, easy to combine with your move.",
     path: "/crate-hire",
   },
   "rubbish-disposal": {
@@ -384,12 +384,12 @@ export function faqLd(items: { question: string; answer: string }[]) {
 export const serviceH1: Record<string, string> = {
   "house-removals": "House Removals London",
   "office-removals": "Office Removals London",
-  "international-removals": "International Removals",
+  "international-removals": "International Removals from London",
   "london-storage": "Secure Storage in London",
   "packing-service": "Packing Service London",
   "man-and-van": "Man and Van London",
-  "packaging-materials": "Packaging Materials",
-  "crate-hire": "Crate Hire",
+  "packaging-materials": "Packaging Materials and Removal Boxes in London",
+  "crate-hire": "Crate Hire in London",
   "rubbish-disposal": "Rubbish Disposal",
   "single-item-deliveries": "Single Item / E-bay Deliveries",
   "cleaning-services": "Cleaning Services",

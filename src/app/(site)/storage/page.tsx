@@ -253,6 +253,15 @@ const londonBoroughs = [
   "Westminster",
 ];
 
+const storageAccreditations = [
+  { name: "British Association of Removers (BAR)" },
+  { name: "National Guild of Removers and Storers (NGRS)" },
+  { name: "International Association of Movers (IAM)" },
+  { name: "The Furniture Ombudsman" },
+  { name: "QSS-DW Approved Mover" },
+  { name: "Checkatrade" },
+];
+
 /* ------------------------------------------------------------------ */
 /* Schema                                                               */
 /* ------------------------------------------------------------------ */
@@ -286,12 +295,12 @@ export default function LondonStoragePage() {
         data={breadcrumbLd([
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "London Storage" },
+          { label: "Secure Storage" },
         ])}
       />
       <JsonLd data={orgSchema} />
       <StorageAnimations />
-      <StickyMobileBar sentinelId="hero-ctas" />
+      <StickyMobileBar sentinelId="hero-intro" />
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
@@ -301,47 +310,124 @@ export default function LondonStoragePage() {
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "London Storage" },
+          { label: "Secure Storage" },
         ]}
       />
 
-      {/* Trust strip */}
-      <div className="bg-brand-navy" aria-label="At a glance">
-        <div className="mx-auto grid max-w-[88rem] grid-cols-2 divide-x divide-white/10 px-4 sm:grid-cols-4">
-          {[
-            "From £10 per week",
-            "No minimum term",
-            "Fully insured",
-            "24/7 CCTV staffed compound",
-          ].map((stat) => (
-            <div
-              key={stat}
-              className="flex items-center justify-center gap-2 px-4 py-4 text-center text-sm font-semibold text-white"
-            >
-              <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
-              <span>{stat}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CTAs */}
-      <section className="bg-white pt-10 pb-2" id="hero-ctas">
+      {/* ── S1 continued: value prop + CTAs (mirrors office page) ─────── */}
+      <section id="hero-intro" className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-[88rem] px-4">
-          <p className="hero-anim-sub text-lg font-bold uppercase tracking-wide text-brand-navy">
-            Get a Free Online Quote in Under 2 Minutes
-          </p>
-          <div className="hero-anim-ctas mt-4 flex flex-wrap gap-4">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
-              Free Online Quote
-            </Button>
-            <Button href="/bookservice" variant="outline" size="lg">
-              Book a Service
-            </Button>
+          <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-16">
+
+            {/* Left: value prop + CTAs */}
+            <div>
+              <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
+                Top Removals provides managed, containerised storage across London, collected from
+                your door and stored at our staffed Purfleet compound. From{" "}
+                <strong>£10 per week</strong>, no minimum term, fully insured.
+              </p>
+              <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
+                We collect, load and seal your unit. When you need your belongings back, we return
+                them to your door. No van hire, no heavy lifting.
+              </p>
+
+              <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button
+                  href="/bookservice#quick-quote"
+                  variant="orange"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Free Online Quote
+                </Button>
+                <Button
+                  href="/bookservice"
+                  variant="navy"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Book a Service
+                </Button>
+                <Button
+                  href="tel:+442072052525"
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  020 7205 2525
+                </Button>
+              </div>
+
+              <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
+                Free quote in under 2 minutes. No minimum term. Survey-confirmed pricing.
+              </p>
+
+              <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
+                {[
+                  "From £10/week",
+                  "No minimum term",
+                  "Fully insured",
+                  "24/7 CCTV",
+                ].map((label) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
+                  >
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: image + trusted-by card */}
+            <div
+              className="overflow-hidden rounded-2xl border border-black/10 shadow-sm"
+              data-reveal
+              data-delay="1"
+            >
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src="/news/organise-storage-unit-checklist.jpg"
+                  alt="Secure containerised storage facility in London operated by Top Removals"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="bg-brand-grey p-6">
+                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
+                  Trusted and certified by
+                </p>
+                <ul className="space-y-2">
+                  {storageAccreditations.map(({ name }) => (
+                    <li key={name} className="flex items-center gap-2">
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <span className="text-sm text-brand-navy/85">{name}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
+                  <Link
+                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    Trustpilot reviews →
+                  </Link>
+                  <Link
+                    href="/certificates"
+                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    View certificates →
+                  </Link>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <p className="hero-anim-trust mt-4 text-sm text-brand-charcoal/60">
-            NGRS accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
-          </p>
         </div>
       </section>
 
@@ -352,15 +438,15 @@ export default function LondonStoragePage() {
             eyebrow="Your goods are safe here"
             title="Why Our London Storage Is Secure"
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {securityTiles.map((tile, i) => (
               <div
                 key={tile.title}
                 data-reveal
                 data-delay={String(i + 1)}
-                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-lg font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -372,7 +458,7 @@ export default function LondonStoragePage() {
       </section>
 
       {/* ── S3: London homes and businesses ─────────────────────────── */}
-      <section className="bg-brand-grey py-16">
+      <section className="bg-brand-grey py-20">
         <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
           <div data-reveal>
             <SectionHeading
@@ -405,8 +491,8 @@ export default function LondonStoragePage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/services/london-storage.svg"
-                alt="Secure containerised storage facility in London operated by Top Removals"
+                src="/gallery/move-01.jpg"
+                alt="Professional removal crew helping a London customer with managed storage and collection service"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -949,8 +1035,6 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      <Accreditations />
-
       {/* ── S16: Book your storage today ─────────────────────────────── */}
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
@@ -990,6 +1074,8 @@ export default function LondonStoragePage() {
           </p>
         </div>
       </section>
+
+      <Accreditations />
     </>
   );
 }
