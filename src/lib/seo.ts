@@ -77,9 +77,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/international-removals",
   },
   "london-storage": {
-    title: "Secure Storage London | Container and Furniture Storage | Top Removals",
+    title: "Secure Storage in London | From £10/Week | Top Removals",
     description:
-      "Managed, containerised storage in London from £10 per week. Top Removals collects from your address, seals your unit and stores it at our 24/7 staffed Purfleet compound. No minimum term.",
+      "Secure, fully insured storage in London from £10 a week. We collect, load and seal your goods, no minimum term. Containerised storage for homes and business.",
     path: "/storage",
   },
   "packing-service": {

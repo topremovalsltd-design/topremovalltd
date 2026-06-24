@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { buildMetadata, serviceH1, serviceLdFor, breadcrumbLd } from "@/lib/seo";
+import {
+  buildMetadata,
+  serviceH1,
+  serviceLdFor,
+  breadcrumbLd,
+  organizationLd,
+  SITE_URL,
+} from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +38,7 @@ export const metadata: Metadata = buildMetadata("london-storage");
 const securityTiles = [
   {
     title: "24/7 Staffed Compound with CCTV",
-    body: "Our Purfleet facility operates round the clock. Security staff are on site at all times. A modern CCTV system covers the entire compound.",
+    body: "Our Purfleet facility operates around the clock. Security staff are on site at all times. A modern CCTV system covers the entire compound.",
   },
   {
     title: "Every Unit Locked and Sealed",
@@ -49,11 +56,11 @@ const securityTiles = [
 
 const stepsWithIcons = [
   {
-    step: "Contact us and request a unit. A survey is required only for large volumes. We confirm a collection date that suits you.",
+    step: "Contact us and request a unit. A survey is only needed for large volumes. We confirm a collection date that suits you.",
     Icon: IcoPhone,
   },
   {
-    step: "We collect from your address anywhere in London, or you deliver your goods to our Purfleet facility. We confirm the exact volume once everything is loaded.",
+    step: "We collect from your property anywhere in London, or you deliver your goods to our Purfleet facility. We confirm the exact volume once everything is loaded.",
     Icon: IcoTruck,
   },
   {
@@ -73,7 +80,7 @@ const stepsWithIcons = [
 const useCases: { title: string; body: string; href?: string }[] = [
   {
     title: "Moving Between Addresses",
-    body: "Store between completion dates when there is a gap in your move. Units from £10 per week with no minimum term.",
+    body: "Store between completion dates when there is a gap in your move. Units from £10 per week, no minimum term.",
   },
   {
     title: "Home Renovation",
@@ -104,6 +111,11 @@ const useCases: { title: string; body: string; href?: string }[] = [
     title: "International Move Overlap",
     body: "Store during the gap between your UK departure and overseas arrival. Works alongside our international removal service.",
     href: "/international-removals",
+  },
+  {
+    title: "Student and Dormitory Storage",
+    body: "Term-time and summer storage for university accommodation contents. We collect at the end of term and return your belongings when the next term opens.",
+    href: "/dormitory-move-student-storage",
   },
 ];
 
@@ -144,7 +156,7 @@ const whyChoose: CheckItem[] = [
 
 const tips: Tip[] = [
   {
-    title: "Pack properly before storage",
+    title: "Invest in good packing materials",
     body: "Pack boxes tightly to prevent collapsing under weight and seal each one with strong tape. Plastic crates are sturdier than cardboard, stack flat and protect against moisture during long-term storage. Top Removals offers crate hire and a full range of packaging materials, delivered to your address before collection day.",
   },
   {
@@ -161,12 +173,12 @@ const faqs: FaqItem[] = [
   {
     question: "Can I access my things while in your London storage facility?",
     answer:
-      "Yes. We ask for at least 48 hours notice, as we are managed storage rather than a self-access facility. A member of staff is present to assist you. An access fee applies if staff assistance is required during your visit.",
+      "Yes, by appointment. We are managed storage, not a self-access facility, so we ask for at least 48 hours notice. A member of staff is present to assist you. An access fee applies if staff assistance is required during your visit.",
   },
   {
     question: "Can I add extra items to my storage after my first visit?",
     answer:
-      "Yes, at any time. Storage is charged per volume, so any additional volume is quoted in advance. Contact your coordinator to arrange additional collection and we confirm the revised volume and cost before proceeding.",
+      "Certainly, at any time. Storage is charged per volume, so any additional volume is quoted in advance. Contact your coordinator to arrange additional collection and we confirm the revised volume and cost before proceeding.",
   },
   {
     question: "Do I need to pay upfront or leave a deposit?",
@@ -196,13 +208,49 @@ const faqs: FaqItem[] = [
   {
     question: "Is this self-storage?",
     answer:
-      "No. Top Removals provides managed, containerised storage. We collect your goods, load and seal your unit, and return your belongings when you need them. Access is by appointment rather than walk-in. If you need frequent unaccompanied access, a drive-up self-storage facility will suit you better.",
+      "No. Top Removals provides managed, containerised storage. We collect your goods, load and seal your unit, and return your belongings when you need them. Access is by appointment. If you need frequent unaccompanied access, a drive-up self-storage facility will suit you better.",
   },
   {
     question: "What items are not accepted in storage?",
     answer:
       "Food and living plants are not accepted, as they deteriorate and attract pests. Hazardous, flammable, pressurised and perishable items are also excluded. Your coordinator confirms what qualifies before collection if you have any doubt.",
   },
+];
+
+const londonBoroughs = [
+  "Barking and Dagenham",
+  "Barnet",
+  "Bexley",
+  "Brent",
+  "Bromley",
+  "Camden",
+  "City of London",
+  "Croydon",
+  "Ealing",
+  "Enfield",
+  "Greenwich",
+  "Hackney",
+  "Hammersmith and Fulham",
+  "Haringey",
+  "Harrow",
+  "Havering",
+  "Hillingdon",
+  "Hounslow",
+  "Islington",
+  "Kensington and Chelsea",
+  "Kingston upon Thames",
+  "Lambeth",
+  "Lewisham",
+  "Merton",
+  "Newham",
+  "Redbridge",
+  "Richmond upon Thames",
+  "Southwark",
+  "Sutton",
+  "Tower Hamlets",
+  "Waltham Forest",
+  "Wandsworth",
+  "Westminster",
 ];
 
 /* ------------------------------------------------------------------ */
@@ -217,6 +265,12 @@ const faqPageSchema = {
     name: f.question,
     acceptedAnswer: { "@type": "Answer", text: f.answer },
   })),
+};
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  ...organizationLd(),
+  "@id": `${SITE_URL}/#organization`,
 };
 
 /* ------------------------------------------------------------------ */
@@ -235,9 +289,11 @@ export default function LondonStoragePage() {
           { label: "London Storage" },
         ])}
       />
+      <JsonLd data={orgSchema} />
       <StorageAnimations />
       <StickyMobileBar sentinelId="hero-ctas" />
 
+      {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
         title="Secure Storage in London"
         subtitle="Managed, containerised storage. We collect and store for you."
@@ -249,7 +305,7 @@ export default function LondonStoragePage() {
         ]}
       />
 
-      {/* ── Trust strip ──────────────────────────────────────────────── */}
+      {/* Trust strip */}
       <div className="bg-brand-navy" aria-label="At a glance">
         <div className="mx-auto grid max-w-[88rem] grid-cols-2 divide-x divide-white/10 px-4 sm:grid-cols-4">
           {[
@@ -269,7 +325,7 @@ export default function LondonStoragePage() {
         </div>
       </div>
 
-      {/* ── CTAs ─────────────────────────────────────────────────────── */}
+      {/* CTAs */}
       <section className="bg-white pt-10 pb-2" id="hero-ctas">
         <div className="mx-auto max-w-[88rem] px-4">
           <p className="hero-anim-sub text-lg font-bold uppercase tracking-wide text-brand-navy">
@@ -289,10 +345,13 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S2: Security tiles ───────────────────────────────────────── */}
+      {/* ── S2: Security ─────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Your goods are safe here" title="Security You Can Rely On" />
+          <SectionHeading
+            eyebrow="Your goods are safe here"
+            title="Why Our London Storage Is Secure"
+          />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {securityTiles.map((tile, i) => (
               <div
@@ -312,34 +371,34 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S3: Intro and London space squeeze ───────────────────────── */}
+      {/* ── S3: London homes and businesses ─────────────────────────── */}
       <section className="bg-brand-grey py-16">
         <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
           <div data-reveal>
             <SectionHeading
               align="left"
               eyebrow="Why Londoners need storage"
-              title="London Storage That Works Around You"
+              title="Storage for London Homes and Businesses"
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
                 London properties are compact. Spare rooms fill quickly. Many flats have no loft, no
-                basement and no garage. When a move takes longer than expected, when a renovation
-                empties a floor, or when an office is between locations, you need secure storage fast
+                basement and no garage. When a move runs over its expected dates, when a renovation
+                empties a floor, or when a business is between offices, you need secure storage
                 without the hassle of hiring a van, driving to a facility and loading it yourself.
               </p>
               <p>
                 Top Removals solves that with a fully managed service. Our team collects from your
-                address, loads your goods, seals the unit and stores it at our staffed Purfleet
-                compound. When you need your belongings back, we return them to your door. No van
-                hire, no heavy lifting, no access headaches.
+                address, loads your goods, seals the unit and stores everything at our staffed
+                Purfleet compound. When you need your belongings back, we return them to your door.
+                No van hire, no heavy lifting, no access headaches.
               </p>
               <p>
-                In 2026, more London customers book managed storage than ever before, because the
-                collect-and-store model is a genuine improvement over the traditional drive-up unit.
-                You do not arrange transport, navigate a storage park or carry furniture up a ramp.
-                We handle the physical work. As a certified member of the NGRS, we adhere to the
-                strictest procedures to ensure your goods are in qualified hands.
+                In 2026, more London customers book managed, collect-and-store storage than ever
+                before. The model is a genuine improvement over the traditional drive-up unit because
+                you do not arrange transport, navigate a storage park or carry furniture up a ramp.
+                We handle the physical work. As a certified member of the NGRS, we adhere to strict
+                procedures to ensure your goods are in qualified hands.
               </p>
             </div>
           </div>
@@ -347,11 +406,13 @@ export default function LondonStoragePage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/services/london-storage.svg"
-                alt="Top Removals secure London storage facility at Purfleet with 24/7 CCTV monitoring"
+                alt="Secure containerised storage facility in London operated by Top Removals"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
                 loading="lazy"
+                width={800}
+                height={600}
               />
             </div>
             <span
@@ -362,7 +423,7 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S4: How it works — SIGNATURE MOMENT ──────────────────────── */}
+      {/* ── S4: How it works — signature moment ─────────────────────── */}
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
@@ -370,11 +431,10 @@ export default function LondonStoragePage() {
               Step by step
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
-              How Our Collect-and-Store Service Works
+              How Our Collect and Store Service Works
             </h2>
           </div>
 
-          {/* Benefit callout */}
           <div
             data-reveal
             data-delay="1"
@@ -389,7 +449,6 @@ export default function LondonStoragePage() {
             </p>
           </div>
 
-          {/* 5-step cards */}
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {stepsWithIcons.map(({ step, Icon }, i) => (
               <li
@@ -413,7 +472,7 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S5: Which unit — SIGNATURE MOMENT ────────────────────────── */}
+      {/* ── S5: Which unit — signature moment ──────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
@@ -463,7 +522,9 @@ export default function LondonStoragePage() {
               data-delay="2"
               className="flex flex-col rounded-2xl border-2 border-brand-navy bg-white p-8 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0"
             >
-              <div className="mb-1 text-5xl font-extrabold leading-none text-brand-navy">1,000</div>
+              <div className="mb-1 text-5xl font-extrabold leading-none text-brand-navy">
+                1,000
+              </div>
               <div className="text-sm font-bold uppercase tracking-widest text-brand-charcoal/50">
                 cubic feet
               </div>
@@ -494,18 +555,18 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S6: Use cases ────────────────────────────────────────────── */}
+      {/* ── S6: What you can store ───────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
-            <SectionHeading eyebrow="Common situations" title="What Do People Store With Us?" />
+            <SectionHeading eyebrow="Common situations" title="What You Can Store With Us" />
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((item, i) => (
               <div
                 key={item.title}
                 data-reveal
-                data-delay={String(Math.min((i % 4) + 1, 7))}
+                data-delay={String(Math.min((i % 3) + 1, 7))}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-base font-bold text-brand-navy">
@@ -526,11 +587,14 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S7: Storage types ────────────────────────────────────────── */}
+      {/* ── S7: Personal, business and student ─────────────────────── */}
       <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
-            <SectionHeading eyebrow="Who stores with us" title="Storage for Every Situation" />
+            <SectionHeading
+              eyebrow="Who stores with us"
+              title="Personal, Business and Student Storage"
+            />
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
@@ -546,7 +610,7 @@ export default function LondonStoragePage() {
               },
               {
                 title: "Student Storage",
-                body: "Term-time and summer storage for dormitory contents. We collect from your university accommodation at the end of term and return your belongings when the next term opens. No need for you to arrange transport or be present on collection day.",
+                body: "Term-time and summer storage for dormitory and university accommodation contents. We collect at the end of term and return your belongings when the next term opens. No need to arrange transport or be present on collection day.",
                 link: { label: "Dormitory move service", href: "/dormitory-move-student-storage" },
               },
             ].map((type, i) => (
@@ -557,7 +621,9 @@ export default function LondonStoragePage() {
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <h3 className="mb-4 text-xl font-bold text-brand-navy">{type.title}</h3>
-                <p className="flex-1 text-base leading-relaxed text-brand-charcoal/85">{type.body}</p>
+                <p className="flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                  {type.body}
+                </p>
                 <Link
                   href={type.link.href}
                   className="mt-6 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
@@ -570,14 +636,69 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S8: Storage cost ─────────────────────────────────────────── */}
+      {/* ── S8: Storage types explained ──────────────────────────────── */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Know the difference"
+              title="Storage Types Explained: Containerised, Self-Storage and Mobile"
+            />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base text-brand-charcoal/70">
+              Three different models, each suited to different needs. Here is what they are and which
+              one Top Removals offers.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            {[
+              {
+                label: "Self-Storage",
+                badge: "Not what we offer",
+                badgeColor: "bg-black/8 text-brand-charcoal/60",
+                body: "You rent a drive-up room at a storage facility and manage everything yourself. You hire a van, load it, drive to the facility, unload into your room, and lock up. Access is typically unrestricted during facility hours. The major national chains operate this model. It suits people who want frequent, unaccompanied access and are happy to arrange their own transport.",
+              },
+              {
+                label: "Containerised Storage",
+                badge: "What Top Removals offers",
+                badgeColor: "bg-brand-orange text-white",
+                body: "A provider collects from your address, loads your goods, locks and seals a dedicated unit, and stores it at a staffed compound. You access your unit by appointment. This is managed storage. Top Removals operates this model. It suits people who want the physical work done for them and do not need to visit their unit frequently. No van hire, no heavy lifting, no access headaches.",
+              },
+              {
+                label: "Mobile Storage",
+                badge: "Not what we offer",
+                badgeColor: "bg-black/8 text-brand-charcoal/60",
+                body: "A storage container or pod is delivered to your property. You fill it yourself at your own pace. The provider then collects the loaded container and stores it at their depot. You access your goods by booking a delivery of the container back to you. Some national providers offer this model under pod or vault branding.",
+              },
+            ].map((type, i) => (
+              <div
+                key={type.label}
+                data-reveal
+                data-delay={String(i + 1)}
+                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-8 shadow-sm"
+              >
+                <span
+                  className={`inline-block self-start rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest ${type.badgeColor}`}
+                >
+                  {type.badge}
+                </span>
+                <h3 className="mt-4 text-xl font-bold text-brand-navy">{type.label}</h3>
+                <p className="mt-4 flex-1 text-base leading-relaxed text-brand-charcoal/85">
+                  {type.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── S9: Cost ─────────────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-4xl px-4">
           <div data-reveal>
             <SectionHeading
               align="left"
               eyebrow="Transparent pricing"
-              title="How Much Does Storage Cost?"
+              title="How Much Does Storage Cost in London?"
             />
           </div>
           <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
@@ -590,7 +711,7 @@ export default function LondonStoragePage() {
             <p>
               There is no minimum storage term and no maximum. Store for a single week between
               completion dates or for several years while you settle abroad. The rate is confirmed at
-              the time of booking once we know your volume.
+              the time of booking, once we know your volume.
             </p>
             <p>
               Three factors affect your price: the volume of goods stored, the length of time you
@@ -620,11 +741,14 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S9: Why choose ───────────────────────────────────────────── */}
+      {/* ── S10: Why choose ──────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
-            <SectionHeading eyebrow="The benefits" title="Why Choose Top Removals for Storage?" />
+            <SectionHeading
+              eyebrow="The benefits"
+              title="Why Choose Top Removals for Storage?"
+            />
           </div>
           <div data-reveal data-delay="1">
             <CheckList items={whyChoose} columns={2} className="mx-auto mt-12 max-w-5xl" />
@@ -632,13 +756,13 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S10: Facility and access ──────────────────────────────────── */}
+      {/* ── S11: Facility and access ─────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               eyebrow="The Purfleet compound"
-              title="Our Facility and How to Access Your Goods"
+              title="Our London Storage Facility and Access"
             />
           </div>
           <div className="mt-12 grid gap-12 lg:grid-cols-2">
@@ -732,8 +856,48 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S11: Tips ────────────────────────────────────────────────── */}
+      {/* ── S12: Areas we cover ──────────────────────────────────────── */}
       <section className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading eyebrow="Where we collect" title="Areas We Cover" />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base text-brand-charcoal/70">
+              We collect from every London borough. See our{" "}
+              <Link href="/areas" className="font-semibold text-brand-orange hover:text-brand-navy">
+                full areas page
+              </Link>{" "}
+              for detailed coverage information.
+            </p>
+          </div>
+          <ul
+            data-reveal
+            className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4"
+          >
+            {londonBoroughs.map((borough) => (
+              <li
+                key={borough}
+                className="rounded-lg border border-black/8 bg-brand-grey px-4 py-2.5 text-center text-sm font-medium text-brand-navy"
+              >
+                {borough}
+              </li>
+            ))}
+          </ul>
+          <p data-reveal className="mx-auto mt-6 max-w-2xl text-center text-xs text-brand-charcoal/50">
+            Not in this list? We cover the wider Greater London area and collect from surrounding
+            counties.{" "}
+            <Link
+              href="/bookservice#quick-quote"
+              className="underline hover:text-brand-orange"
+            >
+              Get a quote
+            </Link>{" "}
+            to confirm your address.
+          </p>
+        </div>
+      </section>
+
+      {/* ── S13: Tips ────────────────────────────────────────────────── */}
+      <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading eyebrow="Helpful advice" title="Storage Tips" />
@@ -744,8 +908,8 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S12: Trustpilot CTA (no placeholder reviews) ─────────────── */}
-      <section className="bg-brand-sand py-16">
+      {/* ── S14: Reviews (Trustpilot only, no placeholder reviews) ───── */}
+      <section className="bg-brand-navy py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
             className="flex justify-center gap-1 text-brand-orange"
@@ -755,39 +919,72 @@ export default function LondonStoragePage() {
               <StarIcon key={i} className="h-7 w-7" />
             ))}
           </div>
-          <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
-          <p className="mt-2 text-base text-brand-charcoal/70">
+          <p className="mt-3 text-xl font-bold text-white">Rated Excellent on Trustpilot</p>
+          <p className="mt-2 text-base text-white/70">
             Read genuine reviews from customers who have used our removal and storage service.
           </p>
           <Link
             href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
           >
             View Reviews on Trustpilot
           </Link>
         </div>
       </section>
 
-      {/* ── S13: Final CTA ───────────────────────────────────────────── */}
-      <CtaBand
-        heading="Book Your London Storage Today"
-        buttonLabel="Book a Service"
-        buttonHref="/bookservice"
-      />
-
-      {/* ── S14: FAQ ─────────────────────────────────────────────────── */}
+      {/* ── S15: FAQ ─────────────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
-            <SectionHeading eyebrow="Good to know" title="Frequently Asked Questions" />
+            <SectionHeading eyebrow="Good to know" title="Storage FAQs" />
           </div>
           <Faq items={faqs} className="mt-10" />
         </div>
       </section>
 
       <Accreditations />
+
+      {/* ── S16: Book your storage today ─────────────────────────────── */}
+      <section className="bg-brand-navy py-20">
+        <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
+          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+            Book Your London Storage Today
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base text-white/70">
+            Get a free online quote in under 2 minutes, or speak to a coordinator now.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+              Free Online Quote
+            </Button>
+            <Button href="/bookservice" variant="outline" size="lg">
+              Book a Service
+            </Button>
+          </div>
+          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
+            <a
+              href="tel:+442072052525"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+            >
+              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              020 7205 2525
+            </a>
+            <a
+              href="tel:+448000467877"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+            >
+              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              0800 046 7877 (freephone)
+            </a>
+          </div>
+          <p className="mt-6 text-sm text-white/50">
+            NGRS accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
+            &nbsp;&middot;&nbsp; Company No. 6874216
+          </p>
+        </div>
+      </section>
     </>
   );
 }
