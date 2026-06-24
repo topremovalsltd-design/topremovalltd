@@ -8,11 +8,19 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
-import StepList from "@/components/services/StepList";
 import TipList, { type Tip } from "@/components/services/TipList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import Accreditations from "@/components/home/Accreditations";
-import { StarIcon } from "@/components/ui/icons";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
+import StorageAnimations from "@/components/services/StorageAnimations";
+import {
+  IcoPhone,
+  IcoTruck,
+  IcoClipboard,
+  IcoCube,
+  IcoCalendar,
+} from "@/components/services/ProcessStepIcons";
+import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("london-storage");
 
@@ -27,7 +35,7 @@ const securityTiles = [
   },
   {
     title: "Every Unit Locked and Sealed",
-    body: "Each unit is locked and sealed before we store it. We give you the seal number for your records and for inspection purposes.",
+    body: "Each unit is locked and sealed before we store it. We provide the seal number for your records and for inspection purposes.",
   },
   {
     title: "Fully Insured While in Our Care",
@@ -39,12 +47,27 @@ const securityTiles = [
   },
 ];
 
-const steps = [
-  "Contact us and request a unit. A survey is required only for large volumes. We confirm a collection date that suits you.",
-  "We collect from your address anywhere in London, or you deliver your goods to our Purfleet facility. We confirm the exact volume once everything is loaded.",
-  "Our team checks the condition of your items and records everything on inventory sheets. You keep a copy.",
-  "Your goods are loaded, sealed and stored in your unit at our secure compound. We give you the seal number.",
-  "Access your items at any time by appointment, with at least 48 hours notice. We return your goods to your door when you need them.",
+const stepsWithIcons = [
+  {
+    step: "Contact us and request a unit. A survey is required only for large volumes. We confirm a collection date that suits you.",
+    Icon: IcoPhone,
+  },
+  {
+    step: "We collect from your address anywhere in London, or you deliver your goods to our Purfleet facility. We confirm the exact volume once everything is loaded.",
+    Icon: IcoTruck,
+  },
+  {
+    step: "Our team checks the condition of your items and records everything on inventory sheets. You keep a copy.",
+    Icon: IcoClipboard,
+  },
+  {
+    step: "Your goods are loaded, sealed and stored in your unit at our secure compound. We give you the seal number.",
+    Icon: IcoCube,
+  },
+  {
+    step: "Access your items at any time by appointment, with at least 48 hours notice. We return your goods to your door when you need them.",
+    Icon: IcoCalendar,
+  },
 ];
 
 const useCases: { title: string; body: string; href?: string }[] = [
@@ -143,12 +166,12 @@ const faqs: FaqItem[] = [
   {
     question: "Can I add extra items to my storage after my first visit?",
     answer:
-      "Yes, at any time. Storage is charged per volume, so any additional items increase the volume stored and the price reflects that. Contact your coordinator to arrange additional collection and we confirm the revised volume and cost in advance.",
+      "Yes, at any time. Storage is charged per volume, so any additional volume is quoted in advance. Contact your coordinator to arrange additional collection and we confirm the revised volume and cost before proceeding.",
   },
   {
     question: "Do I need to pay upfront or leave a deposit?",
     answer:
-      "In most cases we require either full payment or a deposit before any booking is confirmed. This is standard practice across the professional removals and storage industry.",
+      "In most cases, full payment or a deposit is required before any service is booked. This is standard across reputable companies in the industry.",
   },
   {
     question: "Is my stuff insured while in storage?",
@@ -212,6 +235,8 @@ export default function LondonStoragePage() {
           { label: "London Storage" },
         ])}
       />
+      <StorageAnimations />
+      <StickyMobileBar sentinelId="hero-ctas" />
 
       <PageBanner
         title="Secure Storage in London"
@@ -224,40 +249,47 @@ export default function LondonStoragePage() {
         ]}
       />
 
-      {/* Trust strip */}
-      <div className="bg-brand-navy">
+      {/* ── Trust strip ──────────────────────────────────────────────── */}
+      <div className="bg-brand-navy" aria-label="At a glance">
         <div className="mx-auto grid max-w-[88rem] grid-cols-2 divide-x divide-white/10 px-4 sm:grid-cols-4">
-          {["From £10 per week", "No minimum term", "Fully insured", "24/7 CCTV staffed compound"].map(
-            (stat) => (
-              <div
-                key={stat}
-                className="flex items-center justify-center px-4 py-3 text-center text-sm font-semibold text-white"
-              >
-                {stat}
-              </div>
-            )
-          )}
+          {[
+            "From £10 per week",
+            "No minimum term",
+            "Fully insured",
+            "24/7 CCTV staffed compound",
+          ].map((stat) => (
+            <div
+              key={stat}
+              className="flex items-center justify-center gap-2 px-4 py-4 text-center text-sm font-semibold text-white"
+            >
+              <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+              <span>{stat}</span>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* CTAs */}
-      <section className="bg-white pt-10">
+      {/* ── CTAs ─────────────────────────────────────────────────────── */}
+      <section className="bg-white pt-10 pb-2" id="hero-ctas">
         <div className="mx-auto max-w-[88rem] px-4">
-          <p className="text-lg font-bold uppercase tracking-wide text-brand-navy">
+          <p className="hero-anim-sub text-lg font-bold uppercase tracking-wide text-brand-navy">
             Get a Free Online Quote in Under 2 Minutes
           </p>
-          <div className="mt-4 flex flex-wrap gap-4">
-            <Button href="/bookservice#quick-quote" variant="outline" size="lg">
-              Quick Quote
+          <div className="hero-anim-ctas mt-4 flex flex-wrap gap-4">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+              Free Online Quote
             </Button>
-            <Button href="/bookservice" variant="orange" size="lg">
+            <Button href="/bookservice" variant="outline" size="lg">
               Book a Service
             </Button>
           </div>
+          <p className="hero-anim-trust mt-4 text-sm text-brand-charcoal/60">
+            NGRS accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
+          </p>
         </div>
       </section>
 
-      {/* SECTION 2: Security tiles */}
+      {/* ── S2: Security tiles ───────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Your goods are safe here" title="Security You Can Rely On" />
@@ -265,7 +297,9 @@ export default function LondonStoragePage() {
             {securityTiles.map((tile, i) => (
               <div
                 key={tile.title}
-                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm"
+                data-reveal
+                data-delay={String(i + 1)}
+                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange text-lg font-bold text-white">
                   {i + 1}
@@ -278,10 +312,10 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* SECTION 3: Intro and London space squeeze */}
+      {/* ── S3: Intro and London space squeeze ───────────────────────── */}
       <section className="bg-brand-grey py-16">
         <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
-          <div>
+          <div data-reveal>
             <SectionHeading
               align="left"
               eyebrow="Why Londoners need storage"
@@ -305,18 +339,19 @@ export default function LondonStoragePage() {
                 collect-and-store model is a genuine improvement over the traditional drive-up unit.
                 You do not arrange transport, navigate a storage park or carry furniture up a ramp.
                 We handle the physical work. As a certified member of the NGRS, we adhere to the
-                industry's strictest procedures to ensure your goods are in qualified hands.
+                strictest procedures to ensure your goods are in qualified hands.
               </p>
             </div>
           </div>
-          <div className="relative">
+          <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/services/london-storage.svg"
-                alt="Top Removals secure London storage facility with 24/7 CCTV monitoring"
+                alt="Top Removals secure London storage facility at Purfleet with 24/7 CCTV monitoring"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
+                loading="lazy"
               />
             </div>
             <span
@@ -327,73 +362,130 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* SECTION 4: How it works */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading
-            align="left"
-            eyebrow="Step by step"
-            title="How Our Collect-and-Store Service Works"
-          />
-          <p className="mt-4 text-base font-semibold text-brand-orange">
-            No van hire. No hauling. No heavy lifting.
-          </p>
-          <StepList steps={steps} className="mt-10" />
+      {/* ── S4: How it works — SIGNATURE MOMENT ──────────────────────── */}
+      <section className="bg-brand-navy py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal className="text-center">
+            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+              Step by step
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
+              How Our Collect-and-Store Service Works
+            </h2>
+          </div>
+
+          {/* Benefit callout */}
+          <div
+            data-reveal
+            data-delay="1"
+            className="mx-auto mt-8 max-w-2xl rounded-2xl border border-white/10 bg-white/5 px-8 py-6 text-center"
+          >
+            <p className="text-xl font-bold text-white">
+              No van hire. No hauling. No heavy lifting.
+            </p>
+            <p className="mt-2 text-base text-white/70">
+              We collect from your door, load everything, seal your unit and store it at our staffed
+              compound. You do nothing except tell us when to collect.
+            </p>
+          </div>
+
+          {/* 5-step cards */}
+          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {stepsWithIcons.map(({ step, Icon }, i) => (
+              <li
+                key={i}
+                data-reveal
+                data-delay={String(Math.min(i + 2, 7))}
+                className="relative flex flex-col rounded-2xl bg-white/8 p-6 ring-1 ring-white/10 transition-all duration-200 hover:bg-white/12 motion-reduce:transition-none"
+              >
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                    Step {i + 1}
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed text-white/85">{step}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      {/* SECTION 5: Which unit */}
+      {/* ── S5: Which unit — SIGNATURE MOMENT ────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Your options" title="Which Storage Unit Do You Need?" />
-          <p className="mx-auto mt-4 max-w-2xl text-center text-base text-brand-charcoal/70">
-            Not sure? A free survey confirms your volume before we book anything.
-          </p>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
-            <div className="flex flex-col rounded-2xl border-2 border-brand-orange bg-white p-8 shadow-md">
-              <h3 className="text-xl font-bold text-brand-navy">250 cu ft Unit</h3>
+          <div data-reveal>
+            <SectionHeading eyebrow="Your options" title="Which Storage Unit Do You Need?" />
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base text-brand-charcoal/70">
+              Not sure? A free survey confirms your volume before we book anything.
+            </p>
+          </div>
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-2">
+            {/* 250 cu ft */}
+            <div
+              data-reveal
+              data-delay="1"
+              className="flex flex-col rounded-2xl border-2 border-brand-orange bg-white p-8 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0"
+            >
+              <div className="mb-1 text-5xl font-extrabold leading-none text-brand-orange">250</div>
+              <div className="text-sm font-bold uppercase tracking-widest text-brand-charcoal/50">
+                cubic feet
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-brand-navy">250 cu ft Unit</h3>
               <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-orange">
                 Flats, small houses and archives
               </p>
-              <ul className="mt-6 space-y-3 text-base text-brand-charcoal/85">
+              <ul className="mt-6 flex-1 space-y-3 text-base text-brand-charcoal/85">
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
                   Custom-made wooden construction
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
                   Holds approximately 70 to 80 cartons, or over 100 archive boxes
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
                   Best for a one or two-bedroom flat, or document and archive storage
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
                   Suitable for short and long-term storage
                 </li>
               </ul>
             </div>
-            <div className="flex flex-col rounded-2xl border-2 border-brand-navy bg-white p-8 shadow-md">
-              <h3 className="text-xl font-bold text-brand-navy">20ft Container</h3>
+
+            {/* 20ft container */}
+            <div
+              data-reveal
+              data-delay="2"
+              className="flex flex-col rounded-2xl border-2 border-brand-navy bg-white p-8 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0"
+            >
+              <div className="mb-1 text-5xl font-extrabold leading-none text-brand-navy">1,000</div>
+              <div className="text-sm font-bold uppercase tracking-widest text-brand-charcoal/50">
+                cubic feet
+              </div>
+              <h3 className="mt-4 text-xl font-bold text-brand-navy">20ft Container</h3>
               <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-orange">
                 Large homes, full offices and long-term
               </p>
-              <ul className="mt-6 space-y-3 text-base text-brand-charcoal/85">
+              <ul className="mt-6 flex-1 space-y-3 text-base text-brand-charcoal/85">
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-navy" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-navy" strokeWidth={3} />
                   1,000 cu ft capacity, equal to 4 x 250 cu ft units
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-navy" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-navy" strokeWidth={3} />
                   Well insulated metal shipping container
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-navy" />
-                  Best for full household contents, larger homes or full office storage
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-navy" strokeWidth={3} />
+                  Best for full household contents, larger homes or full office contents
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-navy" />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-navy" strokeWidth={3} />
                   Recommended for long-term storage where no access is needed
                 </li>
               </ul>
@@ -402,15 +494,19 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* SECTION 6: Use cases */}
+      {/* ── S6: Use cases ────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Common situations" title="What Do People Store With Us?" />
+          <div data-reveal>
+            <SectionHeading eyebrow="Common situations" title="What Do People Store With Us?" />
+          </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {useCases.map((item) => (
+            {useCases.map((item, i) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-shadow duration-300 hover:shadow-md"
+                data-reveal
+                data-delay={String(Math.min((i % 4) + 1, 7))}
+                className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-base font-bold text-brand-navy">
                   {item.title}
@@ -430,67 +526,66 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* SECTION 7: Storage types */}
+      {/* ── S7: Storage types ────────────────────────────────────────── */}
       <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Who stores with us" title="Storage for Every Situation" />
+          <div data-reveal>
+            <SectionHeading eyebrow="Who stores with us" title="Storage for Every Situation" />
+          </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
-            <div className="flex flex-col rounded-2xl border border-black/5 bg-white p-8 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold text-brand-navy">Personal Storage</h3>
-              <p className="flex-1 text-base leading-relaxed text-brand-charcoal/85">
-                Household furniture, seasonal items and personal effects during a move, renovation or
-                declutter. Units available from £10 per week with no minimum term. Works alongside
-                our house removal service for a complete single booking.
-              </p>
-              <Link
-                href="/house-removals"
-                className="mt-6 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
+            {[
+              {
+                title: "Personal Storage",
+                body: "Household furniture, seasonal items and personal effects during a move, renovation or declutter. Units available from £10 per week with no minimum term. Works alongside our house removal service for a complete single booking.",
+                link: { label: "House removals", href: "/house-removals" },
+              },
+              {
+                title: "Business Storage",
+                body: "Stock, equipment, office contents and document archive stored at our secure Purfleet compound. We collect from your premises and store until you need delivery or collection. Works alongside our office removal service for a single managed transition with one coordinator.",
+                link: { label: "Office removals", href: "/office-removals" },
+              },
+              {
+                title: "Student Storage",
+                body: "Term-time and summer storage for dormitory contents. We collect from your university accommodation at the end of term and return your belongings when the next term opens. No need for you to arrange transport or be present on collection day.",
+                link: { label: "Dormitory move service", href: "/dormitory-move-student-storage" },
+              },
+            ].map((type, i) => (
+              <div
+                key={type.title}
+                data-reveal
+                data-delay={String(i + 1)}
+                className="flex flex-col rounded-2xl border border-black/5 bg-white p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                House removals &rarr;
-              </Link>
-            </div>
-            <div className="flex flex-col rounded-2xl border border-black/5 bg-white p-8 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold text-brand-navy">Business Storage</h3>
-              <p className="flex-1 text-base leading-relaxed text-brand-charcoal/85">
-                Stock, equipment, office contents and document archive stored at our secure Purfleet
-                compound. We collect from your premises and store until you need delivery or
-                collection. Works alongside our office removal service for a single managed
-                transition with one coordinator.
-              </p>
-              <Link
-                href="/office-removals"
-                className="mt-6 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
-              >
-                Office removals &rarr;
-              </Link>
-            </div>
-            <div className="flex flex-col rounded-2xl border border-black/5 bg-white p-8 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold text-brand-navy">Student Storage</h3>
-              <p className="flex-1 text-base leading-relaxed text-brand-charcoal/85">
-                Term-time and summer storage for dormitory contents. We collect from your university
-                accommodation at the end of term and return your belongings when the next term
-                opens. No need for you to arrange transport or be present on collection day.
-              </p>
-              <Link
-                href="/dormitory-move-student-storage"
-                className="mt-6 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
-              >
-                Dormitory move service &rarr;
-              </Link>
-            </div>
+                <h3 className="mb-4 text-xl font-bold text-brand-navy">{type.title}</h3>
+                <p className="flex-1 text-base leading-relaxed text-brand-charcoal/85">{type.body}</p>
+                <Link
+                  href={type.link.href}
+                  className="mt-6 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
+                >
+                  {type.link.label} &rarr;
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 8: Storage cost */}
+      {/* ── S8: Storage cost ─────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-4xl px-4">
-          <SectionHeading align="left" eyebrow="Transparent pricing" title="How Much Does Storage Cost?" />
+          <div data-reveal>
+            <SectionHeading
+              align="left"
+              eyebrow="Transparent pricing"
+              title="How Much Does Storage Cost?"
+            />
+          </div>
           <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
             <p>
-              Storage at Top Removals starts at <strong className="text-brand-navy">£10 per week</strong>.
-              Pricing is based on the volume of goods you store, not a fixed room size or square
-              footage. You pay for the space your goods actually use.
+              Storage at Top Removals starts at{" "}
+              <strong className="text-brand-navy">£10 per week</strong>. Pricing is based on the
+              volume of goods you store, not a fixed room size or square footage. You pay for the
+              space your goods actually use.
             </p>
             <p>
               There is no minimum storage term and no maximum. Store for a single week between
@@ -506,11 +601,17 @@ export default function LondonStoragePage() {
               Before storage, it pays to pack well. Plastic crates pack more efficiently than
               cardboard boxes and protect contents against moisture, particularly in long-term
               storage. Better packing reduces the volume you store and lowers your bill. See our{" "}
-              <Link href="/crate-hire" className="font-semibold text-brand-orange hover:text-brand-navy">
+              <Link
+                href="/crate-hire"
+                className="font-semibold text-brand-orange hover:text-brand-navy"
+              >
                 crate hire
               </Link>{" "}
               and{" "}
-              <Link href="/packaging-materials" className="font-semibold text-brand-orange hover:text-brand-navy">
+              <Link
+                href="/packaging-materials"
+                className="font-semibold text-brand-orange hover:text-brand-navy"
+              >
                 packaging materials
               </Link>{" "}
               pages for options.
@@ -519,27 +620,36 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* SECTION 9: Why choose */}
+      {/* ── S9: Why choose ───────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="The benefits" title="Why Choose Top Removals for Storage?" />
-          <CheckList items={whyChoose} columns={2} className="mx-auto mt-12 max-w-5xl" />
+          <div data-reveal>
+            <SectionHeading eyebrow="The benefits" title="Why Choose Top Removals for Storage?" />
+          </div>
+          <div data-reveal data-delay="1">
+            <CheckList items={whyChoose} columns={2} className="mx-auto mt-12 max-w-5xl" />
+          </div>
         </div>
       </section>
 
-      {/* SECTION 10: Facility and access */}
+      {/* ── S10: Facility and access ──────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="The Purfleet compound" title="Our Facility and How to Access Your Goods" />
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="The Purfleet compound"
+              title="Our Facility and How to Access Your Goods"
+            />
+          </div>
           <div className="mt-12 grid gap-12 lg:grid-cols-2">
-            <div className="space-y-4 text-base leading-relaxed text-brand-charcoal/85">
+            <div data-reveal className="space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
                 Our storage compound is at{" "}
                 <strong className="text-brand-navy">
                   Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA
                 </strong>
-                , approximately 17 miles east of central London. We collect from all London boroughs
-                and return goods to your door, so most customers never need to visit the facility.
+                , east of London in Essex. We collect from all London boroughs and return goods to
+                your door, so most customers never need to visit the facility.
               </p>
               <p>
                 Access is by appointment. We require at least{" "}
@@ -549,8 +659,8 @@ export default function LondonStoragePage() {
                 present for every access visit.
               </p>
               <p>
-                To arrange collection, redelivery or an access visit, contact your coordinator
-                directly on <strong className="text-brand-navy">020 7205 2525</strong> or{" "}
+                To arrange collection, redelivery or an access visit, contact your coordinator on{" "}
+                <strong className="text-brand-navy">020 7205 2525</strong> or{" "}
                 <strong className="text-brand-navy">0800 046 7877</strong>.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
@@ -561,13 +671,17 @@ export default function LondonStoragePage() {
                   href="https://www.google.com/maps/dir/?api=1&destination=Unit+C1A+Purfleet+Industrial+Park+Kerry+Avenue+Purfleet+RM15+4YA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-xl border-2 border-brand-navy px-5 py-3 text-sm font-bold text-brand-navy transition hover:bg-brand-navy hover:text-white"
+                  className="inline-flex min-h-[44px] items-center rounded-xl border-2 border-brand-navy px-5 py-3 text-sm font-bold text-brand-navy transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
                 >
                   Get Directions
                 </a>
               </div>
             </div>
-            <div className="rounded-2xl border border-black/5 bg-white p-8 shadow-sm">
+            <div
+              data-reveal
+              data-delay="1"
+              className="rounded-2xl border border-black/5 bg-white p-8 shadow-sm"
+            >
               <h3 className="mb-6 text-lg font-bold text-brand-navy">Facility Details</h3>
               <dl className="space-y-4 text-sm">
                 <div>
@@ -592,21 +706,25 @@ export default function LondonStoragePage() {
                   <dt className="font-semibold uppercase tracking-wide text-brand-charcoal/50">
                     Customer Access
                   </dt>
-                  <dd className="mt-1 text-brand-charcoal">By appointment, 48 hours notice required</dd>
+                  <dd className="mt-1 text-brand-charcoal">
+                    By appointment, 48 hours notice required
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-semibold uppercase tracking-wide text-brand-charcoal/50">
                     Phone
                   </dt>
                   <dd className="mt-1 text-brand-charcoal">
-                    020 7205 2525 &nbsp;|&nbsp; 0800 046 7877
+                    020 7205 2525 &nbsp;&middot;&nbsp; 0800 046 7877
                   </dd>
                 </div>
                 <div>
                   <dt className="font-semibold uppercase tracking-wide text-brand-charcoal/50">
                     Collection Area
                   </dt>
-                  <dd className="mt-1 text-brand-charcoal">All London boroughs and surrounding areas</dd>
+                  <dd className="mt-1 text-brand-charcoal">
+                    All London boroughs and surrounding areas
+                  </dd>
                 </div>
               </dl>
             </div>
@@ -614,18 +732,25 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
-      {/* SECTION 11: Tips */}
+      {/* ── S11: Tips ────────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Helpful advice" title="Storage Tips" />
-          <TipList tips={tips} numbered className="mt-12" />
+          <div data-reveal>
+            <SectionHeading eyebrow="Helpful advice" title="Storage Tips" />
+          </div>
+          <div data-reveal data-delay="1">
+            <TipList tips={tips} numbered className="mt-12" />
+          </div>
         </div>
       </section>
 
-      {/* SECTION 12: Trustpilot CTA (no placeholder reviews) */}
+      {/* ── S12: Trustpilot CTA (no placeholder reviews) ─────────────── */}
       <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-[88rem] px-4 text-center">
-          <div className="flex justify-center gap-1 text-brand-orange" aria-label="5 out of 5 stars">
+        <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
+          <div
+            className="flex justify-center gap-1 text-brand-orange"
+            aria-label="5 out of 5 stars"
+          >
             {Array.from({ length: 5 }).map((_, i) => (
               <StarIcon key={i} className="h-7 w-7" />
             ))}
@@ -638,24 +763,26 @@ export default function LondonStoragePage() {
             href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
           >
             View Reviews on Trustpilot
           </Link>
         </div>
       </section>
 
-      {/* SECTION 13: Final CTA */}
+      {/* ── S13: Final CTA ───────────────────────────────────────────── */}
       <CtaBand
         heading="Book Your London Storage Today"
         buttonLabel="Book a Service"
         buttonHref="/bookservice"
       />
 
-      {/* SECTION 14: FAQ */}
+      {/* ── S14: FAQ ─────────────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Good to know" title="Frequently Asked Questions" />
+          <div data-reveal>
+            <SectionHeading eyebrow="Good to know" title="Frequently Asked Questions" />
+          </div>
           <Faq items={faqs} className="mt-10" />
         </div>
       </section>
