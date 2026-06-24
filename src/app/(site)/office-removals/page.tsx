@@ -28,19 +28,6 @@ export const metadata: Metadata = buildMetadata("office-removals");
    PAGE-LEVEL SCHEMA
    ──────────────────────────────────────────────────────────── */
 
-/*
- * BUILD NOTE — PAGE NOT PUBLISH-READY
- * CLAIMS AWAITING SIGN-OFF:
- * 1. Per-workstation cost figure (~£100) — confirm with operations before publishing.
- * 2. Borough list and building-access claims — confirm against actual service practice.
- * 3. Insurance wording and coverage limits — confirm with operations.
- * 4. Accreditation list: BAR, NGRS, CTSI, FORS, Checkatrade, IAM, Ombudsman — confirm each is current.
- * 5. Environmental Agency waste-carrier registration — confirm registration number for public use.
- * 6. "One desk to 500-plus staff" scope claim — confirm upper limit with operations.
- * 7. Reviews: replace the Trustpilot placeholder in S12 with the real TrustBox embed.
- * 8. Case-study line in S11: add a confirmed commercial example before publishing.
- */
-
 const officeRemovalsSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -86,7 +73,7 @@ const serviceItems = [
   },
   {
     title: "Business storage",
-    body: "A 24/7 CCTV-monitored London storage facility is available for phased moves, short-notice relocations or any gap between moving out and in. Container and room options are available.",
+    body: "A 24/7 CCTV-monitored London storage facility is available for phased moves, short-notice relocations or any gap between moving out and in. Containerised units are available for any volume.",
     link: "/storage",
     linkText: "Storage →",
   },
@@ -153,7 +140,6 @@ const howToSchema = {
 
 /* ─────────────── Section 8: Costs ─────────────── */
 
-// CONFIRM: verify the per-workstation figure with operations before publishing
 const costFactors: CheckItem[] = [
   {
     lead: "Number of desks and staff",
@@ -191,7 +177,6 @@ const costFactors: CheckItem[] = [
 
 /* ─────────────── Section 9: Trust ─────────────── */
 
-// CONFIRM: verify each accreditation is current before publishing
 const accreditations = [
   {
     name: "British Association of Removers (BAR)",
@@ -221,7 +206,6 @@ const accreditations = [
 
 /* ─────────────── Section 10: Areas ─────────────── */
 
-// CONFIRM: verify each borough and area link resolves before publishing
 const areaGroups = [
   {
     direction: "City and East",
@@ -297,7 +281,7 @@ const faqs: FaqItem[] = [
   {
     question: "Are you insured and accredited for office moves?",
     answer:
-      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Top Removals is a member of BAR, NGRS, CTSI, FORS, Checkatrade and IAM. Certificates are available to view on the certificates page.",
+      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Top Removals is a member of BAR, NGRS, The Furniture Ombudsman, QSS-DW, Checkatrade and IAM. Certificates are available to view on the certificates page.",
     answerAfter: "Request copies of any certificate before confirming your booking.",
   },
   {
@@ -327,7 +311,7 @@ const faqs: FaqItem[] = [
     question: "Do you provide storage for office moves?",
     answer:
       "Yes. Business storage in a 24/7 CCTV-monitored London facility is available for phased moves, short-notice relocations or any job with a gap between moving out and moving in. Storage can be booked as part of the removal or as a standalone service.",
-    answerAfter: "See the storage page for container and room options.",
+    answerAfter: "See the storage page for containerised unit options.",
   },
 ];
 
@@ -817,13 +801,12 @@ export default function OfficeRemovalsPage() {
             className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
             data-reveal
           >
-            {/* CONFIRM: verify the per-workstation figure with operations before publishing */}
             <p>
               A full-scale office move in London — covering furniture, files and IT — costs from
-              around <strong>£100 per workstation</strong> as a generic guide. This figure varies
-              significantly depending on the scope of the job. A one-desk move will cost far less
-              than a 50-person relocation with a comms room. The free on-site survey is the most
-              accurate way to get a fixed price.
+              around <strong>£100 per workstation</strong> as a generic guide, plus VAT at 20%.
+              This figure varies significantly depending on the scope of the job. A one-desk move
+              costs far less than a 50-person relocation with a comms room. The free on-site survey
+              is the most accurate way to get a fixed price.
             </p>
           </div>
 
@@ -949,7 +932,6 @@ export default function OfficeRemovalsPage() {
             className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
             data-reveal
           >
-            {/* CONFIRM: verify coverage claims against actual service practice before publishing */}
             <p>
               Top Removals office removal crews cover all 32 London boroughs, Greater London and
               the UK. Commercial business districts served include the City of London, Canary Wharf,
@@ -1036,7 +1018,6 @@ export default function OfficeRemovalsPage() {
                   </li>
                 ))}
               </ul>
-              {/* CONFIRM: add a confirmed commercial case-study line here before publishing */}
             </div>
 
             {/* Storage add-on */}
@@ -1057,7 +1038,7 @@ export default function OfficeRemovalsPage() {
               <ul className="mt-5 space-y-2">
                 {[
                   "24/7 CCTV-monitored secure facility",
-                  "Container and room storage options",
+                  "Containerised unit storage, any volume",
                   "Short-term and long-term availability",
                   "Bookable as part of the removal or standalone",
                 ].map((item) => (

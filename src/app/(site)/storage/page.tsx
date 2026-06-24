@@ -411,8 +411,6 @@ export default function LondonStoragePage() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
                 loading="lazy"
-                width={800}
-                height={600}
               />
             </div>
             <span

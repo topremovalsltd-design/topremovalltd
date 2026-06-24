@@ -59,15 +59,15 @@ export const META: Record<string, MetaEntry> = {
     path: "/services",
   },
   "house-removals": {
-    title: "House Removals London | Fully Insured, Free Quote | Top Removals",
+    title: "House Removals London | Insured Movers, 7 Days | Top Removals",
     description:
-      "Top Removals provides fully insured, BAR-accredited house removals across London and Surrey, 7 days a week. Free survey, fixed prices, packing and storage available. Get a quote today.",
+      "House removals across London, 7 days a week. Fully insured, accredited team. Packing, transport and unloading handled end to end. Get a free quote today.",
     path: "/house-removals",
   },
   "office-removals": {
-    title: "Office Removals London | Minimal Downtime | Fully Insured | Top Removals",
+    title: "Office Removals London | Minimal Downtime, Insured | Top Removals",
     description:
-      "Relocate your London office with minimal downtime. Fully insured, BAR-accredited, licensed waste carrier. From one desk to 500-plus staff. Book a free survey today.",
+      "Office removals in London with minimal downtime and out-of-hours moves. Fully insured and accredited, with IT and server relocation. From about £100 per workstation.",
     path: "/office-removals",
   },
   "international-removals": {
@@ -83,15 +83,15 @@ export const META: Record<string, MetaEntry> = {
     path: "/storage",
   },
   "packing-service": {
-    title: "Packing Service London | Full, Partial & Fragile Packing | Top Removals",
+    title: "Packing Service London | Cartons x £6, Insured | Top Removals",
     description:
-      "Professional packing service in London. Full, partial and fragile packing with all materials included. Fully insured, BAR-accredited. Free quote in under 2 minutes.",
+      "Professional packing service in London. Cartons multiplied by £6, materials and labour included, fully insured. Full or partial packing, book together with your move.",
     path: "/packing-service",
   },
   "man-and-van": {
-    title: "Man and Van London | From £55/hr | Fully Insured | Top Removals",
+    title: "Man and Van London | From £55/hr, Same Day | Top Removals",
     description:
-      "Man and van service in London from £55/hr. Fully insured, BAR-accredited, 7 days a week including same-day slots. Free quote in under 2 minutes.",
+      "Man and van in London from £55 an hour, same day and 7 days a week. Fully insured, accredited movers for single items, small moves and house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {

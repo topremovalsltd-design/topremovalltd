@@ -414,6 +414,22 @@ export default function PackingServicePage() {
               &middot;{" "}
               <Link href="/crate-hire" className="underline hover:text-brand-orange">
                 Crate Hire
+              </Link>{" "}
+              &middot;{" "}
+              <Link href="/house-removals" className="underline hover:text-brand-orange">
+                House Removals
+              </Link>{" "}
+              &middot;{" "}
+              <Link href="/man-and-van-london" className="underline hover:text-brand-orange">
+                Man and Van
+              </Link>{" "}
+              &middot;{" "}
+              <Link href="/storage" className="underline hover:text-brand-orange">
+                Storage
+              </Link>{" "}
+              &middot;{" "}
+              <Link href="/areas" className="underline hover:text-brand-orange">
+                Service Areas
               </Link>
             </p>
           </div>

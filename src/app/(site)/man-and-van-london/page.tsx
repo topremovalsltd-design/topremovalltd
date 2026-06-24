@@ -29,19 +29,6 @@ export const metadata: Metadata = buildMetadata("man-and-van");
    PAGE-LEVEL SCHEMA
    ──────────────────────────────────────────────────────────── */
 
-/*
- * BUILD NOTE — PAGE NOT PUBLISH-READY
- * CLAIMS AWAITING SIGN-OFF:
- * 1. Prices: all rate bands (1 man £55/hr, 2 men from £70/hr, 3 men from £90/hr) match the
- *    live WordPress page at time of rebuild. Verify with operations before publishing.
- * 2. Coverage: "all 32 London boroughs" — confirm current service area.
- * 3. Accreditations: all six bodies in the trust section — confirm each is current.
- * 4. Insurance: goods-in-transit and public liability wording — confirm with operations.
- * 5. Same-day availability: "same-day slots available" — confirm operational.
- * 6. Reviews: replace the Trustpilot placeholder with the real TrustBox embed.
- */
-
-// CONFIRM: verify all price bands are current before publishing
 const manAndVanSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -112,7 +99,6 @@ const manAndVanSchema = {
 /* ─────────────── Section 3: Prices ─────────────── */
 
 const pricingColumns = ["", "1 man", "2 men", "3 men"];
-// CONFIRM: verify these rates are current with operations before publishing
 const pricingRows: PricingRow[] = [
   { label: "Per hour (min. 2 hours)", values: ["£55", "from £70", "from £90"] },
   { label: "Half day (up to 4 hours)", values: ["£210", "from £260", "from £330"] },
@@ -222,7 +208,6 @@ const accreditations = [
 
 /* ─────────────── Section 10: Areas ─────────────── */
 
-// CONFIRM: verify each borough and each area link resolves to a live page before publish
 const areaGroups = [
   {
     direction: "North London",
@@ -490,7 +475,14 @@ export default function ManAndVanPage() {
               In 2026, the typical London man and van booking covers furniture collections, student
               moves, single-item deliveries, marketplace collections and part-loads that do not
               justify a full removal crew. For properties of three bedrooms or more, or for moves
-              requiring professional packing, a{" "}
+              requiring{" "}
+              <Link
+                href="/packing-service"
+                className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              >
+                professional packing
+              </Link>
+              , a{" "}
               <Link
                 href="/house-removals"
                 className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -527,7 +519,7 @@ export default function ManAndVanPage() {
 
           <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-brand-charcoal/60">
             Minimum 2 hours on all bookings. Additional hours charged at the hourly rate.
-            VAT included.
+            All prices are subject to VAT at 20%.
           </p>
 
           <div
@@ -1063,8 +1055,7 @@ export default function ManAndVanPage() {
             <p>
               Top Removals man and van crews cover all 32 London boroughs, Greater London and
               surrounding areas including Surrey, Essex and Kent. Nationwide moves are also handled
-              with the same fixed-price process.{" "}
-              {/* CONFIRM: verify service area coverage before publishing */}
+              with the same fixed-price process.
             </p>
             <p>
               London access is rarely straightforward. Our operations team arranges borough council

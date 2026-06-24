@@ -513,6 +513,17 @@ export default function HouseRemovalsPage() {
                 See how the process works.
               </Link>
             </p>
+            <p className="text-sm text-brand-charcoal/60">
+              Moving a business instead?{" "}
+              <Link href="/office-removals" className="underline hover:text-brand-orange">
+                Office removals London
+              </Link>
+              . Moving overseas?{" "}
+              <Link href="/international-removals" className="underline hover:text-brand-orange">
+                International removals
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
@@ -725,7 +736,6 @@ export default function HouseRemovalsPage() {
             Every price is subject to a free pre-move survey. No two moves are identical.
           </p>
 
-          {/* CONFIRM: replace all "—" values with real from-prices once verified */}
           <PricingTable
             className="mx-auto mt-10 max-w-3xl"
             columns={["Property size", "Guide price (from)", "Typical crew and vehicle"]}
@@ -733,9 +743,9 @@ export default function HouseRemovalsPage() {
           />
 
           <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-brand-charcoal/60">
-            Guide prices for standard local London moves. Add-ons (packing, storage, parking
-            suspensions, specialist items) affect the final price. All prices include VAT, fuel and
-            equipment.
+            Indicative guide prices only. Your exact price is confirmed at a free survey. Add-ons
+            (packing, storage, parking suspensions, specialist items) will affect the final figure.
+            All prices are subject to VAT at 20%.
           </p>
 
           <div className="mt-10 mx-auto max-w-3xl rounded-2xl bg-brand-grey p-8">
@@ -1036,8 +1046,11 @@ export default function HouseRemovalsPage() {
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             Our removal crews cover all 32 London boroughs, Greater London and Surrey as standard.
-            Nationwide and international moves are also handled with the same fixed-price process.{" "}
-            {/* CONFIRM: verify each borough link resolves to a real page before publish */}
+            Nationwide and{" "}
+            <Link href="/international-removals" className="text-brand-orange underline underline-offset-2 hover:text-brand-navy">
+              international moves
+            </Link>
+            {" "}are also handled with the same fixed-price process.
           </p>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
