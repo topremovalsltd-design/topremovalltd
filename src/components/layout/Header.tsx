@@ -10,7 +10,7 @@ import { ChevronDown, MenuIcon, CloseIcon } from "@/components/ui/icons";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -144,15 +144,15 @@ export default function Header() {
                     <button
                       type="button"
                       className="flex w-full items-center justify-between py-3 text-left text-sm font-semibold uppercase tracking-wide text-brand-navy"
-                      aria-expanded={servicesOpen}
-                      onClick={() => setServicesOpen((v) => !v)}
+                      aria-expanded={openItem === item.label}
+                      onClick={() => setOpenItem((v) => (v === item.label ? null : item.label))}
                     >
                       {item.label}
                       <ChevronDown
-                        className={`h-5 w-5 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                        className={`h-5 w-5 transition-transform ${openItem === item.label ? "rotate-180" : ""}`}
                       />
                     </button>
-                    {servicesOpen && (
+                    {openItem === item.label && (
                       <ul className="pb-2 pl-3">
                         {item.children.map((child) => (
                           <li key={child.label}>

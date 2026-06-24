@@ -33,17 +33,41 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "About Us", href: "/about-us" },
+  {
+    label: "About Us",
+    href: "/about-us",
+    children: [
+      { label: "About Us", href: "/about-us" },
+      { label: "Moving News", href: "/news" },
+    ],
+  },
   {
     label: "Services",
     href: "/services",
     children: services.map((s) => ({ label: s.title, href: s.href })),
   },
   { label: "Prices", href: "/prices" },
-  { label: "Why Us", href: "/about-us" },
+  {
+    label: "Why Us",
+    href: "/about-us",
+    children: [
+      { label: "Certificates", href: "/certificates" },
+      { label: "Testimonials", href: "https://uk.trustpilot.com/review/www.top-removals.co.uk" },
+      { label: "Current Offers", href: "/current-offers" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Our Fleet", href: "/our-fleet" },
+    ],
+  },
   { label: "Gallery", href: "/photos" },
   { label: "Areas", href: "/areas" },
-  { label: "Contact Us", href: "/contactus" },
+  {
+    label: "Contact Us",
+    href: "/contactus",
+    children: [
+      { label: "Contact Us", href: "/contactus" },
+      { label: "Book a Service", href: "/bookservice" },
+    ],
+  },
 ];
 
 export const footerServices = [
