@@ -128,7 +128,7 @@ const priceFactors: CheckItem[] = [
   },
   {
     lead: "Parking and access",
-    text: "Permit zones and narrow streets can affect van placement. Borough parking suspensions are arranged by our operations team where needed.",
+    text: "Permit zones and narrow streets affect van placement. Borough parking suspensions are arranged by our operations team where needed.",
   },
 ];
 
@@ -278,7 +278,7 @@ const faqs: FaqItem[] = [
   {
     question: "What is the cheapest day to book a man and van in London?",
     answer:
-      "Tuesday, Wednesday and Thursday are typically the most cost-effective days for a man and van booking. Fridays carry a premium due to high demand, and weekend rates may also be higher. End-of-month dates and the summer months from June to August book out early. If your date is flexible, ask when you request a quote and we will advise the best available slot.",
+      "Tuesday, Wednesday and Thursday are typically the most cost-effective days for a man and van booking. Fridays carry a premium due to high demand, and weekend rates are also higher. End-of-month dates and the summer months from June to August book out early. If your date is flexible, ask when you request a quote and we will advise the best available slot.",
   },
   {
     question: "Is a man and van cheaper than a removal company?",
@@ -294,12 +294,12 @@ const faqs: FaqItem[] = [
   {
     question: "Can you move a single item or a piano?",
     answer:
-      "Yes. The man and van service is well suited to single-item moves: a sofa, a bed, a wardrobe, a fridge or a dining table. Pianos and musical instruments can also be moved; specialist crews using piano boards and skates are used for upright and grand pianos. Piano moves are quoted as a specialist service and may carry an additional fee. A free quote covers the full cost before you commit.",
+      "Yes. The man and van service is well suited to single-item moves: a sofa, a bed, a wardrobe, a fridge or a dining table. Pianos and musical instruments are also moved; specialist crews using piano boards and skates handle upright and grand pianos. Piano moves carry a specialist fee, confirmed in the free quote before booking.",
   },
   {
     question: "Can you come the same day?",
     answer:
-      "Yes, subject to crew and vehicle availability. Same-day and short-notice slots are kept available each day for urgent bookings. To check same-day availability call 020 7205 2525 directly for the fastest response. The online quick quote form is also available and we aim to call back within the hour for short-notice requests.",
+      "Yes, subject to crew and vehicle availability. Same-day and short-notice slots are kept available each day for urgent bookings. To check same-day availability call 020 7205 2525 directly for the fastest response. The online quick quote form is also available; a callback arrives within the hour for short-notice requests.",
   },
   {
     question: "What van size do I need?",
@@ -347,7 +347,7 @@ export default function ManAndVanPage() {
       <PageBanner
         title="Man and Van London"
         h1={serviceH1["man-and-van"]}
-        subtitle="From £55/hr · 7 Days a Week · Same Day Available"
+        subtitle="From £55/hr plus VAT · Same Day · 7 Days a Week · Accredited and Insured"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -374,7 +374,13 @@ export default function ManAndVanPage() {
                 Get a free quote in under 2 minutes, or book a service for a confirmed date.
               </p>
 
-              <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="hero-anim-sub mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-navy/10 bg-brand-navy/5 px-5 py-3">
+                <span className="text-2xl font-black text-brand-orange">From £55/hr</span>
+                <span aria-hidden="true" className="h-4 w-px bg-brand-charcoal/20" />
+                <span className="text-sm font-medium text-brand-charcoal/70">plus VAT · min. 2 hrs</span>
+              </div>
+
+              <div className="hero-anim-ctas mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
                   variant="orange"
@@ -552,8 +558,7 @@ export default function ManAndVanPage() {
               What affects your man and van price?
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/85">
-              Six main factors determine the final cost. Understanding them helps you choose the
-              right crew size and book the most cost-effective slot.
+              Six main factors determine the final cost. Use them to pick the right crew size and the most cost-effective slot.
             </p>
             <CheckList items={priceFactors} className="mt-6" />
             <div className="mt-6 flex flex-wrap gap-3">
