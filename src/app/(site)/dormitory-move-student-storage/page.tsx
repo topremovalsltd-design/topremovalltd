@@ -195,7 +195,7 @@ export default function DormitoryMoveStudentStoragePage() {
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
         title="Dormitory Move and Student Storage"
-        subtitle="Our movers pack your room, disassemble furniture, then deliver across the UK, ship worldwide, or store securely. You need not be present."
+        subtitle="We pack and move your whole room. You need not be present at any step."
         h1={serviceH1["dormitory-move-student-storage"]}
         crumbs={[
           { label: "Home", href: "/" },
@@ -212,10 +212,9 @@ export default function DormitoryMoveStudentStoragePage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals provides a full-service dormitory move and student storage in London
-                and across the UK. In 2026, it is the only service where the movers pack your
-                entire room, disassemble the furniture, and transport everything. You need not
-                be present at any step.
+                Top Removals runs full-service dormitory moves and student storage in London
+                and across the UK. Our movers pack your entire room, disassemble the furniture,
+                and transport everything in 2026, and you need not be present at any step.
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 One booking. Three possible outcomes: delivered to your new UK or European
@@ -282,7 +281,7 @@ export default function DormitoryMoveStudentStoragePage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-29.jpg"
-                  alt="Top Removals dormitory move and student storage, movers packing a student room"
+                  alt="Top Removals crew packing a student dormitory room in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -370,7 +369,7 @@ export default function DormitoryMoveStudentStoragePage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-30.jpg"
-                  alt="Top Removals crew packing a student room for a dormitory move"
+                  alt="Top Removals team wrapping and disassembling student furniture for storage"
                   fill
                   sizes="(max-width: 1024px) 100vw, 38vw"
                   className="object-cover"
@@ -386,7 +385,7 @@ export default function DormitoryMoveStudentStoragePage() {
                     "The crew packs the whole room",
                     "You need not be present",
                     "BAR-accredited professional remover",
-                    "A decade of experience",
+                    "One move coordinator manages every step",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
                       <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
