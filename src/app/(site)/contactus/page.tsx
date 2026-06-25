@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/contact/ContactForm";
 import Testimonials from "@/components/home/Testimonials";
@@ -21,6 +22,7 @@ const address = "Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15
 export default function ContactPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Contact Us"
         subtitle="Get in Touch"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import { VanIcon } from "@/components/ui/icons";
 import Testimonials from "@/components/home/Testimonials";
@@ -56,6 +57,7 @@ const fleet: Vehicle[] = [
 export default function OurFleetPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Our Fleet"
         subtitle="Modern, Eco-Friendly Vehicles"

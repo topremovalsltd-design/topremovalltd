@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import HtmlContent from "@/components/news/HtmlContent";
 import CtaBand from "@/components/home/CtaBand";
 import Testimonials from "@/components/home/Testimonials";
@@ -36,6 +37,7 @@ export default async function AreaPage({
 
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title={area.name}
         subtitle="Removals & Storage in Your Area"

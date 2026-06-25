@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Testimonials from "@/components/home/Testimonials";
@@ -16,6 +17,7 @@ const highlights = ["7 Days A Week", "Full Nationwide Coverage", "Affordable Rat
 export default function AboutPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="About Us"
         crumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}

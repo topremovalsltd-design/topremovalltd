@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import Accreditations from "@/components/home/Accreditations";
 import { ArrowRight } from "@/components/ui/icons";
@@ -17,6 +18,7 @@ export default async function AreasPage() {
 
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Areas We Cover"
         subtitle="Removals Across London & Beyond"

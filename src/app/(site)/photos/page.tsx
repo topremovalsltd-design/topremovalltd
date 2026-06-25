@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import PhotoGallery, { type GalleryImage } from "@/components/gallery/PhotoGallery";
 import Accreditations from "@/components/home/Accreditations";
@@ -49,6 +50,7 @@ const galleryImages: GalleryImage[] = altText.map((alt, i) => ({
 export default function PhotosPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Photos"
         subtitle="A Look at Our Work"

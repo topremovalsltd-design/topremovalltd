@@ -3,6 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 import { ArrowRight, ChevronLeft, ChevronRight } from "@/components/ui/icons";
@@ -54,6 +55,7 @@ export default async function NewsPage({
 
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Moving News"
         subtitle="Tips, Guides & Industry Insights"

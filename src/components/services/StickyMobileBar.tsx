@@ -4,21 +4,24 @@ import Link from "next/link";
 import { PhoneIcon } from "@/components/ui/icons";
 
 interface Props {
-  /** ID of the element to observe. Bar slides up when this element leaves the viewport. */
-  sentinelId: string;
+  /** ID of the element to observe. Bar slides up when this element leaves the viewport.
+   *  When omitted the bar is always visible. */
+  sentinelId?: string;
 }
 
 /**
  * Mobile-only sticky CTA bar (hidden on sm and above).
  * Slides up once the sentinel element scrolls out of view.
+ * When sentinelId is omitted the bar is always visible.
  * Respects prefers-reduced-motion.
  */
 export default function StickyMobileBar({ sentinelId }: Props) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(!sentinelId);
 
   useEffect(() => {
+    if (!sentinelId) { setVisible(true); return; }
     const sentinel = document.getElementById(sentinelId);
-    if (!sentinel) return;
+    if (!sentinel) { setVisible(true); return; }
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(!entry.isIntersecting),
       { threshold: 0 },

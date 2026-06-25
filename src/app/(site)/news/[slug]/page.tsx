@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import ArticleBody from "@/components/news/ArticleBody";
 import HtmlContent from "@/components/news/HtmlContent";
 import JsonLd from "@/components/seo/JsonLd";
@@ -98,6 +99,7 @@ export default async function ArticlePage({
           image: post.coverImage,
         })}
       />
+      <StickyMobileBar />
       <PageBanner
         title={post.title}
         crumbs={[

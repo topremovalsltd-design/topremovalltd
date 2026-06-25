@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/home/ServiceCard";
 import CtaBand from "@/components/home/CtaBand";
@@ -14,6 +15,7 @@ export const metadata: Metadata = buildMetadata("services");
 export default function ServicesPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Our Services"
         crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}

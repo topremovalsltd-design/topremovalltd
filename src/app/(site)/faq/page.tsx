@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
@@ -99,6 +100,7 @@ const faqs: FaqItem[] = [
 export default function FaqPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="FAQ"
         subtitle="Answers to Your Moving Questions"

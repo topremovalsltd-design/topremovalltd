@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import BookingForm from "@/components/booking/BookingForm";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
@@ -10,6 +11,7 @@ export const metadata: Metadata = buildMetadata("book-a-service");
 export default function BookAServicePage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Book a Service"
         subtitle="Get Your Move Started"

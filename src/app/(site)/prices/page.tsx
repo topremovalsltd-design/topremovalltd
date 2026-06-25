@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import PageBanner from "@/components/layout/PageBanner";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CtaBand from "@/components/home/CtaBand";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
@@ -52,6 +53,7 @@ const householdNeeds = [
 export default function PricesPage() {
   return (
     <>
+      <StickyMobileBar />
       <PageBanner
         title="Prices"
         subtitle="Competitive Rates for Every Move"
