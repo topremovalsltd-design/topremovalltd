@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { buildMetadata, serviceH1, SITE_URL } from "@/lib/seo";
+import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -255,7 +255,7 @@ const faqs: FaqItem[] = [
   {
     question: "How much does an office move cost in London?",
     answer:
-      "Office moves in London start from around £100 per workstation for a full-scale move with furniture, files and IT — though this is a generic guide figure. The total depends on crew size, IT complexity, furniture requirements, building access and any out-of-hours booking. A free on-site survey produces an accurate fixed-price quote with no hidden fees.",
+      "Office moves in London start from around £100 per workstation for a full-scale move with furniture, files and IT. This is a generic guide figure. The total depends on crew size, IT complexity, furniture requirements, building access and any out-of-hours booking. A free on-site survey produces an accurate fixed-price quote with no hidden fees.",
   },
   {
     question: "Can you move at the weekend or out of hours?",
@@ -265,7 +265,7 @@ const faqs: FaqItem[] = [
   {
     question: "How do you keep business downtime low?",
     answer:
-      "Through sequencing. IT equipment is prioritised and packed first so systems can come back online at the new address as early as possible. Evening and weekend moves let staff arrive at a functional new office on the next working day. A move coordinator confirms the sequencing plan before move day.",
+      "Through sequencing. IT equipment is prioritised and packed first so systems are back online at the new address as early as possible. Evening and weekend moves let staff arrive at a functional new office on the next working day. A move coordinator confirms the sequencing plan before move day.",
   },
   {
     question: "Can you move our IT equipment and servers?",
@@ -295,10 +295,10 @@ const faqs: FaqItem[] = [
     answer:
       "Red flags include: no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no BAR or NGRS membership, no on-site survey offered before quoting, and no named move coordinator for your job. Request all policies and accreditation certificates before signing any booking.",
     bullets: [
-      "No written fixed-price quote — verbal estimates are not binding",
+      "No written fixed-price quote: verbal estimates are not binding",
       "No proof of goods-in-transit insurance",
       "No BAR, NGRS or equivalent accreditation",
-      "No on-site survey — quoting blind without seeing the IT or access",
+      "No on-site survey: quoting blind without seeing the IT or access",
       "No move coordinator named on your booking",
     ],
   },
@@ -310,10 +310,28 @@ const faqs: FaqItem[] = [
   {
     question: "Do you provide storage for office moves?",
     answer:
-      "Yes. Business storage in a 24/7 CCTV-monitored London facility is available for phased moves, short-notice relocations or any job with a gap between moving out and moving in. Storage can be booked as part of the removal or as a standalone service.",
+      "Yes. Business storage in a 24/7 CCTV-monitored London facility is available for phased moves, short-notice relocations or any job with a gap between moving out and moving in. Storage is bookable as part of the removal or as a standalone service.",
     answerAfter: "See the storage page for containerised unit options.",
   },
 ];
+
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+const orgSchema = organizationLd();
+
+const officeBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Office Removals London", href: "/office-removals" },
+]);
 
 /* ═══════════════════════════════════════════════════════════ */
 
@@ -322,12 +340,15 @@ export default function OfficeRemovalsPage() {
     <>
       <JsonLd data={officeRemovalsSchema} />
       <JsonLd data={howToSchema} />
+      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...orgSchema }} />
+      <JsonLd data={officeBreadcrumb} />
 
       {/* ── S1: Hero ── */}
       <PageBanner
         title="Office Removals London"
         h1={serviceH1["office-removals"]}
-        subtitle="Minimal Downtime · Fully Insured · BAR Accredited"
+        subtitle="Minimal Downtime · Out-of-Hours Moves · IT and Server Relocation · Accredited and Insured"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -344,7 +365,7 @@ export default function OfficeRemovalsPage() {
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
                 Top Removals manages London office relocations from <strong>one desk to
-                500-plus staff</strong> — with minimal business downtime. Evening and weekend
+                500-plus staff</strong>, with minimal business downtime. Evening and weekend
                 moves, IT and server handling, furniture dismantling and WEEE-licensed recycling
                 are all part of the same managed service, fully insured and BAR accredited.
               </p>
@@ -360,7 +381,7 @@ export default function OfficeRemovalsPage() {
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  Get a Quote
+                  Quick Quote
                 </Button>
                 <Button
                   href="/bookservice"
@@ -368,7 +389,7 @@ export default function OfficeRemovalsPage() {
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  Book a Free Survey
+                  Book a Service
                 </Button>
                 <Button
                   href="tel:+442072052525"
@@ -411,7 +432,7 @@ export default function OfficeRemovalsPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://www.top-removals.co.uk/wp-content/uploads/2026/04/office-move-in-London.jpg"
-                  alt="office move in London — managed commercial relocation by Top Removals"
+                  alt="Top Removals crew managing an office move in London with crates and IT equipment"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -556,7 +577,7 @@ export default function OfficeRemovalsPage() {
           >
             <p>
               Lost productivity is the real cost of an office move. A 100-person office idle for
-              even half a day represents a significant business cost — one that outweighs any saving
+              even half a day represents a significant business cost, one that outweighs any saving
               from a cheaper mover. The way to keep downtime low is through sequencing, timing and
               a coordinator who owns the plan.
             </p>
@@ -568,8 +589,8 @@ export default function OfficeRemovalsPage() {
               and placed first at the new address so reconnection can begin immediately.
             </p>
             <p>
-              Phased moves — where departments or floors are relocated in stages over multiple
-              evenings or weekends — reduce disruption further for larger organisations. Interim
+              Phased moves, where departments or floors are relocated in stages over multiple
+              evenings or weekends, reduce disruption further for larger organisations. Interim
               storage is available for any items not moving in the first phase. A move coordinator
               is assigned to every job to manage the sequencing plan and act as a single point of
               contact throughout.
@@ -633,8 +654,8 @@ export default function OfficeRemovalsPage() {
               business day starts.
             </p>
             <p>
-              Decommissioned IT equipment — obsolete servers, monitors, printers and electrical
-              devices — is collected and recycled to WEEE (Waste Electrical and Electronic
+              Decommissioned IT equipment including obsolete servers, monitors, printers and
+              electrical devices is collected and recycled to WEEE (Waste Electrical and Electronic
               Equipment) standards. Top Removals is a registered UK Environment Agency waste
               carrier, so disposal is documented and compliant.{" "}
               <Link
@@ -803,7 +824,7 @@ export default function OfficeRemovalsPage() {
             data-reveal
           >
             <p>
-              A full-scale office move in London — covering furniture, files and IT — costs from
+              A full-scale office move in London, covering furniture, files and IT, costs from
               around <strong>£100 per workstation</strong> as a generic guide, plus VAT at 20%.
               This figure varies significantly depending on the scope of the job. A one-desk move
               costs far less than a 50-person relocation with a comms room. The free on-site survey
@@ -819,8 +840,7 @@ export default function OfficeRemovalsPage() {
               What affects the total cost of an office move?
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/85">
-              Eight factors drive the final price. Understanding them helps you identify where to
-              optimise budget and where to invest in protection.
+              Eight factors drive the final price. Use them to identify where to optimise budget and where to invest in protection.
             </p>
             <CheckList items={costFactors} columns={2} className="mt-6" />
             <div className="mt-6 flex flex-wrap gap-3">
@@ -852,7 +872,7 @@ export default function OfficeRemovalsPage() {
           >
             Commercial buyers require more than a verbal assurance. The accreditations below are
             independently verified and renewed annually. Each one carries a real complaints or
-            claims process. Insurance limits can be tailored to the value of the move.
+            claims process. Insurance limits are tailored to the value of the move on request.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -891,13 +911,13 @@ export default function OfficeRemovalsPage() {
                 Public liability insurance
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/80">
-                Covers damage caused to your premises — floors, walls, lifts, door frames — by the
+                Covers damage caused to your premises (floors, walls, lifts, door frames) by the
                 crew during the move. Active on every booking without exception.
               </p>
             </div>
             <div data-reveal data-delay="3" className="rounded-2xl bg-brand-orange p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
-                UK Environment Agency — licensed waste carrier
+                UK Environment Agency: Licensed Waste Carrier
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/90">
                 Registered waste carrier (reg. CBDL25630) covering the legal disposal and
@@ -942,7 +962,7 @@ export default function OfficeRemovalsPage() {
             <p>
               Commercial building access in London is rarely straightforward. Managed buildings
               require goods lift bookings, loading bay reservations, and out-of-hours building
-              management liaison — all arranged by the operations team in advance. Where the council
+              management liaison, all arranged by the operations team in advance. Where the council
               requires a parking suspension for the loading vehicle, this is arranged with the
               relevant borough as part of move planning, typically 2 to 5 working days before
               move day.
@@ -1004,11 +1024,11 @@ export default function OfficeRemovalsPage() {
               </p>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Small offices and single-room studios — from one desk, no minimum",
-                  "Startups and scale-ups — flexible booking, same-day options available",
-                  "SMBs across one or two floors — standard managed relocation with IT and furniture",
-                  "Corporate multi-floor moves — phased sequencing, RAMS, building management liaison",
-                  "Warehouse and stock transfers — floor-level and heavy-load handling",
+                  "Small offices and single-room studios, from one desk, no minimum",
+                  "Startups and scale-ups, flexible booking, same-day options available",
+                  "SMBs across one or two floors, standard managed relocation with IT and furniture",
+                  "Corporate multi-floor moves, phased sequencing, RAMS, building management liaison",
+                  "Warehouse and stock transfers, floor-level and heavy-load handling",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
                     <CheckIcon

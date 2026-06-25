@@ -67,7 +67,7 @@ export const META: Record<string, MetaEntry> = {
   "office-removals": {
     title: "Office Removals London | Minimal Downtime, Insured | Top Removals",
     description:
-      "Office removals in London with minimal downtime and out-of-hours moves. Fully insured and accredited, with IT and server relocation. From about £100 per workstation.",
+      "Office removals in London with minimal downtime and out-of-hours moves. Accredited, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
     path: "/office-removals",
   },
   "international-removals": {
