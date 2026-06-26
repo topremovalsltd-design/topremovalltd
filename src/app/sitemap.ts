@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, META } from "@/lib/seo";
+import { SITE_URL, META, withTrailingSlash } from "@/lib/seo";
 import { getPostSlugs } from "@/lib/news";
 import { getDbPosts, getAreas } from "@/lib/cms";
 import { boroughs } from "@/lib/boroughs";
@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   return paths.map((path) => ({
-    url: `${SITE_URL}${path === "/" ? "" : path}`,
+    url: `${SITE_URL}${withTrailingSlash(path)}`,
     lastModified: now,
     changeFrequency: path === "/" ? "weekly" : "monthly",
     priority: path === "/" ? 1 : 0.7,

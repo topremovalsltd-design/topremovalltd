@@ -21,7 +21,7 @@ export const SITE = {
     country: "GB",
   },
   geo: { lat: 51.4815, lng: 0.2361 },
-  // Social/citation set — kept byte-identical to the footer links so the
+  // Social/citation set, kept byte-identical to the footer links so the
   // entity's sameAs and the visible footer never diverge.
   sameAs: [
     "https://www.facebook.com/topremovalsltd",
@@ -217,17 +217,25 @@ export const META: Record<string, MetaEntry> = {
   },
 };
 
+/** Canonical URL format is trailing-slash, to match the live WordPress URLs. */
+export function withTrailingSlash(path: string): string {
+  if (!path.startsWith("/")) return path;
+  if (path === "/") return "/";
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 /** Build Next.js Metadata for a known page id, with canonical + OpenGraph + robots. */
 export function buildMetadata(id: keyof typeof META): Metadata {
   const m = META[id];
+  const canonical = withTrailingSlash(m.path);
   return {
     title: m.title,
     description: m.description,
-    alternates: { canonical: m.path },
+    alternates: { canonical },
     openGraph: {
       title: m.title,
       description: m.description,
-      url: m.path,
+      url: canonical,
       siteName: SITE.name,
       type: "website",
     },
@@ -278,7 +286,7 @@ const BUSINESS_AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Westminster" },
 ];
 
-/** Confirmed live accreditation set — exact six bodies, no CTSI, no FORS. */
+/** Confirmed live accreditation set: exact six bodies, no CTSI, no FORS. */
 const BUSINESS_CREDENTIALS = [
   "British Association of Removers (BAR)",
   "National Guild of Removers and Storers (NGRS)",
@@ -295,11 +303,11 @@ const BUSINESS_CREDENTIALS = [
 /**
  * The single canonical #organization node, rendered site-wide via siteGraphLd().
  * All other graphs (services, articles) reference it by @id rather than
- * re-declaring it — so there is exactly one org entity per page.
+ * re-declaring it, so there is exactly one org entity per page.
  */
 export function organizationLd() {
   return {
-    // CONFIRM: legal/brand name — reviews and footer suggest "Top Removals Ltd", Company No. 6874216; use the registered name
+    // CONFIRM: legal/brand name, reviews and footer suggest "Top Removals Ltd", Company No. 6874216; use the registered name
     "@type": "MovingCompany", // inherits LocalBusiness and Organization; no type array needed
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
@@ -376,7 +384,7 @@ export function breadcrumbLd(crumbs: Crumb[]) {
       "@type": "ListItem",
       position: i + 1,
       name: c.label,
-      ...(c.href ? { item: `${SITE.url}${c.href}` } : {}),
+      ...(c.href ? { item: `${SITE.url}${withTrailingSlash(c.href)}` } : {}),
     })),
   };
 }
@@ -430,7 +438,7 @@ export function serviceLd({
     name,
     description,
     serviceType: name,
-    url: `${SITE.url}${path}`,
+    url: `${SITE.url}${withTrailingSlash(path)}`,
     areaServed: "London, United Kingdom",
     provider: { "@id": `${SITE.url}/#organization` },
   };
@@ -459,12 +467,12 @@ export function articleLd({
     "@type": "BlogPosting",
     headline: title,
     description,
-    url: `${SITE.url}${path}`,
+    url: `${SITE.url}${withTrailingSlash(path)}`,
     ...(image ? { image: image.startsWith("http") ? image : `${SITE.url}${image}` } : {}),
     ...(iso ? { datePublished: iso, dateModified: iso } : {}),
     author: { "@type": "Person", name: author },
     publisher: { "@id": `${SITE.url}/#organization` },
-    mainEntityOfPage: `${SITE.url}${path}`,
+    mainEntityOfPage: `${SITE.url}${withTrailingSlash(path)}`,
   };
 }
 

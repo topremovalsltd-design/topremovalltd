@@ -9,7 +9,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Faq from "@/components/services/Faq";
 import Accreditations from "@/components/home/Accreditations";
 import { CheckIcon } from "@/components/ui/icons";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, withTrailingSlash } from "@/lib/seo";
 import { boroughs, type Borough } from "@/lib/boroughs";
 
 /* Confirmed company data, identical for every borough. */
@@ -57,7 +57,7 @@ function boroughSchema(b: Borough) {
           containsPlace: b.postcodes,
         },
         name: b.h1,
-        url: `${SITE_URL}/areas/${b.slug}`,
+        url: `${SITE_URL}${withTrailingSlash(`/areas/${b.slug}`)}`,
         offers: {
           "@type": "Offer",
           priceSpecification: {
@@ -73,8 +73,8 @@ function boroughSchema(b: Borough) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Areas", item: `${SITE_URL}/areas` },
-          { "@type": "ListItem", position: 3, name: b.name, item: `${SITE_URL}/areas/${b.slug}` },
+          { "@type": "ListItem", position: 2, name: "Areas", item: `${SITE_URL}/areas/` },
+          { "@type": "ListItem", position: 3, name: b.name, item: `${SITE_URL}${withTrailingSlash(`/areas/${b.slug}`)}` },
         ],
       },
       {

@@ -31,10 +31,18 @@ const redirectPairs: [string, string][] = [
 ];
 
 const nextConfig: NextConfig = {
+  // Match the live WordPress URL format (trailing slash) so every existing
+  // ranking URL is preserved at cutover with no mass redirect. Next.js 308s the
+  // non-slash form to the slash form, so each page resolves at one URL.
+  trailingSlash: true,
   async redirects() {
+    // With trailingSlash:true, both ends must carry the slash so each old URL
+    // reaches its destination in a single 308 hop, with no slash-normalisation
+    // chain (e.g. /about/ -> /about-us/, not /about/ -> /about-us -> /about-us/).
+    const slash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
     return redirectPairs.map(([source, destination]) => ({
-      source,
-      destination,
+      source: slash(source),
+      destination: slash(destination),
       permanent: true,
     }));
   },

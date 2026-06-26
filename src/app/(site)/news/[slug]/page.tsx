@@ -7,7 +7,7 @@ import ArticleBody from "@/components/news/ArticleBody";
 import HtmlContent from "@/components/news/HtmlContent";
 import Link from "next/link";
 import JsonLd from "@/components/seo/JsonLd";
-import { articleLd, breadcrumbLd } from "@/lib/seo";
+import { articleLd, breadcrumbLd, withTrailingSlash } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
@@ -66,14 +66,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await resolvePost(slug);
   if (!post) return { title: "Article Not Found | Top Removals" };
+  const canonical = withTrailingSlash(`/news/${slug}`);
   return {
     title: `${post.title} | Top Removals`,
     description: post.excerpt,
-    alternates: { canonical: `/news/${slug}` },
+    alternates: { canonical },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `/news/${slug}`,
+      url: canonical,
       type: "article",
       images: post.coverImage ? [post.coverImage] : undefined,
     },

@@ -9,7 +9,7 @@ import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 import BoroughPage from "@/components/areas/BoroughPage";
 import { boroughs } from "@/lib/boroughs";
-import { SITE } from "@/lib/seo";
+import { SITE, withTrailingSlash } from "@/lib/seo";
 import { getAreaBySlug } from "@/lib/cms";
 
 export const dynamic = "force-dynamic";
@@ -24,14 +24,15 @@ export async function generateMetadata({
   // Borough guide pages (rich, registry-driven) take precedence over CMS areas.
   const borough = boroughs[slug];
   if (borough) {
+    const canonical = withTrailingSlash(`/areas/${borough.slug}`);
     return {
       title: borough.metaTitle,
       description: borough.metaDescription,
-      alternates: { canonical: `/areas/${borough.slug}` },
+      alternates: { canonical },
       openGraph: {
         title: borough.metaTitle,
         description: borough.metaDescription,
-        url: `/areas/${borough.slug}`,
+        url: canonical,
         siteName: SITE.name,
         type: "website",
       },
@@ -43,7 +44,7 @@ export async function generateMetadata({
   return {
     title: `Removals in ${area.name} | Top Removals`,
     description: area.intro || `Top Removals services in ${area.name}.`,
-    alternates: { canonical: `/areas/${slug}` },
+    alternates: { canonical: withTrailingSlash(`/areas/${slug}`) },
   };
 }
 
