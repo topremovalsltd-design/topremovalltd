@@ -7,6 +7,9 @@ import HtmlContent from "@/components/news/HtmlContent";
 import CtaBand from "@/components/home/CtaBand";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
+import BoroughPage from "@/components/areas/BoroughPage";
+import { boroughs } from "@/lib/boroughs";
+import { SITE } from "@/lib/seo";
 import { getAreaBySlug } from "@/lib/cms";
 
 export const dynamic = "force-dynamic";
@@ -17,6 +20,24 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+
+  // Borough guide pages (rich, registry-driven) take precedence over CMS areas.
+  const borough = boroughs[slug];
+  if (borough) {
+    return {
+      title: borough.metaTitle,
+      description: borough.metaDescription,
+      alternates: { canonical: `/areas/${borough.slug}` },
+      openGraph: {
+        title: borough.metaTitle,
+        description: borough.metaDescription,
+        url: `/areas/${borough.slug}`,
+        siteName: SITE.name,
+        type: "website",
+      },
+    };
+  }
+
   const area = await getAreaBySlug(slug);
   if (!area) return { title: "Area Not Found | Top Removals" };
   return {
@@ -32,6 +53,10 @@ export default async function AreaPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  const borough = boroughs[slug];
+  if (borough) return <BoroughPage borough={borough} />;
+
   const area = await getAreaBySlug(slug);
   if (!area) notFound();
 

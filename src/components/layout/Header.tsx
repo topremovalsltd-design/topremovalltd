@@ -34,7 +34,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center" aria-label="Top Removals London — home">
+        <Link href="/" className="flex items-center" aria-label="Top Removals London home">
           <Image
             src="/logo.png"
             alt="Top Removals London"

@@ -10,7 +10,7 @@ import Faq from "@/components/services/Faq";
 import Accreditations from "@/components/home/Accreditations";
 import { CheckIcon } from "@/components/ui/icons";
 import { SITE_URL } from "@/lib/seo";
-import type { Borough } from "@/lib/boroughs";
+import { boroughs, type Borough } from "@/lib/boroughs";
 
 /* Confirmed company data, identical for every borough. */
 const ACCREDITATIONS = [
@@ -341,16 +341,24 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
         <div className="mx-auto max-w-3xl px-4">
           <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            We also serve the boroughs that border {b.name}. See our area pages for{" "}
-            {b.nearby.map((n, i) => (
-              <span key={n.href}>
-                <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
-                  {n.label}
-                </Link>
-                {i < b.nearby.length - 2 ? ", " : i === b.nearby.length - 2 ? " and " : ""}
-              </span>
-            ))}
-            , or view every area on our{" "}
+            We also serve the boroughs that border {b.name}, including{" "}
+            {b.nearby.map((n, i) => {
+              const slug = n.href.replace("/areas/", "");
+              const built = Boolean(boroughs[slug]);
+              return (
+                <span key={n.href}>
+                  {built ? (
+                    <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                      {n.label}
+                    </Link>
+                  ) : (
+                    <span className="font-medium text-brand-navy">{n.label}</span>
+                  )}
+                  {i < b.nearby.length - 2 ? ", " : i === b.nearby.length - 2 ? " and " : ""}
+                </span>
+              );
+            })}
+            . View every area on our{" "}
             <Link href="/areas" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
               coverage hub
             </Link>
