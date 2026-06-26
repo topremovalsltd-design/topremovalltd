@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import Image from "next/image";
+import Link from "next/link";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -14,9 +16,29 @@ export const metadata: Metadata = buildMetadata("about");
 
 const highlights = ["7 Days A Week", "Full Nationwide Coverage", "Affordable Rates"];
 
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${SITE_URL}/about-us#aboutpage`,
+  url: `${SITE_URL}/about-us`,
+  name: "About Top Removals London",
+  description:
+    "The story, founders, accreditations and people behind Top Removals, a decade-established, BAR and NGRS accredited, fully insured London moving company.",
+  mainEntity: { "@id": `${SITE_URL}/#organization` },
+  about: { "@id": `${SITE_URL}/#organization` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
+const aboutBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+]);
+
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={aboutPageSchema} />
+      <JsonLd data={aboutBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="About Us"
@@ -40,17 +62,20 @@ export default function AboutPage() {
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Top Removals was created a decade ago by two friends – Emil Perushanov and Dimitar
+                Top Removals was created a decade ago by two friends, Emil Perushanov and Dimitar
                 Dimitrov. From the start, the goal was to become one of the best and most trusted
-                moving companies in London. Their hard work has paid off, and the business began to
-                grow. Top Removals was featured on one of the biggest removals magazines The Mover
-                and won numerous awards and certificates.
+                moving companies in London. Their hard work has paid off, and the business has grown
+                steadily since. Top Removals was featured in The Mover, one of the leading removals
+                trade magazines.
               </p>
               <p>
-                Nowadays the company is a proud member of BAR (British Association of Removers) and
-                the NGRS (the National Guild of Removers and Storers). Top Removals closely follows
-                their policies in regards to the customer service, insurance, safety and quality
-                control.
+                Today the company is a proud member of BAR (British Association of Removers) and the
+                NGRS (the National Guild of Removers and Storers). Top Removals closely follows their
+                policies on customer service, insurance, safety and quality control. You can{" "}
+                <Link href="/certificates" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  view our certificates and accreditations
+                </Link>{" "}
+                in full.
               </p>
               <p>
                 We try to better ourselves and the services we provide with each year. There is no
@@ -110,20 +135,38 @@ export default function AboutPage() {
                 <p>
                   We have strict internal rules when it comes to communication with customers and the
                   overall delivery of our services. If there is a problem, we do our best to resolve
-                  it fast and efficient. All of the moving services come with insurance that is
-                  included in the price. Minimal customer effort, for maximum good results – this is
-                  one of our basic principles.
+                  it fast and efficiently. All of the moving services come with insurance that is
+                  included in the price. Minimal customer effort for maximum results, this is one of
+                  our basic principles.
                 </p>
                 <p>
                   All of our employees are vetted and have undergone a background check. We are
-                  extremely serious when it comes to the safety and comfort of our customers. So Top
-                  Removals don&apos;t hire employees at random.
+                  serious about the safety and comfort of our customers, so Top Removals does not hire
+                  employees at random.
                 </p>
                 <p>
                   With a solid network of international partners and storage facilities, Top Removals
-                  is a trusted service provider. Our modern fleet, reasonable prices and additional
-                  services like packing, crate hire, single item delivery, house cleaning, etc. allow
-                  us to execute the relocation from start to finish.
+                  is a trusted service provider. Our{" "}
+                  <Link href="/our-fleet" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                    modern fleet
+                  </Link>
+                  , reasonable prices and additional services like{" "}
+                  <Link href="/packing-service" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                    packing
+                  </Link>
+                  ,{" "}
+                  <Link href="/crate-hire" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                    crate hire
+                  </Link>
+                  ,{" "}
+                  <Link href="/single-item" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                    single item delivery
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                    secure storage
+                  </Link>{" "}
+                  let us handle a relocation from start to finish.
                 </p>
                 <p>
                   We love to hear back from our customers and give them additional assistance if
@@ -153,11 +196,17 @@ export default function AboutPage() {
 
           <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-brand-orange/20 bg-white p-8 text-center shadow-sm">
             <p className="text-lg font-semibold text-brand-navy sm:text-xl">
-              Contact us now for a friendly, professional advice and a no-obligation quote.
+              Talk to us for friendly, professional advice and a no-obligation quote.
             </p>
-            <div className="mt-6 flex justify-center">
-              <Button href="/bookservice" variant="orange" size="lg">
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+                Quick Quote
+              </Button>
+              <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
                 Book a Service
+              </Button>
+              <Button href="tel:+442072052525" variant="outline" size="lg" className="w-full sm:w-auto">
+                020 7205 2525
               </Button>
             </div>
           </div>

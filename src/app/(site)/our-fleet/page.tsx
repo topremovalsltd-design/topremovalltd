@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import Link from "next/link";
+import { buildMetadata, breadcrumbLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
@@ -19,44 +21,66 @@ const fleet: Vehicle[] = [
   {
     model: "Iveco Stralis E6 460",
     dimensions:
-      "This 110 cbm road-train vehicle consists of a 26t truck with 18t trailer. Permissible gross weight – 40t",
+      "This 110 cbm road-train vehicle consists of a 26t truck with 18t trailer. Permissible gross weight is 40t",
     use: "The 19m long truck is used on our regular international removal service to and from Scandinavia. It is proven to be perfect for removals to Norway and quite stable in the unpredictable northern weather.",
   },
   {
     model: "Volvo FH440",
     dimensions:
-      "A 110 cbm road-train vehicle that is made of 18t truck and 18t trailer. Permissible gross weight – 36t",
+      "A 110 cbm road-train vehicle that is made of 18t truck and 18t trailer. Permissible gross weight is 36t",
     use: "It is primarily used for the services to and from Scandinavia and Central Europe.",
   },
   {
     model: "MAN TGL 12.180",
     dimensions:
-      "A 47 cbm truck that weights 11t and has a loading area of 8.10 x 2.50 x 2.30 m. Permissible gross weight – 12t",
-    use: "It is currently used on larger door-to-door domestic moves in and around London and the UK, and in the peak season – for services to and from Europe.",
+      "A 47 cbm truck that weights 11t and has a loading area of 8.10 x 2.50 x 2.30 m. Permissible gross weight is 12t",
+    use: "It is currently used on larger door-to-door domestic moves in and around London and the UK, and in the peak season for services to and from Europe.",
   },
   {
     model: "Peugeot Boxer Lo-loader",
     dimensions:
-      "This 3,5t van has 850cu ft volume and is specially designed and built to be used in the removal industry. Permissible gross weight – 3.5t",
+      "This 3,5t van has 850cu ft volume and is specially designed and built to be used in the removal industry. Permissible gross weight is 3.5t",
     use: "Used for local and UK wide moves as well as for serving all council tenants.",
   },
   {
     model: "Nissan NV400 Lo-loader",
     dimensions:
-      "The brand new van 850cu ft volume and can accommodate a load length of 4m with a payload of 1350kg. Permissible gross weight – 3.5t",
+      "The brand new van 850cu ft volume and can accommodate a load length of 4m with a payload of 1350kg. Permissible gross weight is 3.5t",
     use: "A very advanced and economic vehicle, used for local and UK wide moves.",
   },
   {
     model: "Fiat Ducato Lo-loader",
     dimensions:
-      "It has 850 cu ft of loading space and is 7m long. Permissible gross weight – 3.5t",
+      "It has 850 cu ft of loading space and is 7m long. Permissible gross weight is 3.5t",
     use: "It is ideal for London and UK wide moves.",
   },
 ];
 
+const fleetSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Top Removals vehicle fleet",
+  itemListElement: fleet.map((v, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Vehicle",
+      name: v.model,
+      description: v.use,
+    },
+  })),
+};
+
+const fleetBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Our Fleet", href: "/our-fleet" },
+]);
+
 export default function OurFleetPage() {
   return (
     <>
+      <JsonLd data={fleetSchema} />
+      <JsonLd data={fleetBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="Our Fleet"
@@ -74,7 +98,7 @@ export default function OurFleetPage() {
               Top Removals has a contract with a couple of rental companies and can increase the fleet
               in times of need, usually during the summer.
             </p>
-            <p>As of 2020, our fleet consists of the following types of vehicles:</p>
+            <p>Our fleet consists of the following types of vehicles:</p>
           </div>
 
           {/* Fleet cards */}
@@ -125,9 +149,28 @@ export default function OurFleetPage() {
               handle every unexpected situation they may run into adequately and efficiently.
             </p>
             <p>
-              There is no limit for the number of boxes and goods as long as the vehicles won&apos;t
+              There is no limit for the number of boxes and goods as long as the vehicles do not
               exceed their permissible gross weight. And if you are relocating a large office with a
               big inventory, we will just use a couple of trucks or vans to deliver the services.
+            </p>
+            <p>
+              The right vehicle is matched to your move. Smaller vans suit a{" "}
+              <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                man and van
+              </Link>{" "}
+              booking or a single collection, mid-size trucks handle a full{" "}
+              <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                house removal
+              </Link>
+              , and our road-trains run the{" "}
+              <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                international service
+              </Link>
+              , including the weekly{" "}
+              <Link href="/removals-services-to-norway" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                removals to Norway
+              </Link>
+              .
             </p>
           </div>
         </div>
@@ -136,8 +179,9 @@ export default function OurFleetPage() {
       <CtaBand
         heading="Ready to Plan Your Move?"
         actions={[
-          { label: "Quick Quote", href: "/quick-quote", variant: "navy" },
+          { label: "Quick Quote", href: "/bookservice#quick-quote", variant: "navy" },
           { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
+          { label: "020 7205 2525", href: "tel:+442072052525", variant: "outline-light" },
         ]}
       />
 

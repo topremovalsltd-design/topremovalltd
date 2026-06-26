@@ -3,13 +3,12 @@ import Image from "next/image";
 import { StarIcon } from "@/components/ui/icons";
 
 const badges = [
-  { src: "/memberof/advance-payment-guarantee.png", name: "BAR Advance Payment Guarantee" },
-  { src: "/memberof/ngrs.png", name: "National Guild of Removers and Storers" },
-  { src: "/memberof/iamx.png", name: "IAMX Validated" },
+  { src: "/memberof/advance-payment-guarantee.png", name: "British Association of Removers (BAR)" },
+  { src: "/memberof/ngrs.png", name: "National Guild of Removers and Storers (NGRS)" },
+  { src: "/memberof/IAM.png", name: "International Association of Movers (IAM)" },
+  { src: "/memberof/removals-ombudsman.png", name: "The Furniture Ombudsman" },
+  { src: "/memberof/quality-assured.png", name: "QSS-DW Approved Mover" },
   { src: "/memberof/checkatrade.webp", name: "Checkatrade" },
-  { src: "/memberof/IAM.png", name: "International Association of Movers" },
-  { src: "/memberof/removals-ombudsman.png", name: "Removals Industry Ombudsman Scheme" },
-  { src: "/memberof/quality-assured.png", name: "Quality Assured Service Standards" },
 ];
 
 export default function Accreditations() {
@@ -39,7 +38,7 @@ export default function Accreditations() {
         <div className="my-8 flex items-center gap-4">
           <span className="flex-1 border-t border-black/10" />
           <p className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/50">
-            Trusted and certified by &mdash;{" "}
+            Trusted and certified by{" "}
             <Link
               href="/certificates"
               className="normal-case text-brand-orange underline underline-offset-2 transition hover:text-brand-navy"
@@ -48,26 +47,6 @@ export default function Accreditations() {
             </Link>
           </p>
           <span className="flex-1 border-t border-black/10" />
-        </div>
-
-        {/* BAR + CTSI Approved Code live verification widget */}
-        <div className="mb-8 flex justify-center" data-reveal>
-          <div className="rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5">
-            {/*
-              Replace the img tag below with the live embed script from your
-              BAR / TradingStandards.uk member dashboard. The widget will show
-              the live "CLICK TO VERIFY" badge with the current expiry date.
-              Until the embed code is available the static fallback image is shown.
-            */}
-            <Image
-              src="/memberof/bar-ctsi-approved.png"
-              alt="BAR and CTSI Approved Code TradingStandards.uk verification badge"
-              width={220}
-              height={110}
-              className="h-[88px] w-auto object-contain"
-              unoptimized
-            />
-          </div>
         </div>
 
         {/* Badge row */}

@@ -20,10 +20,13 @@ export const SITE = {
     country: "GB",
   },
   geo: { lat: 51.4815, lng: 0.2361 },
+  // Social/citation set — kept byte-identical to the footer links so the
+  // entity's sameAs and the visible footer never diverge.
   sameAs: [
+    "https://www.facebook.com/topremovalsltd",
+    "https://x.com/topremovalsltd",
+    "https://www.linkedin.com/company/top-removals",
     "https://uk.trustpilot.com/review/www.top-removals.co.uk",
-    // CONFIRM: add the resolved canonical Google Maps place URL (resolve share link https://share.google/uDZ9ZSuyBZYCPAZIV → full maps.google.com/... URL)
-    // CONFIRM: add only real owned social and Companies House URLs — Facebook, Twitter, LinkedIn unverified and omitted
   ],
 };
 
@@ -47,9 +50,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/",
   },
   about: {
-    title: "Top Removals London - Your Trusted Moving Partner | About Us",
+    title: "About Top Removals London | Your Trusted Moving Partner",
     description:
-      "No metter if you need us for house or office moving, we are here for you. It is important to know who will move your belongings so get to know us.",
+      "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, BAR and NGRS accredited, fully insured. Get to know the team behind your move.",
     path: "/about-us",
   },
   services: {
@@ -189,14 +192,14 @@ export const META: Record<string, MetaEntry> = {
   terms: {
     title: "Terms and Conditions - Top Removals",
     description:
-      "The BAR Model Terms and Conditions in use by Top Removals Limited — our quotation, your responsibilities, liability, cancellation and claims terms.",
+      "The BAR Model Terms and Conditions in use by Top Removals Limited. Our quotation, your responsibilities, liability, cancellation and claims terms.",
     path: "/terms-and-conditions",
     noindex: true,
   },
   privacy: {
     title: "Privacy Policy - Top Removals",
     description:
-      "How Top Removals collects, uses and protects your personal data in line with the GDPR — definitions, your rights, cookies and third-party services.",
+      "How Top Removals collects, uses and protects your personal data in line with the GDPR. Definitions, your rights, cookies and third-party services.",
     path: "/privacy-policy",
     noindex: true,
   },
@@ -269,14 +272,14 @@ const BUSINESS_AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Westminster" },
 ];
 
-/** CONFIRM: verify each accreditation is current before publishing. */
+/** Confirmed live accreditation set — exact six bodies, no CTSI, no FORS. */
 const BUSINESS_CREDENTIALS = [
   "British Association of Removers (BAR)",
   "National Guild of Removers and Storers (NGRS)",
-  "Fleet Operator Recognition Scheme (FORS)",
   "International Association of Movers (IAM)",
+  "The Furniture Ombudsman",
+  "QSS-DW Approved Mover",
   "Checkatrade",
-  "CTSI Trading Standards Approved Code",
 ].map((name) => ({
   "@type": "EducationalOccupationalCredential",
   credentialCategory: "certification",
@@ -294,10 +297,14 @@ export function organizationLd() {
     "@type": "MovingCompany", // inherits LocalBusiness and Organization; no type array needed
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
+    legalName: "Top Removals Ltd",
     url: `${SITE.url}/`,
     logo: SITE.logo,
-    // CONFIRM: image should be a real photo of crew or van, not the logo — set once confirmed
-    // CONFIRM: foundingDate — "Top Removals turns 10" signals founding year; add once confirmed
+    // Founded a decade ago by two friends; exact foundingDate omitted until confirmed.
+    founder: [
+      { "@type": "Person", name: "Emil Perushanov" },
+      { "@type": "Person", name: "Dimitar Dimitrov" },
+    ],
     telephone: SITE.telephone,
     priceRange: "££", // CONFIRM this reflects reality
     // CONFIRM: add openingHoursSpecification once trading hours are verified; omit rather than guess
