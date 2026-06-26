@@ -15,7 +15,8 @@ export const SITE = {
     street: "Unit C1A Purfleet Industrial Park, Kerry Avenue",
     locality: "Purfleet",
     region: "Essex",
-    // CONFIRM: NAP conflict — footer says RM15 4YA, Trustpilot lists RM15 4YE. Resolve and use one postcode here, in the footer, on Trustpilot and on GMB.
+    // NAP resolved to RM15 4YA site-wide (code, footer, contact, terms). External
+    // action: correct the Trustpilot listing from RM15 4YE to RM15 4YA to match.
     postalCode: "RM15 4YA",
     country: "GB",
   },

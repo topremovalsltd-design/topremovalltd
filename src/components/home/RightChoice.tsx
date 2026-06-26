@@ -46,10 +46,10 @@ export default function RightChoice() {
               We constantly try to better our company policies and the way of delivering the
               services. That is why Top Removals undergoes periodic checks and certification
               procedures. All of our movers attend briefings and customer services training. We are
-              recognised as a safe and reliable operator by FORS (Fleet Operator Recognition
-              Scheme), BAR and Checkatrade. Top Removals is certified by the Environmental Agency,
-              IAM (International Association of Movers) and many more, you can see the full list at
-              our Certificates page.
+              recognised as a safe and reliable operator by BAR, NGRS and Checkatrade. Top Removals
+              is also a member of the IAM (International Association of Movers) and The Furniture
+              Ombudsman, and a registered Environment Agency waste carrier. See the full list on our
+              Certificates page.
             </p>
           </div>
         </div>

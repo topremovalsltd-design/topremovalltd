@@ -650,7 +650,7 @@ export default function OfficeRemovalsPage() {
               crews are trained to handle workstations, monitors, servers, UPS units, comms room
               hardware and specialist equipment. All items are moved in 165L anti-static IT crates.
               Cable bundles are labelled and secured before packing. Crates are available to hire
-              at £4.50 per week.
+              at £3.80 per week.
             </p>
             <p>
               The process starts with your IT lead. Before packing, your IT team disconnects
