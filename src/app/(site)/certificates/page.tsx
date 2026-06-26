@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import Link from "next/link";
+import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
+import Button from "@/components/ui/Button";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 
@@ -15,83 +18,80 @@ type Certificate = {
 
 const certificates: Certificate[] = [
   {
-    title: "The British Association of Removers – BAR",
+    title: "British Association of Removers (BAR)",
     paras: [
-      "BAR inspects and investigates all potential Members and matches them against criteria for membership that cover premises, vehicles, staff, operational procedures and insurance arrangements. BAR also has an ongoing inspection programme during membership to maintain standards. Through this programme and the Code of Practice Scheme, BAR constantly seeks to raise standards in the industry so Customers may receive the most efficient and trouble-free move possible.",
-      "Now, every deposit and/or advance payment is fully protected by BAR for your peace of mind. We know how important it is for our customers to feel secure, and this is why we went the extra mile.",
+      "BAR inspects and investigates all potential members and matches them against criteria for membership that cover premises, vehicles, staff, operational procedures and insurance arrangements. BAR also runs an ongoing inspection programme during membership to maintain standards. Through this programme and the Code of Practice Scheme, BAR works to raise standards in the industry so customers receive an efficient, trouble-free move.",
+      "Every deposit and advance payment is fully protected by the BAR Advance Payment Guarantee, for your peace of mind.",
+    ],
+  },
+  {
+    title: "National Guild of Removers and Storers (NGRS)",
+    paras: [
+      "One of the two main associations in the UK. Top Removals customers can be assured that the company is audited each year and offers industry-approved methods, materials and operational standards.",
+    ],
+  },
+  {
+    title: "International Association of Movers (IAM)",
+    paras: [
+      "IAM is the largest independent international association for moving companies. Membership shows that the company is approved, vetted and checked both financially and operationally, so customers can be confident when moving abroad. The company also participates in the payment protection program.",
+    ],
+  },
+  {
+    title: "The Furniture Ombudsman",
+    paras: [
+      "Top Removals participates in an independent ombudsman scheme that provides consumer protection and dispute resolution. It gives customers an impartial route to resolve any dispute, so you can book with confidence.",
+    ],
+  },
+  {
+    title: "QSS-DW Approved Mover",
+    paras: [
+      "Top Removals holds QSS-DW Approved Mover status, an independent quality standard for removals companies covering service quality and operational standards across domestic and international moves.",
     ],
   },
   {
     title: "Checkatrade",
     paras: [
-      "Checkatrade runs strict background checks on tradespeople before they can become members. Once they join, members agree to have feedback from their customers put online for all to see. They've published 4,285,055 to date.",
+      "Checkatrade runs strict background checks on tradespeople before they can become members. Once they join, members agree to have feedback from their customers published online for all to see.",
     ],
   },
   {
-    title: "Citation",
-    paras: ["Citation provides unrivalled HR and Health & Safety support and expertise."],
-  },
-  {
-    title: "FORS – Fleet Operator Recognition Scheme",
+    title: "Licensed Waste Carrier (Environment Agency CBDL25630)",
     paras: [
-      "The Fleet Operator Recognition Scheme is an accreditation scheme for fleet operators that aims to raise the quality level within fleet operations and demonstrate which operators are achieving exemplary levels of best practice in safety, efficiency, and environmental protection.",
+      "Top Removals is a registered waste carrier with the Environment Agency, registration CBDL25630. This lets us offer disposal services while we recycle waste where possible and limit the environmental impact. Waste electrical and electronic equipment (WEEE) is handled in line with the regulations.",
     ],
   },
   {
-    title: "Environmental Agency",
+    title: "Insurance Included",
     paras: [
-      "Allowing Top Removals to offer disposal services while the company endeavours to recycle all waste produced, limiting the environmental impact.",
-    ],
-  },
-  {
-    title: "IAM – International Association of Movers",
-    paras: [
-      "IAM is the largest independent international association for moving companies. The membership shows that the company is approved, vetted, checked both financially and operationally and that the customer can be confident in using the services when moving abroad. The company also participates in the payment protection program.",
-    ],
-  },
-  {
-    title: "Masternaut – Top Removals Is A Green Company",
-    paras: [
-      "We are happy to announce that Top Removals now has a Gold Certificate for reducing CO2 and CO2-equivalent emissions.",
-    ],
-  },
-  {
-    title: "National Guild of Removers and Storers",
-    paras: [
-      "One of the two main associations in the UK. Top Removals customers can be assured that the company is audited each year and it is offering industry-approved methods, materials and operational standards. As part of the membership, Top Removals participated in the Removals Ombudsman Scheme which offer consumer protection and dispute resolution services.",
-      "We even won awards for outstanding customer service.",
-    ],
-  },
-  {
-    title: "Perfect Record Award",
-    paras: [
-      "One more award we are very proud of. Received on October 1st 2024. Here is the letter it came with:",
-    ],
-    quote:
-      "A thank you to the directors and staff for their successful efforts to provide a superb removal service. We are delighted to forward you the prestigious Perfect Record Award Certificate. It is awarded by the Removals Ombudsman, presently Tony Kaye, and is only available to Removals Ombudsman Scheme participants with a perfect complaints record for the previous 12 months or more. The Award indicates to potential customers that you are to be trusted to safely transport their treasured possessions.",
-  },
-  {
-    title: "ICO – Information Commissioner's Office",
-    paras: [
-      "The ICO is the UK's independent authority set up to uphold information rights in the public interest, promote public body openness, and protect individuals' data privacy.",
-    ],
-  },
-  {
-    title:
-      "BS EN 12522-1 & 2 Furniture Removal Activities – Furniture Removal for Private Individuals",
-    paras: [
-      "After a rigorous auditing procedure, Top Removals has earned one of the most significant British Standards for Domestic Removals—BS EN 12522. It covers all aspects of the provided services, including the professionalism of the staff, competent customer service, quality packing materials, and adequate documentation.",
+      "Public liability and goods-in-transit insurance are included in the price of every moving service. Tailored cover and open cover for international moves are available through your move coordinator.",
     ],
   },
 ];
 
+const certificatesSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE_URL}/certificates#certificates`,
+  url: `${SITE_URL}/certificates`,
+  name: "Our Certificates and Accreditations",
+  about: { "@id": `${SITE_URL}/#organization` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
+const certificatesBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Certificates", href: "/certificates" },
+]);
+
 export default function CertificatesPage() {
   return (
     <>
+      <JsonLd data={certificatesSchema} />
+      <JsonLd data={certificatesBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
-        title="Certificates"
-        subtitle="Accredited & Trusted"
+        title="Our Certificates and Accreditations"
+        subtitle="Accredited, Licensed and Insured"
         crumbs={[{ label: "Home", href: "/" }, { label: "Certificates" }]}
       />
 
@@ -130,6 +130,42 @@ export default function CertificatesPage() {
                 )}
               </article>
             ))}
+          </div>
+
+          <p className="mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
+            Learn more{" "}
+            <Link href="/about-us" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              about Top Removals
+            </Link>
+            , explore our{" "}
+            <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              house
+            </Link>
+            ,{" "}
+            <Link href="/office-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              office
+            </Link>{" "}
+            and{" "}
+            <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              international
+            </Link>{" "}
+            removals, or{" "}
+            <Link href="/contactus" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              get in touch
+            </Link>
+            .
+          </p>
+
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              Quick Quote
+            </Button>
+            <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
+              Book a Service
+            </Button>
+            <Button href="tel:+442072052525" variant="outline" size="lg" className="w-full sm:w-auto">
+              020 7205 2525
+            </Button>
           </div>
         </div>
       </section>

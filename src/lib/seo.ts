@@ -189,6 +189,12 @@ export const META: Record<string, MetaEntry> = {
       "Are you about to move your house or office? Read the tips and tricks you may use while your house or office removal. Be prepared.",
     path: "/news",
   },
+  "current-offers": {
+    title: "Current Offers | Top Removals London",
+    description:
+      "Current offers from Top Removals. We focus on fair, transparent pricing every day, with savings when you combine services. Get a free no-obligation quote.",
+    path: "/current-offers",
+  },
   terms: {
     title: "Terms and Conditions - Top Removals",
     description:
