@@ -1,0 +1,399 @@
+import Image from "next/image";
+import Link from "next/link";
+import JsonLd from "@/components/seo/JsonLd";
+import PageBanner from "@/components/layout/PageBanner";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
+import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
+import Faq from "@/components/services/Faq";
+import Accreditations from "@/components/home/Accreditations";
+import { CheckIcon } from "@/components/ui/icons";
+import { SITE_URL } from "@/lib/seo";
+import type { Borough } from "@/lib/boroughs";
+
+/* Confirmed company data, identical for every borough. */
+const ACCREDITATIONS = [
+  "British Association of Removers (BAR)",
+  "National Guild of Removers and Storers (NGRS)",
+  "International Association of Movers (IAM)",
+  "The Furniture Ombudsman",
+  "QSS-DW Approved Mover",
+  "Checkatrade",
+];
+
+const PRICE_COLUMNS = ["Crew", "Per hour", "Half day, up to 4 hours", "Full day, up to 8 hours"];
+const PRICE_ROWS: PricingRow[] = [
+  { label: "1 mover and van", values: ["£55", "£210", "£420"] },
+  { label: "2 movers and van", values: ["from £70", "from £260", "from £500"] },
+  { label: "3 movers and van", values: ["from £90", "from £330", "from £620"] },
+];
+
+const SERVICES: { label: string; href: string; text: string }[] = [
+  { label: "Man and Van London", href: "/man-and-van-london", text: "Man and van, for single items, small and up to two-bedroom moves, same day and 7 days." },
+  { label: "House Removals", href: "/house-removals", text: "House removals, studio to large family homes, end to end." },
+  { label: "Office Removals", href: "/office-removals", text: "Office removals, with minimal downtime and out-of-hours options." },
+  { label: "Packing Service", href: "/packing-service", text: "Packing service, full or partial, fragile and export packing." },
+  { label: "Storage", href: "/storage", text: "Storage, managed and containerised, we collect and seal." },
+  { label: "Rubbish Disposal", href: "/rubbish-disposal", text: "Rubbish disposal, licensed waste removal and clearance." },
+  { label: "Single Item", href: "/single-item", text: "Single item and marketplace delivery." },
+  { label: "International Removals", href: "/international-removals", text: "International removals, with our own European fleet." },
+];
+
+const PHONE_HREF = "tel:+442072052525";
+const TRUSTPILOT = "https://uk.trustpilot.com/review/www.top-removals.co.uk";
+
+function boroughSchema(b: Borough) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        serviceType: "Removals and man and van",
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: {
+          "@type": "AdministrativeArea",
+          name: `London Borough of ${b.name}`,
+          containsPlace: b.postcodes,
+        },
+        name: b.h1,
+        url: `${SITE_URL}/areas/${b.slug}`,
+        offers: {
+          "@type": "Offer",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: "55.00",
+            priceCurrency: "GBP",
+            unitText: "per hour",
+            valueAddedTaxIncluded: false,
+          },
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Areas", item: `${SITE_URL}/areas` },
+          { "@type": "ListItem", position: 3, name: b.name, item: `${SITE_URL}/areas/${b.slug}` },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: b.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      },
+    ],
+  };
+}
+
+export default function BoroughPage({ borough: b }: { borough: Borough }) {
+  return (
+    <>
+      <JsonLd data={boroughSchema(b)} />
+      <StickyMobileBar sentinelId="borough-hero" />
+
+      <PageBanner
+        title={b.h1}
+        subtitle={b.subhead}
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Areas", href: "/areas" },
+          { label: b.name },
+        ]}
+      />
+
+      {/* Hero two-column */}
+      <section id="borough-hero" className="bg-white pt-12 pb-0">
+        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
+          <div>
+            <p className="text-lg font-semibold leading-relaxed text-brand-navy">{b.introLine}</p>
+            <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">{b.valueLine}</p>
+
+            <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-navy/10 bg-brand-navy/5 px-5 py-3">
+              <span className="text-2xl font-black text-brand-orange">From £55/hr</span>
+              <span aria-hidden="true" className="h-4 w-px bg-brand-charcoal/20" />
+              <span className="text-sm font-medium text-brand-charcoal/70">man and van, plus VAT</span>
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+                Quick Quote
+              </Button>
+              <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
+                Book a Service
+              </Button>
+              <Button href={PHONE_HREF} variant="outline" size="lg" className="w-full sm:w-auto">
+                Call 020 7205 2525
+              </Button>
+            </div>
+
+            <p className="mt-3 text-xs font-medium text-brand-charcoal/55">
+              Free quote, no obligation, same-day moves subject to availability.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {["Fully insured", "7 days a week", "Hundreds of Trustpilot reviews"].map((pill) => (
+                <span
+                  key={pill}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
+                >
+                  <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: image + trusted-by card */}
+          <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+            <div className="relative aspect-[4/3] w-full">
+              <Image
+                src={b.heroImage}
+                alt={b.heroImageAlt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="bg-brand-grey p-6">
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
+                Trusted and certified by
+              </p>
+              <ul className="space-y-2">
+                {ACCREDITATIONS.map((name) => (
+                  <li key={name} className="flex items-center gap-2">
+                    <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                    <span className="text-sm text-brand-navy/85">{name}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
+                <Link
+                  href={TRUSTPILOT}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                >
+                  Trustpilot reviews
+                </Link>
+                <Link
+                  href="/certificates"
+                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                >
+                  View certificates
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local team */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading
+            align="left"
+            eyebrow="Local team"
+            title={`Your Local Removals and Man and Van Team in ${b.name}`}
+          />
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
+            {b.localBody.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Coverage */}
+      <section className="bg-brand-sand py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading
+            align="left"
+            eyebrow="Coverage"
+            title={`Areas and Postcodes We Cover in ${b.name}`}
+          />
+          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.coverageIntro}</p>
+          <p className="mt-4 rounded-2xl border border-black/10 bg-white p-5 text-base font-medium leading-relaxed text-brand-navy">
+            {b.neighbourhoods}
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">{b.coverageOutro}</p>
+        </div>
+      </section>
+
+      {/* What we know */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading
+            align="left"
+            eyebrow="Local knowledge"
+            title={`Moving in ${b.name}, What We Know`}
+          />
+          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.knowIntro}</p>
+          <div className="mt-8 space-y-6">
+            {b.knowBlocks.map((blk) => (
+              <div key={blk.label} className="rounded-2xl border border-black/8 bg-brand-grey p-6">
+                <h3 className="text-base font-bold text-brand-navy">{blk.label}</h3>
+                <p className="mt-2 text-base leading-relaxed text-brand-charcoal/85">{blk.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Prices */}
+      <section className="bg-brand-grey py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <SectionHeading eyebrow="Transparent pricing" title={`Man and Van Prices in ${b.name}`} />
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+            Our man and van rates are published in full, charged by the hour with a two-hour minimum,
+            all plus VAT at 20 percent.
+          </p>
+          <PricingTable columns={PRICE_COLUMNS} rows={PRICE_ROWS} className="mx-auto mt-10" />
+          <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-charcoal/70">
+            The price includes loading, transport, unloading, parking fees and tolls, and
+            goods-in-transit insurance. For a full house or office move we give a fixed price after a
+            free survey. Tell us what you are moving and we will recommend the right crew and van size.
+          </p>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading eyebrow="One accredited company" title={`Our ${b.name} Services`} />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {SERVICES.map((s) => (
+              <div key={s.href} className="flex h-full flex-col rounded-2xl border border-black/8 bg-brand-grey p-6">
+                <p className="flex-1 text-sm leading-relaxed text-brand-charcoal/85">{s.text}</p>
+                <Link
+                  href={s.href}
+                  className="mt-4 text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+                >
+                  {s.label}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Accredited, insured, reviewed */}
+      <section className="bg-brand-navy py-16">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <SectionHeading tone="light" eyebrow="Trust" title="Accredited, Insured and Reviewed" />
+          <p className="mt-6 text-base leading-relaxed text-white/80">
+            Top Removals is a fully accredited mover. We are members of the British Association of
+            Removers and the National Guild of Removers and Storers, and we hold International
+            Association of Movers, The Furniture Ombudsman, QSS-DW and Checkatrade accreditation.
+            Every move includes goods-in-transit insurance in the price, and all of our crews are
+            vetted and background-checked.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-white/80">
+            We have hundreds of independent reviews on Trustpilot from customers across London and
+            beyond, with particular praise for our communication and the care our crews take. Read
+            them on our live{" "}
+            <a
+              href={TRUSTPILOT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-white"
+            >
+              Trustpilot profile
+            </a>
+            .
+          </p>
+          {/* TrustBox mount point: add the official Trustpilot embed here once the
+              business unit id is available, so the live rating and review count
+              display and update automatically. No reviews are fabricated. */}
+          <div id="trustpilot-trustbox" className="mt-6" />
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading align="left" eyebrow="Step by step" title={`How Your ${b.name} Move Works`} />
+          <ol className="mt-8 space-y-5">
+            {[
+              `Get a quote. Send your details for a free quote, or book a free survey for a larger move. We confirm the price and the plan.`,
+              `We plan the access. For ${b.name} we check parking and arrange a suspended bay where needed, and we plan the loading point around the local roads and your building's rules.`,
+              `We pack and protect. Optional full or partial packing, with proper protection for period staircases and shared entrances.`,
+              `We move you. Your accountable crew loads, transports and unloads, insured throughout, on your schedule.`,
+              `We finish the job. Optional clearance of anything left behind, under our licensed waste carrier registration.`,
+            ].map((step, i) => (
+              <li key={i} className="flex items-start gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange font-heading text-sm font-bold text-white">
+                  {i + 1}
+                </span>
+                <p className="text-base leading-relaxed text-brand-charcoal/85">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Nearby areas */}
+      <section className="bg-brand-sand py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
+          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
+            We also serve the boroughs that border {b.name}. See our area pages for{" "}
+            {b.nearby.map((n, i) => (
+              <span key={n.href}>
+                <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  {n.label}
+                </Link>
+                {i < b.nearby.length - 2 ? ", " : i === b.nearby.length - 2 ? " and " : ""}
+              </span>
+            ))}
+            , or view every area on our{" "}
+            <Link href="/areas" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              coverage hub
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* Get your quote */}
+      <section className="bg-brand-navy py-16">
+        <div className="mx-auto max-w-[88rem] px-4 text-center">
+          <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+            Get Your {b.name} Quote
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
+            Ready to move in {b.name}? Get a free, no-obligation quote today.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              Quick Quote
+            </Button>
+            <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
+              Book a Service
+            </Button>
+            <Button href={PHONE_HREF} variant="outline-light" size="lg" className="w-full sm:w-auto">
+              Call 020 7205 2525
+            </Button>
+          </div>
+          <p className="mt-6 text-sm text-white/50">
+            Accredited, insured, 7 days a week. Same-day moves subject to availability.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading eyebrow="Good to know" title={`${b.name} Removals FAQs`} />
+          <Faq items={b.faqs} className="mt-10" />
+        </div>
+      </section>
+
+      <Accreditations />
+    </>
+  );
+}

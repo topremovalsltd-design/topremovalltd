@@ -8,6 +8,7 @@ import CtaBand from "@/components/home/CtaBand";
 import Accreditations from "@/components/home/Accreditations";
 import { ArrowRight } from "@/components/ui/icons";
 import { getAreas } from "@/lib/cms";
+import { boroughs } from "@/lib/boroughs";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = buildMetadata("areas");
 
 export default async function AreasPage() {
   const areas = await getAreas();
+  const boroughList = Object.values(boroughs);
 
   return (
     <>
@@ -24,6 +26,31 @@ export default async function AreasPage() {
         subtitle="Removals Across London & Beyond"
         crumbs={[{ label: "Home", href: "/" }, { label: "Areas We Cover" }]}
       />
+
+      {boroughList.length > 0 && (
+        <section className="bg-brand-grey py-16">
+          <div className="mx-auto max-w-[88rem] px-4">
+            <h2 className="text-center text-sm font-bold uppercase tracking-widest text-brand-orange">
+              Borough removal guides
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
+              In-depth local guides with postcodes, parking, access and published prices.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {boroughList.map((b) => (
+                <Link
+                  key={b.slug}
+                  href={`/areas/${b.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-brand-navy shadow-sm transition hover:border-brand-orange hover:text-brand-orange"
+                >
+                  Removals in {b.name}
+                  <ArrowRight className="h-4 w-4 text-brand-orange" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
