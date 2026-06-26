@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import Link from "next/link";
+import { buildMetadata, breadcrumbLd, faqLd } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
+import Button from "@/components/ui/Button";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
@@ -93,13 +96,31 @@ const faqs: FaqItem[] = [
   {
     question: "14. Are there discounts if I book an additional moving or cleaning service?",
     answer:
-      "Customers can benefit from a range of discounts. Currently, we offer a 10% discount for any cleaning booked in addition to the removals. The added benefit is that we can coordinate both the moving and cleaning crews, making it easier to work and schedule tasks. The cleaning is done by a sister company – Top Cleaners and is fully guaranteed and insured service the company offers.",
+      "Customers can benefit from a range of discounts. Currently, we offer a 10% discount for any cleaning booked in addition to the removals. The added benefit is that we can coordinate both the moving and cleaning crews, making it easier to work and schedule tasks. The cleaning is done by a sister company, Top Cleaners, a fully guaranteed and insured service.",
   },
 ];
+
+/* FAQPage schema: strip the numeric prefix and fold bullets + answerAfter into
+   one answer string. Parsing/AEO only, referencing the homepage Organization. */
+const faqSchema = faqLd(
+  faqs.map((f) => {
+    const question = f.question.replace(/^\d+\.\s*/, "");
+    const bullets = f.bullets?.length ? ` ${f.bullets.join(", ")}.` : "";
+    const after = f.answerAfter ? ` ${f.answerAfter}` : "";
+    return { question, answer: `${f.answer}${bullets}${after}` };
+  }),
+);
+
+const faqBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "FAQ", href: "/faq" },
+]);
 
 export default function FaqPage() {
   return (
     <>
+      <JsonLd data={faqSchema} />
+      <JsonLd data={faqBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="FAQ"
@@ -116,6 +137,54 @@ export default function FaqPage() {
           </p>
 
           <Faq items={faqs} defaultOpen={null} className="mt-12" />
+
+          <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
+            For service-specific detail, see{" "}
+            <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              our prices
+            </Link>
+            ,{" "}
+            <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              house removals
+            </Link>
+            ,{" "}
+            <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              man and van
+            </Link>
+            ,{" "}
+            <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              storage
+            </Link>{" "}
+            and{" "}
+            <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              international removals
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* Still have a question */}
+      <section className="bg-brand-navy py-16">
+        <div className="mx-auto max-w-[88rem] px-4 text-center">
+          <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+            Still Have a Question?
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
+            Speak to a move coordinator 7 days a week. Call 020 7205 2525 or 0800 046 7877, or send
+            your details for a free no-obligation quote.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              Quick Quote
+            </Button>
+            <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
+              Book a Service
+            </Button>
+            <Button href="tel:+442072052525" variant="outline-light" size="lg" className="w-full sm:w-auto">
+              020 7205 2525
+            </Button>
+          </div>
         </div>
       </section>
 
