@@ -78,8 +78,8 @@ function boroughSchema(b: Borough) {
           { "@type": "ListItem", position: 3, name: b.name, item: `${SITE_URL}${withTrailingSlash(`/areas/${b.slug}`)}` },
         ],
       },
-      // No FAQPage or HowTo node: both were deprecated for rich results, so the
-      // on-page Q&A stays visible but is not marked up.
+      // FAQPage is emitted by the Faq component (parsing/AEO only, no rich-result
+      // expectation). HowTo is intentionally omitted.
     ],
   };
 }
@@ -426,7 +426,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Good to know" title={`${b.name} Removals FAQs`} />
-          <Faq items={b.faqs ?? []} className="mt-10" schema={false} />
+          <Faq items={b.faqs ?? []} className="mt-10" />
         </div>
       </section>
 

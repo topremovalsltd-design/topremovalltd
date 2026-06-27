@@ -89,7 +89,7 @@ export const islington: Borough = {
   name: "Islington",
   h1: "Removals in Islington",
   subhead: subhead("Islington", "N1, N5, N7, N19 and EC1"),
-  metaTitle: "Removals in Islington | Man and Van from £55/hr",
+  metaTitle: "Removals Islington | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Islington from £55/hr plus VAT. Local knowledge of N1, N5, N7, N19 and EC1 parking and property.",
   postcodes: ["N1", "N5", "N7", "N19", "EC1"],
@@ -163,7 +163,7 @@ export const camden: Borough = {
   name: "Camden",
   h1: "Removals in Camden",
   subhead: subhead("Camden", "NW1, NW3, NW5 and WC1"),
-  metaTitle: "Removals in Camden | Man and Van from £55/hr",
+  metaTitle: "Removals Camden | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Camden from £55/hr plus VAT. Local knowledge of Hampstead hills, parking and period access.",
   postcodes: ["NW1", "NW3", "NW5", "WC1"],
@@ -243,7 +243,7 @@ export const hackney: Borough = {
   name: "Hackney",
   h1: "Removals in Hackney",
   subhead: subhead("Hackney", "E2, E5, E8, E9, N1 and N16"),
-  metaTitle: "Removals in Hackney | Man and Van from £55/hr",
+  metaTitle: "Removals Hackney | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Hackney from £55/hr plus VAT. Local knowledge of warehouse conversions, estates and parking.",
   postcodes: ["E2", "E5", "E8", "E9", "N1", "N16"],
@@ -321,7 +321,7 @@ export const wandsworth: Borough = {
   name: "Wandsworth",
   h1: "Removals in Wandsworth",
   subhead: subhead("Wandsworth", "SW11, SW12, SW15, SW17 and SW18"),
-  metaTitle: "Removals in Wandsworth | Man and Van from £55/hr",
+  metaTitle: "Removals Wandsworth | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Wandsworth from £55/hr plus VAT. Local knowledge of terraces, riverside new-builds and parking.",
   postcodes: ["SW11", "SW12", "SW15", "SW17", "SW18"],
@@ -398,7 +398,7 @@ export const lambeth: Borough = {
   name: "Lambeth",
   h1: "Removals in Lambeth",
   subhead: subhead("Lambeth", "SW2, SW4, SW8, SW9, SW16 and SE11"),
-  metaTitle: "Removals in Lambeth | Man and Van from £55/hr",
+  metaTitle: "Removals Lambeth | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Lambeth from £55/hr plus VAT. Local knowledge of Clapham, Brixton, estates and parking.",
   postcodes: ["SW2", "SW4", "SW8", "SW9", "SW16", "SE11"],
@@ -475,7 +475,7 @@ export const towerHamlets: Borough = {
   name: "Tower Hamlets",
   h1: "Removals in Tower Hamlets",
   subhead: subhead("Tower Hamlets", "E1, E2, E3 and E14"),
-  metaTitle: "Removals in Tower Hamlets | Man and Van from £55/hr",
+  metaTitle: "Removals Tower Hamlets | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Tower Hamlets from £55/hr plus VAT. Canary Wharf high-rise moves, parking and access.",
   postcodes: ["E1", "E2", "E3", "E14"],
@@ -552,7 +552,7 @@ export const westminster: Borough = {
   name: "Westminster",
   h1: "Removals in Westminster",
   subhead: subhead("Westminster", "W1, W2, SW1 and NW8"),
-  metaTitle: "Removals in Westminster | Man and Van from £55/hr",
+  metaTitle: "Removals Westminster | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Westminster from £55/hr plus VAT. Prime handling, Congestion Charge and parking managed.",
   postcodes: ["W1", "W2", "SW1", "NW8"],
@@ -632,7 +632,7 @@ export const kensingtonAndChelsea: Borough = {
   name: "Kensington and Chelsea",
   h1: "Removals in Kensington and Chelsea",
   subhead: subhead("Kensington and Chelsea", "SW3, SW5, SW7, W8 and W11"),
-  metaTitle: "Removals in Kensington & Chelsea | Man and Van £55/hr",
+  metaTitle: "Removals Kensington & Chelsea | Insured | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Kensington & Chelsea from £55/hr plus VAT. Prime and mews handling, parking and property.",
   postcodes: ["SW3", "SW5", "SW7", "W8", "W11"],
@@ -707,7 +707,7 @@ export const hammersmithAndFulham: Borough = {
   name: "Hammersmith and Fulham",
   h1: "Removals in Hammersmith and Fulham",
   subhead: subhead("Hammersmith and Fulham", "W6, W12, W14 and SW6"),
-  metaTitle: "Removals Hammersmith & Fulham | Man and Van £55/hr",
+  metaTitle: "Removals Hammersmith & Fulham | Insured | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Hammersmith & Fulham from £55/hr plus VAT. Fulham terraces, riverside, parking and property.",
   postcodes: ["W6", "W12", "W14", "SW6"],
@@ -785,7 +785,7 @@ export const southwark: Borough = {
   name: "Southwark",
   h1: "Removals in Southwark",
   subhead: subhead("Southwark", "SE1, SE5, SE15, SE16 and SE22"),
-  metaTitle: "Removals in Southwark | Man and Van from £55/hr",
+  metaTitle: "Removals Southwark | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Southwark from £55/hr plus VAT. Local knowledge of conversions, estates and parking.",
   postcodes: ["SE1", "SE5", "SE15", "SE16", "SE22"],
@@ -861,7 +861,7 @@ export const lewisham: Borough = {
   name: "Lewisham",
   h1: "Removals in Lewisham",
   subhead: subhead("Lewisham", "SE4, SE6, SE8, SE13, SE14 and SE23"),
-  metaTitle: "Removals in Lewisham | Man and Van from £55/hr",
+  metaTitle: "Removals Lewisham | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Lewisham from £55/hr plus VAT. Local knowledge of period terraces, parking and property.",
   postcodes: ["SE4", "SE6", "SE8", "SE13", "SE14", "SE23"],
@@ -933,7 +933,7 @@ export const ealing: Borough = {
   name: "Ealing",
   h1: "Removals in Ealing",
   subhead: subhead("Ealing", "W3, W5, W7, W13, UB1 and UB6"),
-  metaTitle: "Removals in Ealing | Man and Van from £55/hr",
+  metaTitle: "Removals Ealing | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Ealing from £55/hr plus VAT. Local knowledge of suburban semis, driveways and parking.",
   postcodes: ["W3", "W5", "W7", "W13", "UB1", "UB6"],
@@ -1010,7 +1010,7 @@ export const barnet: Borough = {
   name: "Barnet",
   h1: "Removals in Barnet",
   subhead: subhead("Barnet", "N2, N3, N12, N20, NW4, NW7 and NW11"),
-  metaTitle: "Removals in Barnet | Man and Van from £55/hr",
+  metaTitle: "Removals Barnet | Man and Van £55/hr | Top Removals",
   metaDescription:
     "Accredited, insured removals and man and van in Barnet from £55/hr plus VAT. Local knowledge of suburban homes, driveways and parking.",
   postcodes: ["N2", "N3", "N12", "N20", "NW4", "NW7", "NW11"],
@@ -1088,11 +1088,11 @@ export const brent: Borough = {
   name: "Brent",
   h1: "Removals in Brent",
   subhead:
-    "Accredited, insured man and van and removals in Brent, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across NW2, NW6, NW9, NW10, HA0 and HA9.",
-  metaTitle: "Removals in Brent | Man and Van from £55/hr",
+    "Accredited, insured man and van and removals in Brent, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across NW10, NW6, NW9, HA0 and HA9.",
+  metaTitle: "Removals Brent | Man and Van £55/hr | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Brent from £55/hr plus VAT. Wembley event-day access, parking and property across NW London.",
-  postcodes: ["NW2", "NW6", "NW9", "NW10", "HA0", "HA9"],
+    "Accredited man and van and removals in Brent (NW10, NW6, HA9) from £55/hr plus VAT. Insured, 7 days, expert in Wembley event-day and high-rise moves.",
+  postcodes: ["NW10", "NW6", "NW9", "HA0", "HA9"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Brent"),
   introLine: introLine("Brent"),
@@ -1102,7 +1102,7 @@ export const brent: Borough = {
     "What sets a Top Removals move in Brent apart is that the borough splits between dense Victorian terraces in the east and Metroland semis in the west, with Wembley Park high-rise and event-day road closures in between. We work it constantly, plan the loading point and crew size for each, and check moves against the Wembley event calendar.",
   ],
   coverageIntro:
-    "We cover every part of the London Borough of Brent, including the NW2, NW6, NW9, NW10, HA0 and HA9 postcodes. Neighbourhoods we move people in and out of every week include:",
+    "We cover every part of the London Borough of Brent, including the NW10, NW6, NW9, HA0 and HA9 postcodes. Neighbourhoods we move people in and out of every week include:",
   neighbourhoods:
     "Wembley, Wembley Park, Kilburn, Willesden, Willesden Green, Harlesden, Kensal Green, Queen's Park, Neasden, Kingsbury, Kenton, Queensbury, Preston, Sudbury, Alperton, Dollis Hill, Brondesbury, Stonebridge and Park Royal.",
   coverageOutro:
@@ -1138,7 +1138,7 @@ export const brent: Borough = {
     {
       question: "Do you cover my Brent postcode?",
       answer:
-        "Yes. We cover the whole London Borough of Brent, including NW2, NW6, NW9, NW10, HA0 and HA9, and every named neighbourhood from Kilburn to Wembley. Send us your postcode and we will confirm coverage and a price.",
+        "Yes. We cover the whole London Borough of Brent, including NW10, NW6, NW9, HA0 and HA9, and every named neighbourhood from Kilburn to Wembley. Send us your postcode and we will confirm coverage and a price.",
     },
     faqPrice("Brent"),
     {
@@ -1163,11 +1163,11 @@ export const croydon: Borough = {
   name: "Croydon",
   h1: "Removals in Croydon",
   subhead:
-    "Accredited, insured man and van and removals in Croydon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across CR0, CR2, CR4, CR5, CR7 and CR8.",
-  metaTitle: "Removals in Croydon | Man and Van from £55/hr",
+    "Accredited, insured man and van and removals in Croydon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across CR0, CR2, CR7, CR8 and SE25.",
+  metaTitle: "Removals Croydon | Man and Van £55/hr | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Croydon from £55/hr plus VAT. ULEZ, A23 access, parking and property in CR postcodes.",
-  postcodes: ["CR0", "CR2", "CR4", "CR5", "CR7", "CR8"],
+    "Accredited man and van and removals in Croydon (CR0, CR2, CR7) from £55/hr plus VAT. Insured, 7 days, with real local parking and access knowledge.",
+  postcodes: ["CR0", "CR2", "CR7", "CR8", "SE25"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Croydon"),
   introLine: introLine("Croydon"),
@@ -1177,7 +1177,7 @@ export const croydon: Borough = {
     "What sets a Top Removals move in Croydon apart is that the borough runs from town-centre towers to affluent driveway suburbs in the south, all inside the ULEZ. We plan the loading point and crew size for each, and our compliant fleet means no emissions charge on your move.",
   ],
   coverageIntro:
-    "We cover every part of the London Borough of Croydon, including the CR0, CR2, CR4, CR5, CR7 and CR8 postcodes. Neighbourhoods we move people in and out of every week include:",
+    "We cover every part of the London Borough of Croydon, including the CR0, CR2, CR7, CR8 and SE25 postcodes. Neighbourhoods we move people in and out of every week include:",
   neighbourhoods:
     "Croydon town centre, West Croydon, South Croydon, Addiscombe, Selhurst, South Norwood, Thornton Heath, Norbury, Waddon, Purley, Sanderstead, Selsdon, Coulsdon, Kenley, Shirley, New Addington and Upper Norwood.",
   coverageOutro:
@@ -1212,7 +1212,7 @@ export const croydon: Borough = {
     {
       question: "Do you cover my Croydon postcode?",
       answer:
-        "Yes. We cover the whole London Borough of Croydon, including CR0, CR2, CR4, CR5, CR7 and CR8, and every named neighbourhood from Thornton Heath to Coulsdon. Send us your postcode and we will confirm coverage and a price.",
+        "Yes. We cover the whole London Borough of Croydon, including CR0, CR2, CR7, CR8 and the SE25 area, and every named neighbourhood from Thornton Heath to Coulsdon. Send us your postcode and we will confirm coverage and a price.",
     },
     faqPrice("Croydon"),
     {
@@ -1237,11 +1237,11 @@ export const newham: Borough = {
   name: "Newham",
   h1: "Removals in Newham",
   subhead:
-    "Accredited, insured man and van and removals in Newham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E6, E7, E12, E13, E15, E16 and E20.",
-  metaTitle: "Removals in Newham | Man and Van from £55/hr",
+    "Accredited, insured man and van and removals in Newham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E6, E7, E12, E13, E15 and E16.",
+  metaTitle: "Removals Newham | Man and Van £55/hr | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Newham from £55/hr plus VAT. London Stadium event-day parking and access in E postcodes.",
-  postcodes: ["E6", "E7", "E12", "E13", "E15", "E16", "E20"],
+    "Accredited man and van and removals in Newham (E6, E13, E16) from £55/hr plus VAT. Insured, 7 days, expert in Stratford and Royal Docks high-rise moves.",
+  postcodes: ["E6", "E7", "E12", "E13", "E15", "E16"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Newham"),
   introLine: introLine("Newham"),
@@ -1251,11 +1251,11 @@ export const newham: Borough = {
     "What sets a Top Removals move in Newham apart is that the borough mixes high-rise concierge towers at Stratford and the Royal Docks with Victorian terraces in the east, and London Stadium and Olympic Park event days reshape parking. We book service lifts and loading bays in advance and check moves against the event calendar.",
   ],
   coverageIntro:
-    "We cover every part of the London Borough of Newham, including the E6, E7, E12, E13, E15, E16 and E20 postcodes. Neighbourhoods we move people in and out of every week include:",
+    "We cover every part of the London Borough of Newham, including the E6, E7, E12, E13, E15 and E16 postcodes. Neighbourhoods we move people in and out of every week include:",
   neighbourhoods:
     "Stratford, Maryland, Forest Gate, Manor Park, East Ham, West Ham, Plaistow, Canning Town, Custom House, the Royal Docks, Royal Victoria, Royal Albert, Beckton, Silvertown and Upton Park.",
   coverageOutro:
-    "If your street sits on the Newham border with Tower Hamlets, Hackney, Waltham Forest, Redbridge or Greenwich, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+    "If your street sits on the Newham border with Tower Hamlets, Hackney, Waltham Forest, Barking and Dagenham or Redbridge, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
   knowIntro:
     "Newham mixes high-rise concierge towers with Victorian terraces, and stadium event days reshape parking. Here is what our crews plan for.",
   knowBlocks: [
@@ -1280,14 +1280,14 @@ export const newham: Borough = {
     { label: "Tower Hamlets", href: "/areas/tower-hamlets" },
     { label: "Hackney", href: "/areas/hackney" },
     { label: "Waltham Forest", href: "/areas/waltham-forest" },
+    { label: "Barking and Dagenham", href: "/areas/barking-and-dagenham" },
     { label: "Redbridge", href: "/areas/redbridge" },
-    { label: "Greenwich", href: "/areas/greenwich" },
   ],
   faqs: [
     {
       question: "Do you cover my Newham postcode?",
       answer:
-        "Yes. We cover the whole London Borough of Newham, including E6, E7, E12, E13, E15, E16 and E20, and every named neighbourhood from Stratford to East Ham. Send us your postcode and we will confirm coverage and a price.",
+        "Yes. We cover the whole London Borough of Newham, including E6, E7, E12, E13, E15 and E16, and every named neighbourhood from Stratford to East Ham. Send us your postcode and we will confirm coverage and a price.",
     },
     faqPrice("Newham"),
     {
@@ -1313,9 +1313,9 @@ export const haringey: Borough = {
   h1: "Removals in Haringey",
   subhead:
     "Accredited, insured man and van and removals in Haringey, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across N4, N8, N10, N15, N17 and N22.",
-  metaTitle: "Removals in Haringey | Man and Van from £55/hr",
+  metaTitle: "Removals Haringey | Man and Van £55/hr | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Haringey from £55/hr plus VAT. Spurs stadium event-day closures, parking in N postcodes.",
+    "Accredited man and van and removals in Haringey (N8, N15, N22) from £55/hr plus VAT. Insured, 7 days, with real hilly and Spurs match-day parking knowledge.",
   postcodes: ["N4", "N8", "N10", "N15", "N17", "N22"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Haringey"),
@@ -1387,11 +1387,11 @@ export const greenwich: Borough = {
   name: "Greenwich",
   h1: "Removals in Greenwich",
   subhead:
-    "Accredited, insured man and van and removals in Greenwich, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SE3, SE7, SE8, SE9, SE10, SE18 and SE28.",
-  metaTitle: "Removals in Greenwich | Man and Van from £55/hr",
+    "Accredited, insured man and van and removals in Greenwich, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SE3, SE7, SE9, SE10 and SE18.",
+  metaTitle: "Removals Greenwich | Man and Van £55/hr | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Greenwich from £55/hr plus VAT. Conservation-street access, parking in SE postcodes.",
-  postcodes: ["SE10", "SE3", "SE7", "SE8", "SE9", "SE18", "SE28"],
+    "Accredited man and van and removals in Greenwich (SE3, SE10, SE18) from £55/hr plus VAT. Insured, 7 days, with real conservation and riverside knowledge.",
+  postcodes: ["SE3", "SE7", "SE9", "SE10", "SE18"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Greenwich"),
   introLine: introLine("Greenwich"),
@@ -1401,7 +1401,7 @@ export const greenwich: Borough = {
     "What sets a Top Removals move in Greenwich, officially the Royal Borough of Greenwich, apart is that it runs from tight Georgian conservation streets and a World Heritage core to Peninsula and Kidbrooke new-build towers. We plan the loading point and crew for narrow period access and book service lifts in the towers in advance.",
   ],
   coverageIntro:
-    "We cover every part of the Royal Borough of Greenwich, including the SE10, SE3, SE7, SE8, SE9, SE18 and SE28 postcodes. Neighbourhoods we move people in and out of every week include:",
+    "We cover every part of the Royal Borough of Greenwich, including the SE3, SE7, SE9, SE10 and SE18 postcodes. Neighbourhoods we move people in and out of every week include:",
   neighbourhoods:
     "Greenwich, West Greenwich, Greenwich Peninsula, Maze Hill, Blackheath, Charlton, Woolwich, Plumstead, Eltham, Kidbrooke, Creekside, Shooters Hill and parts of Thamesmead and Abbey Wood.",
   coverageOutro:
@@ -1428,16 +1428,15 @@ export const greenwich: Borough = {
   ],
   nearby: [
     { label: "Lewisham", href: "/areas/lewisham" },
+    { label: "Bexley", href: "/areas/bexley" },
     { label: "Tower Hamlets", href: "/areas/tower-hamlets" },
     { label: "Newham", href: "/areas/newham" },
-    { label: "Bexley", href: "/areas/bexley" },
-    { label: "Bromley", href: "/areas/bromley" },
   ],
   faqs: [
     {
       question: "Do you cover my Greenwich postcode?",
       answer:
-        "Yes. We cover the whole Royal Borough of Greenwich, including SE10, SE3, SE7, SE8, SE9, SE18 and SE28, and every named neighbourhood from Greenwich to Eltham. Send us your postcode and we will confirm coverage and a price.",
+        "Yes. We cover the whole Royal Borough of Greenwich, including SE3, SE7, SE9, SE10 and SE18, and every named neighbourhood from Greenwich to Eltham. Send us your postcode and we will confirm coverage and a price.",
     },
     faqPrice("Greenwich"),
     {
@@ -1463,9 +1462,9 @@ export const walthamForest: Borough = {
   h1: "Removals in Waltham Forest",
   subhead:
     "Accredited, insured man and van and removals in Waltham Forest, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E4, E10, E11 and E17.",
-  metaTitle: "Removals in Waltham Forest | Man and Van from £55/hr",
+  metaTitle: "Removals Waltham Forest | Insured | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Waltham Forest from £55/hr plus VAT. Walthamstow permit zones, parking in E postcodes.",
+    "Accredited man and van and removals in Waltham Forest (E17, E10, E11) from £55/hr plus VAT. Insured, 7 days, with real terrace and parking knowledge.",
   postcodes: ["E4", "E10", "E11", "E17"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Waltham Forest"),
@@ -1538,10 +1537,10 @@ export const redbridge: Borough = {
   h1: "Removals in Redbridge",
   subhead:
     "Accredited, insured man and van and removals in Redbridge, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG1, IG2, IG4, IG5, IG6, IG8, E11 and E18.",
-  metaTitle: "Removals in Redbridge | Man and Van from £55/hr",
+  metaTitle: "Removals Redbridge | Man and Van £55/hr | Top Removals",
   metaDescription:
-    "Accredited, insured removals and man and van in Redbridge from £55/hr plus VAT. Ilford access, A12 routes, parking in IG postcodes.",
-  postcodes: ["IG1", "IG2", "IG4", "IG5", "IG6", "IG8", "E11", "E18"],
+    "Accredited man and van and removals in Redbridge (IG1, IG6, E18) from £55/hr plus VAT. Insured, 7 days, with real suburban parking and access knowledge.",
+  postcodes: ["IG1", "IG2", "IG4", "IG5", "IG6", "IG8"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Redbridge"),
   introLine: introLine("Redbridge"),
