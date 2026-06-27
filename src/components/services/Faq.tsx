@@ -19,16 +19,20 @@ type Props = {
   /** Index of the item open by default (null = all closed). */
   defaultOpen?: number | null;
   className?: string;
+  /** Emit FAQPage JSON-LD. Off for area pages, where FAQPage markup is not used. */
+  schema?: boolean;
 };
 
 /** Reusable, accessible expand/collapse FAQ accordion. */
-export default function Faq({ items, defaultOpen = 0, className = "" }: Props) {
+export default function Faq({ items, defaultOpen = 0, className = "", schema = true }: Props) {
   const [open, setOpen] = useState<number | null>(defaultOpen);
   const baseId = useId();
 
   return (
     <div className={`mx-auto max-w-3xl divide-y divide-black/10 ${className}`}>
-      <JsonLd data={faqLd(items.map((it) => ({ question: it.question, answer: it.answer })))} />
+      {schema && (
+        <JsonLd data={faqLd(items.map((it) => ({ question: it.question, answer: it.answer })))} />
+      )}
       {items.map((item, i) => {
         const expanded = open === i;
         const btnId = `${baseId}-q-${i}`;

@@ -77,14 +77,8 @@ function boroughSchema(b: Borough) {
           { "@type": "ListItem", position: 3, name: b.name, item: `${SITE_URL}${withTrailingSlash(`/areas/${b.slug}`)}` },
         ],
       },
-      {
-        "@type": "FAQPage",
-        mainEntity: b.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
-        })),
-      },
+      // No FAQPage or HowTo node: both were deprecated for rich results, so the
+      // on-page Q&A stays visible but is not marked up.
     ],
   };
 }
@@ -367,29 +361,60 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
         </div>
       </section>
 
-      {/* Get your quote */}
+      {/* Quote band (solid navy, readability first) */}
       <section className="bg-brand-navy py-16">
-        <div className="mx-auto max-w-[88rem] px-4 text-center">
-          <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
-            Get Your {b.name} Quote
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
-            Ready to move in {b.name}? Get a free, no-obligation quote today.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
-              Quick Quote
-            </Button>
-            <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
-              Book a Service
-            </Button>
-            <Button href={PHONE_HREF} variant="outline-light" size="lg" className="w-full sm:w-auto">
-              Call 020 7205 2525
-            </Button>
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div>
+            <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+              Get Your {b.name} Removal Quote
+            </h2>
+            <div className="mt-4 max-w-[62ch] space-y-3 text-base leading-relaxed text-white/85 sm:text-lg">
+              <p>
+                Tell us what you are moving and where. We give you a clear, no-obligation quote for
+                your {b.name} move, man and van from £55 per hour plus VAT, or a fixed price after a
+                free survey for a larger home or office.
+              </p>
+              <p>Accredited, insured and 7 days a week. Same-day moves are subject to availability.</p>
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+                Get a Free Quote
+              </Button>
+              <Button href="/prices" variant="outline-light" size="lg" className="w-full sm:w-auto">
+                Removal Prices
+              </Button>
+            </div>
+            <a
+              href={PHONE_HREF}
+              className="mt-4 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/85 underline underline-offset-2 hover:text-brand-orange"
+            >
+              Or call 020 7205 2525
+            </a>
           </div>
-          <p className="mt-6 text-sm text-white/50">
-            Accredited, insured, 7 days a week. Same-day moves subject to availability.
-          </p>
+
+          <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
+            <p className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+              What affects your removal cost
+            </p>
+            <ul className="mt-5 space-y-3">
+              {[
+                "Property size and volume",
+                "Distance between addresses",
+                "Floor level and lift access",
+                "Packing requirements",
+                "Parking suspensions or permit costs",
+                "Crew size and day of the week",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
+                  <span className="text-base leading-relaxed text-brand-charcoal/85">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 border-t border-black/10 pt-4 text-sm font-medium text-brand-charcoal/70">
+              Your fixed quote includes VAT and fuel, with no hidden fees.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -397,7 +422,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Good to know" title={`${b.name} Removals FAQs`} />
-          <Faq items={b.faqs} className="mt-10" />
+          <Faq items={b.faqs} className="mt-10" schema={false} />
         </div>
       </section>
 
