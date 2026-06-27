@@ -1604,6 +1604,526 @@ export const redbridge: Borough = {
   ],
 };
 
+/* ====================================================================== */
+/* TIER B BATCH (suburban; driveways and lighter parking the differentiator) */
+/* ====================================================================== */
+
+/* 20. ENFIELD */
+export const enfield: Borough = {
+  slug: "enfield",
+  name: "Enfield",
+  h1: "Removals in Enfield",
+  subhead:
+    "Accredited, insured man and van and removals in Enfield, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across EN1, EN2, EN3, N9, N13 and N21.",
+  metaTitle: "Removals Enfield | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Enfield (EN1, N13, N21) from £55/hr plus VAT. Insured, 7 days, with real suburban parking and driveway knowledge.",
+  postcodes: ["EN1", "EN2", "EN3", "N9", "N13", "N21"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Enfield"),
+  introLine: introLine("Enfield"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Enfield"),
+    "What sets a Top Removals move in Enfield apart is that most of the borough is leafy suburb where driveways and unrestricted parking make loading easy, with controlled parking only around the centres and the denser east. We confirm parking per street and bring the right crew for a larger family house.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Enfield, including the EN1, EN2, EN3, N9, N13 and N21 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Enfield Town, Southgate, Palmers Green, Winchmore Hill, Edmonton, Ponders End, Bush Hill Park, Oakwood, Grange Park and Bowes Park.",
+  coverageOutro:
+    "If your street sits on the Enfield border with Barnet, Haringey or Waltham Forest, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Enfield is a large suburban borough where driveways make many moves easy, with planning needed around the centres and the dense east. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Driveways and parking",
+      body: "Many Enfield moves are from semis and detached houses with driveways and wider streets, which makes access easier. Southgate, Winchmore Hill, Grange Park and Oakwood are leafy houses where a driveway often gives direct access and street parking is unrestricted. We confirm parking per street and arrange a bay suspension only where a move needs it, with the usual 10 to 14 working days notice.",
+    },
+    {
+      label: "Centres and the dense east",
+      body: "Palmers Green, Bush Hill Park and Enfield Town are period houses near busier centres with controlled parking around the stations. Edmonton and Ponders End are denser, with terraces, estate blocks and new-build at Meridian Water. We plan around the A10 Great Cambridge Road and Hertford Road.",
+    },
+    {
+      label: "Property types",
+      body: "Enfield runs from leafy semis and detached houses in Southgate, Winchmore Hill and Oakwood to period houses around the centres and denser terraces, estates and new-build in Edmonton and Ponders End.",
+    },
+    {
+      label: "Emissions",
+      body: "Enfield sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Barnet", href: "/areas/barnet" },
+    { label: "Haringey", href: "/areas/haringey" },
+    { label: "Waltham Forest", href: "/areas/waltham-forest" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Enfield postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Enfield, including EN1, EN2, EN3, N9, N13, N14, N18 and N21, from Enfield Town and Southgate to Palmers Green and Edmonton. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Enfield"),
+    {
+      question: "Is parking easy for a move in Enfield?",
+      answer:
+        "In the suburban areas like Southgate, Winchmore Hill and Grange Park many homes have driveways and unrestricted street parking, which makes access easier. Around the town centres and in Edmonton the streets are controlled, so we arrange a bay suspension where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Enfield"),
+    {
+      question: "Can you move a large family house in Southgate or Winchmore Hill?",
+      answer:
+        "Yes. These are large houses, often with a driveway that gives direct loading access. We bring the right crew size and protection for the move and plan it around your schedule.",
+    },
+  ],
+};
+
+/* 21. BROMLEY */
+export const bromley: Borough = {
+  slug: "bromley",
+  name: "Bromley",
+  h1: "Removals in Bromley",
+  subhead:
+    "Accredited, insured man and van and removals in Bromley, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across BR1, BR2, BR3, BR4, BR5, BR6 and BR7.",
+  metaTitle: "Removals Bromley | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Bromley (BR1, BR2, BR3) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+  postcodes: ["BR1", "BR2", "BR3", "BR4", "BR5", "BR6", "BR7"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Bromley"),
+  introLine: introLine("Bromley"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Bromley"),
+    "What sets a Top Removals move in Bromley apart is that it is the largest London borough and mostly leafy suburb, so most homes have a driveway and unrestricted parking that make loading easier than inner London. We confirm parking per street and arrange a suspension only where a central move needs it.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Bromley, including the BR1, BR2, BR3, BR4, BR5, BR6 and BR7 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Bromley, Beckenham, Orpington, Chislehurst, Penge, Hayes, West Wickham, Petts Wood, Shortlands, Bickley and Downham.",
+  coverageOutro:
+    "If your street sits on the Bromley border with Lewisham, Croydon, Greenwich or Bexley, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Bromley is the largest London borough by area and mostly leafy suburb, so most moves are easy driveway loads. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Driveways and parking",
+      body: "Most Bromley moves are from large houses with their own driveways and unrestricted street parking, which makes access easier than inner London. Beckenham, Chislehurst, Petts Wood and Bickley are large semis and detached houses where a driveway usually gives direct loading access. We confirm parking per street and arrange a bay suspension only where a central move needs it, with the usual 10 to 14 working days notice.",
+    },
+    {
+      label: "Centres and roads",
+      body: "Central Bromley and Penge are denser, with Victorian terraces and controlled parking around the town centre and stations. We plan around the A21, the High Street and Beckenham Road.",
+    },
+    {
+      label: "Property types",
+      body: "Bromley runs from large suburban semis and detached houses in Beckenham, Chislehurst, Petts Wood and Bickley to Victorian terraces around central Bromley and Penge.",
+    },
+    {
+      label: "Emissions",
+      body: "Bromley sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Lewisham", href: "/areas/lewisham" },
+    { label: "Croydon", href: "/areas/croydon" },
+    { label: "Greenwich", href: "/areas/greenwich" },
+    { label: "Bexley", href: "/areas/bexley" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Bromley postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Bromley, including BR1, BR2, BR3, BR4, BR5, BR6 and BR7, from Bromley and Beckenham to Orpington and Chislehurst. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Bromley"),
+    {
+      question: "Is parking a problem for a move in Bromley?",
+      answer:
+        "Usually not. Most of the borough is suburban, with driveways and unrestricted street parking, which makes loading easier. Around central Bromley and the stations the streets are controlled, so we arrange a bay suspension only where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Bromley"),
+    {
+      question: "Can you move a large house in Chislehurst or Petts Wood?",
+      answer:
+        "Yes. These are large suburban homes, usually with a driveway that gives direct loading access. We bring the right crew size and protection and plan the move around your schedule.",
+    },
+  ],
+};
+
+/* 22. MERTON */
+export const merton: Borough = {
+  slug: "merton",
+  name: "Merton",
+  h1: "Removals in Merton",
+  subhead:
+    "Accredited, insured man and van and removals in Merton, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SW19, SW20, CR4 and SM4.",
+  metaTitle: "Removals Merton | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Merton (SW19, SW20, CR4) from £55/hr plus VAT. Insured, 7 days, with real Wimbledon and suburban parking knowledge.",
+  postcodes: ["SW19", "SW20", "CR4", "SM4"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Merton"),
+  introLine: introLine("Merton"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Merton"),
+    "What sets a Top Removals move in Merton apart is the range from prime Wimbledon Village on the hill to suburban Morden and Mitcham, plus the summer Championships restrictions we plan around. We bring the right crew for period houses and confirm parking per street.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Merton, including the SW19, SW20, CR4 and SM4 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Wimbledon, Wimbledon Village, Raynes Park, Mitcham, Morden, Colliers Wood, South Wimbledon, Merton Park and Motspur Park.",
+  coverageOutro:
+    "If your street sits on the Merton border with Wandsworth, Lambeth, Croydon, Sutton or Kingston upon Thames, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Merton runs from prime Wimbledon Village to suburban Morden and Mitcham, and the summer tennis reshapes access. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Wimbledon and parking",
+      body: "Wimbledon Village is large period houses on a hill with tight controlled parking and conservation streets, so a planned loading point and the right crew size matter. Wimbledon, Raynes Park and South Wimbledon are period houses and terraces with controlled parking near the stations. Morden, Motspur Park and Mitcham are interwar semis, often with driveways and lighter parking control. We confirm parking per street and arrange a bay suspension where needed.",
+    },
+    {
+      label: "The Championships and roads",
+      body: "During the Wimbledon Championships in summer, parking and roads around the All England Club and Wimbledon Village are heavily restricted, which we check against your move date. We plan around the A24, Kingston Road and the Broadway.",
+    },
+    {
+      label: "Property types",
+      body: "Merton runs from large period houses in Wimbledon Village and period houses and terraces in Wimbledon, Raynes Park and South Wimbledon to interwar semis in Morden, Motspur Park and Mitcham.",
+    },
+    {
+      label: "Emissions",
+      body: "Merton sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Wandsworth", href: "/areas/wandsworth" },
+    { label: "Lambeth", href: "/areas/lambeth" },
+    { label: "Croydon", href: "/areas/croydon" },
+    { label: "Sutton", href: "/areas/sutton" },
+    { label: "Kingston upon Thames", href: "/areas/kingston-upon-thames" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Merton postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Merton, including SW19, SW20, CR4 and SM4, from Wimbledon and Raynes Park to Mitcham and Morden. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Merton"),
+    {
+      question: "Do you plan around the Wimbledon Championships?",
+      answer:
+        "Yes. During the tennis in summer, parking and roads around the All England Club and Wimbledon Village are heavily restricted, so we check your move date against the tournament and plan the timing and loading point to avoid the closures and crowds.",
+    },
+    {
+      question: "How does parking work elsewhere in Merton?",
+      answer:
+        "Wimbledon town, the Village and Colliers Wood have controlled parking, so we arrange a bay suspension where a move needs it. In Morden, Motspur Park and Mitcham many homes have driveways and lighter parking control, which makes access easier.",
+    },
+    faqInsured(),
+    {
+      question: "Can you move a large period house in Wimbledon Village?",
+      answer:
+        "Yes. These are large houses on a hill with conservation streets and tight parking, so we bring the right crew and protection, plan the loading point, and arrange a bay suspension so the move stays efficient.",
+    },
+  ],
+};
+
+/* 23. HOUNSLOW */
+export const hounslow: Borough = {
+  slug: "hounslow",
+  name: "Hounslow",
+  h1: "Removals in Hounslow",
+  subhead:
+    "Accredited, insured man and van and removals in Hounslow, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across TW3, TW4, TW5, TW7, TW8 and W4.",
+  metaTitle: "Removals Hounslow | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Hounslow (TW3, W4, TW8) from £55/hr plus VAT. Insured, 7 days, with real Chiswick and riverside knowledge.",
+  postcodes: ["TW3", "TW4", "TW5", "TW7", "TW8", "W4"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Hounslow"),
+  introLine: introLine("Hounslow"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Hounslow"),
+    "What sets a Top Removals move in Hounslow apart is the range from conservation-area Chiswick and the Brentford riverside new-build to suburban Feltham near Heathrow. We coordinate concierge towers and protect period interiors alike.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Hounslow, including the TW3, TW4, TW5, TW7, TW8 and W4 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Hounslow, Chiswick, Brentford, Isleworth, Feltham, Heston, Bedfont, Cranford, Osterley and Hanworth.",
+  coverageOutro:
+    "If your street sits on the Hounslow border with Hammersmith and Fulham, Ealing, Hillingdon or Richmond upon Thames, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Hounslow runs from prime Chiswick and the Brentford riverside to suburban Feltham near Heathrow. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Chiswick and parking",
+      body: "Chiswick is affluent period terraces and large houses, much of it conservation, with tight controlled parking, so a planned loading point matters. Hounslow, Heston and Feltham are interwar semis, often with driveways and lighter parking control. We confirm parking per street and arrange a bay suspension where a Chiswick or town move needs it.",
+    },
+    {
+      label: "Riverside new-build and roads",
+      body: "Brentford and Kew Bridge are a major riverside new-build cluster with concierge desks and service-lift booking we coordinate in advance. Isleworth is period houses near the river, and Feltham and Bedfont sit near Heathrow. We plan around the A4 Great West Road and the A316.",
+    },
+    {
+      label: "Property types",
+      body: "Hounslow runs from Chiswick period terraces and large houses and Isleworth riverside period homes to Brentford and Kew Bridge new-build and interwar semis in Hounslow, Heston, Feltham and Bedfont.",
+    },
+    {
+      label: "Emissions",
+      body: "Hounslow sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Hammersmith and Fulham", href: "/areas/hammersmith-and-fulham" },
+    { label: "Ealing", href: "/areas/ealing" },
+    { label: "Hillingdon", href: "/areas/hillingdon" },
+    { label: "Richmond upon Thames", href: "/areas/richmond-upon-thames" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Hounslow postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Hounslow, including TW3, TW4, TW5, TW7, TW8, TW13 and TW14 and the W4 Chiswick area, from Chiswick and Brentford to Feltham and Heston. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Hounslow"),
+    {
+      question: "Can you handle a move in Chiswick?",
+      answer:
+        "Yes. Chiswick is affluent period housing in conservation areas with tight controlled parking, so we plan the loading point, arrange a bay suspension where needed, and protect period interiors throughout the move.",
+    },
+    {
+      question: "Can you move from a riverside new-build at Brentford or Kew Bridge?",
+      answer:
+        "Yes. We move regularly in these developments. We book the service lift and a loading bay through the building manager in advance, and plan the timing around the building's rules so the move runs smoothly.",
+    },
+    faqInsured(),
+    {
+      question: "Is parking easier in the outer parts of Hounslow?",
+      answer:
+        "Yes. In Feltham, Heston and Bedfont many homes are suburban semis with driveways and lighter parking control, which makes loading easier than in Chiswick or the town centre.",
+    },
+  ],
+};
+
+/* 24. HARROW */
+export const harrow: Borough = {
+  slug: "harrow",
+  name: "Harrow",
+  h1: "Removals in Harrow",
+  subhead:
+    "Accredited, insured man and van and removals in Harrow, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across HA1, HA2, HA3, HA5 and HA7.",
+  metaTitle: "Removals Harrow | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Harrow (HA1, HA2, HA5) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+  postcodes: ["HA1", "HA2", "HA3", "HA5", "HA7"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Harrow"),
+  introLine: introLine("Harrow"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Harrow"),
+    "What sets a Top Removals move in Harrow apart is that it is classic Metroland, so most homes have a driveway and unrestricted parking that make loading easier, with tighter access only on Harrow on the Hill and around the centres. We confirm parking per street.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Harrow, including the HA1, HA2, HA3, HA5 and HA7 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Harrow, Pinner, Stanmore, Wealdstone, Harrow on the Hill, Rayners Lane, Kenton, Harrow Weald, Hatch End and North Harrow.",
+  coverageOutro:
+    "If your street sits on the Harrow border with Brent, Barnet, Hillingdon or Ealing, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Harrow is classic Metroland suburb, so most moves are easy driveway loads, with tighter access on the Hill and around the centres. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Metroland driveways",
+      body: "Most Harrow moves are from interwar semis and detached houses with their own driveways and wider streets, which makes access easier. Pinner, Stanmore and the residential streets of Harrow are large houses where a driveway usually gives direct loading access and street parking is unrestricted. We confirm parking per street and arrange a bay suspension only where a central move needs it.",
+    },
+    {
+      label: "The Hill and centres",
+      body: "Harrow on the Hill is historic and on a steep slope, with conservation streets and tighter access. Central Harrow and Wealdstone are denser, with controlled parking around the town centre and stations. We plan around Station Road, Pinner Road and the A409.",
+    },
+    {
+      label: "Property types",
+      body: "Harrow runs from large interwar semis and detached Metroland houses in Pinner, Stanmore and across the borough to historic housing on Harrow on the Hill and denser stock around central Harrow and Wealdstone.",
+    },
+    {
+      label: "Emissions",
+      body: "Harrow sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Brent", href: "/areas/brent" },
+    { label: "Barnet", href: "/areas/barnet" },
+    { label: "Hillingdon", href: "/areas/hillingdon" },
+    { label: "Ealing", href: "/areas/ealing" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Harrow postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Harrow, including HA1, HA2, HA3, HA5 and HA7, from Harrow and Pinner to Stanmore and Wealdstone. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Harrow"),
+    {
+      question: "Is parking easy for a move in Harrow?",
+      answer:
+        "Usually yes. Most of the borough is suburban Metroland housing with driveways and unrestricted street parking, which makes loading easier. Around central Harrow, Harrow on the Hill and the stations the streets are controlled, so we arrange a bay suspension only where needed.",
+    },
+    faqInsured(),
+    faqSameDay("Harrow"),
+    {
+      question: "Can you move a large house in Pinner or Stanmore?",
+      answer:
+        "Yes. These are large suburban homes, usually with a driveway that gives direct loading access. We bring the right crew size and protection and plan the move around your schedule.",
+    },
+  ],
+};
+
+/* 25. BARKING AND DAGENHAM */
+export const barkingAndDagenham: Borough = {
+  slug: "barking-and-dagenham",
+  name: "Barking and Dagenham",
+  h1: "Removals in Barking and Dagenham",
+  subhead:
+    "Accredited, insured man and van and removals in Barking and Dagenham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG11, RM8, RM9 and RM10.",
+  metaTitle: "Removals Barking and Dagenham | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Barking and Dagenham (IG11, RM8, RM10) from £55/hr plus VAT. Insured, 7 days, with real local parking knowledge.",
+  postcodes: ["IG11", "RM8", "RM9", "RM10"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Barking and Dagenham"),
+  introLine: introLine("Barking and Dagenham"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Barking and Dagenham"),
+    "What sets a Top Removals move in Barking and Dagenham apart is the wider interwar streets and driveways that make most moves easier than inner London, alongside the Barking Riverside new-build we coordinate in advance.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Barking and Dagenham, including the IG11, RM8, RM9 and RM10 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Barking, Dagenham, Becontree, Chadwell Heath, Marks Gate, Castle Green, Thames View and Barking Riverside.",
+  coverageOutro:
+    "If your street sits on the Barking and Dagenham border with Newham, Redbridge or Havering, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Barking and Dagenham is mostly interwar housing and major new-build, so access is generally easier than inner London. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Wider streets and parking",
+      body: "The Becontree estate covers much of the borough in interwar semis and terraces, now mixed tenure, with wider streets and largely unrestricted parking, and many homes have driveways. We confirm parking per street and arrange a bay suspension only where a central move needs it.",
+    },
+    {
+      label: "Barking centre and Riverside",
+      body: "Central Barking is denser, with Victorian terraces and controlled parking around the town centre and station. Barking Riverside is a large new-build development with estate management and service-lift booking we coordinate in advance. We plan around the A13, Ripple Road and the Heathway.",
+    },
+    {
+      label: "Property types",
+      body: "The borough runs from the interwar Becontree estate semis and terraces and Victorian terraces around central Barking to the major new-build at Barking Riverside.",
+    },
+    {
+      label: "Emissions",
+      body: "Barking and Dagenham sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Newham", href: "/areas/newham" },
+    { label: "Redbridge", href: "/areas/redbridge" },
+    { label: "Havering", href: "/areas/havering" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Barking and Dagenham postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Barking and Dagenham, including IG11, RM8, RM9 and RM10, from Barking and Barking Riverside to Dagenham and Becontree. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Barking and Dagenham"),
+    {
+      question: "Is parking easy for a move here?",
+      answer:
+        "Usually. Much of the borough is interwar housing on wider streets with driveways and largely unrestricted parking, which makes loading easier. Around central Barking the streets are controlled, so we arrange a bay suspension where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Barking and Dagenham"),
+    {
+      question: "Can you move from a new-build at Barking Riverside?",
+      answer:
+        "Yes. We move regularly at Barking Riverside. We book the service lift and a loading bay through the estate management in advance, and plan the timing around the development's rules so the move runs smoothly.",
+    },
+  ],
+};
+
+/* 26. BEXLEY */
+export const bexley: Borough = {
+  slug: "bexley",
+  name: "Bexley",
+  h1: "Removals in Bexley",
+  subhead:
+    "Accredited, insured man and van and removals in Bexley, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across DA1, DA5, DA6, DA7, DA8 and DA15.",
+  metaTitle: "Removals Bexley | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Bexley (DA5, DA6, DA15) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+  postcodes: ["DA1", "DA5", "DA6", "DA7", "DA8", "DA15"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Bexley"),
+  introLine: introLine("Bexley"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Bexley"),
+    "What sets a Top Removals move in Bexley apart is that it is a suburban outer borough where most homes have a driveway and unrestricted parking, with controlled parking limited to Bexleyheath and the busy stations. We confirm parking per street.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Bexley, including the DA1, DA5, DA6, DA7, DA8 and DA15 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Bexleyheath, Sidcup, Erith, Welling, Crayford, Bexley Village, Belvedere, Abbey Wood, Blackfen and Barnehurst.",
+  coverageOutro:
+    "If your street sits on the Bexley border with Greenwich or Bromley, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Bexley is a suburban outer borough where most moves are easy driveway loads, with limited controlled parking. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Suburban driveways",
+      body: "Most Bexley moves are from interwar semis and detached houses with their own driveways and unrestricted street parking, which makes access easier. Bexleyheath, Sidcup, Welling and Blackfen are large suburban houses where a driveway usually gives direct loading access. Controlled parking is limited, mostly around Bexleyheath town centre and the busier stations, so we confirm parking per street and arrange a bay suspension only where needed.",
+    },
+    {
+      label: "Roads and the Elizabeth line",
+      body: "Erith and Crayford add Victorian houses, and Abbey Wood has new-build driven by the Elizabeth line. We plan around the A2, the Broadway and Watling Street.",
+    },
+    {
+      label: "Property types",
+      body: "Bexley runs from large interwar semis and detached houses in Bexleyheath, Sidcup, Welling and Blackfen to Victorian houses in Erith and Crayford and new-build at Abbey Wood.",
+    },
+    {
+      label: "Emissions",
+      body: "Bexley sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Greenwich", href: "/areas/greenwich" },
+    { label: "Bromley", href: "/areas/bromley" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Bexley postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Bexley, including DA1, DA5, DA6, DA7, DA8, DA14 and DA15, from Bexleyheath and Sidcup to Welling and Erith. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Bexley"),
+    {
+      question: "Is parking a problem for a move in Bexley?",
+      answer:
+        "Usually not. Most of the borough is suburban, with driveways and unrestricted street parking, which makes loading easier. Controlled parking is limited to Bexleyheath town centre and the busier stations, where we arrange a bay suspension only if a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Bexley"),
+    {
+      question: "Can you move from a new-build at Abbey Wood?",
+      answer:
+        "Yes. Abbey Wood has grown with the Elizabeth line, and we move regularly there. For apartment blocks we book the service lift and a loading bay through the building manager in advance and plan the timing around the building's rules.",
+    },
+  ],
+};
+
 /** Registry of fully-built borough pages. Add each cloned borough here. */
 export const boroughs: Record<string, Borough> = {
   islington,
@@ -1626,4 +2146,11 @@ export const boroughs: Record<string, Borough> = {
   greenwich,
   "waltham-forest": walthamForest,
   redbridge,
+  enfield,
+  bromley,
+  merton,
+  hounslow,
+  harrow,
+  "barking-and-dagenham": barkingAndDagenham,
+  bexley,
 };
