@@ -54,7 +54,7 @@ function boroughSchema(b: Borough) {
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: {
           "@type": "AdministrativeArea",
-          name: `London Borough of ${b.name}`,
+          name: b.areaServedName ?? `London Borough of ${b.name}`,
           containsPlace: b.postcodes ?? [],
         },
         name: b.h1,

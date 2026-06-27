@@ -25,6 +25,9 @@ export type Borough = {
   metaDescription: string;
   /** Headline postcode districts, also used as schema containsPlace. */
   postcodes: string[];
+  /** Schema areaServed name override (e.g. "Royal Borough of ...", "City of London").
+   *  Defaults to "London Borough of {name}". */
+  areaServedName?: string;
   heroImage: string;
   heroImageAlt: string;
   introLine: string;
@@ -636,6 +639,7 @@ export const kensingtonAndChelsea: Borough = {
   metaDescription:
     "Accredited, insured removals and man and van in Kensington & Chelsea from £55/hr plus VAT. Prime and mews handling, parking and property.",
   postcodes: ["SW3", "SW5", "SW7", "W8", "W11"],
+  areaServedName: "Royal Borough of Kensington and Chelsea",
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Kensington and Chelsea"),
   introLine: introLine("Kensington and Chelsea"),
@@ -1392,6 +1396,7 @@ export const greenwich: Borough = {
   metaDescription:
     "Accredited man and van and removals in Greenwich (SE3, SE10, SE18) from £55/hr plus VAT. Insured, 7 days, with real conservation and riverside knowledge.",
   postcodes: ["SE3", "SE7", "SE9", "SE10", "SE18"],
+  areaServedName: "Royal Borough of Greenwich",
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Greenwich"),
   introLine: introLine("Greenwich"),
@@ -2124,6 +2129,455 @@ export const bexley: Borough = {
   ],
 };
 
+/* ====================================================================== */
+/* TIER C BATCH (outer/riverside, plus the office-led City of London)     */
+/* ====================================================================== */
+
+/* 27. KINGSTON UPON THAMES */
+export const kingstonUponThames: Borough = {
+  slug: "kingston-upon-thames",
+  name: "Kingston upon Thames",
+  h1: "Removals in Kingston upon Thames",
+  subhead:
+    "Accredited, insured man and van and removals in Kingston upon Thames, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across KT1, KT2, KT3, KT5, KT6 and KT9.",
+  metaTitle: "Removals Kingston upon Thames | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Kingston upon Thames (KT1, KT3, KT6) from £55/hr plus VAT. Insured, 7 days, real riverside and parking knowledge.",
+  postcodes: ["KT1", "KT2", "KT3", "KT5", "KT6", "KT9"],
+  areaServedName: "Royal Borough of Kingston upon Thames",
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Kingston upon Thames"),
+  introLine: introLine("Kingston upon Thames"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Kingston upon Thames"),
+    "What sets a Top Removals move in Kingston apart is the range from the riverside town centre and its gyratory to leafy Surbiton and suburban New Malden, where driveways make loading easy. Kingston is one of the cheaper boroughs for a parking suspension where one is needed.",
+  ],
+  coverageIntro:
+    "We cover every part of the Royal Borough of Kingston upon Thames, including the KT1, KT2, KT3, KT5, KT6 and KT9 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Kingston, Surbiton, New Malden, Chessington, Norbiton, Coombe, Tolworth, Berrylands and Old Malden.",
+  coverageOutro:
+    "If your street sits on the Kingston border with Richmond upon Thames, Merton or Sutton, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Kingston runs from a riverside town centre to leafy Surbiton and suburban New Malden, and the centre is the planning challenge. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Town centre, gyratory and riverside",
+      body: "Kingston town has controlled parking, a notorious gyratory and riverside new-build with concierge and service-lift booking we coordinate. We plan around the A3 and the Kingston gyratory and arrange a bay suspension where a central move needs it, and Kingston is one of the cheaper boroughs for this.",
+    },
+    {
+      label: "Surbiton and the suburbs",
+      body: "Surbiton is desirable period and Victorian houses with controlled parking near the station. New Malden, Chessington, Tolworth and Berrylands are interwar semis, often with driveways and lighter parking control, so we confirm parking per street.",
+    },
+    {
+      label: "Property types",
+      body: "Kingston runs from riverside new-build and a period town centre to desirable period and Victorian houses in Surbiton and interwar semis in New Malden, Chessington and Tolworth.",
+    },
+    {
+      label: "Emissions",
+      body: "Kingston sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Richmond upon Thames", href: "/areas/richmond-upon-thames" },
+    { label: "Merton", href: "/areas/merton" },
+    { label: "Sutton", href: "/areas/sutton" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Kingston postcode?",
+      answer:
+        "Yes. We cover the Royal Borough of Kingston upon Thames, including KT1, KT2, KT3, KT5, KT6 and KT9, from Kingston and Surbiton to New Malden and Chessington. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Kingston"),
+    {
+      question: "How does parking work for a move in Kingston?",
+      answer:
+        "Kingston town and Surbiton have controlled parking, so we arrange a bay suspension where a move needs it, and Kingston is one of the cheaper boroughs for this. In New Malden, Chessington and Tolworth many homes have driveways and lighter parking control.",
+    },
+    faqInsured(),
+    faqSameDay("Kingston"),
+    {
+      question: "Can you move from a riverside flat in Kingston town?",
+      answer:
+        "Yes. We move regularly in the riverside blocks. We book the service lift and a loading bay through the building manager in advance, plan around the gyratory and the town traffic, and time the move around the building's rules.",
+    },
+  ],
+};
+
+/* 28. RICHMOND UPON THAMES */
+export const richmondUponThames: Borough = {
+  slug: "richmond-upon-thames",
+  name: "Richmond upon Thames",
+  h1: "Removals in Richmond upon Thames",
+  subhead:
+    "Accredited, insured man and van and removals in Richmond upon Thames, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across TW9, TW10, TW1, TW2, TW11, SW13 and SW14.",
+  metaTitle: "Removals Richmond upon Thames | Top Removals",
+  metaDescription:
+    "Accredited removals and man and van in Richmond upon Thames (TW9, TW1, SW13) from £55/hr plus VAT. Insured handling, conservation and parking managed.",
+  postcodes: ["TW9", "TW10", "TW1", "TW2", "TW11", "SW13", "SW14"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Richmond upon Thames"),
+  introLine: introLine("Richmond upon Thames"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Richmond upon Thames"),
+    "What sets a Top Removals move in Richmond apart is that it is an affluent, conservation-heavy borough on both sides of the river, so careful handling and a planned approach to access matter, and around Twickenham Stadium rugby match days reshape parking. We protect period interiors and confirm parking per street.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Richmond upon Thames, including the TW9, TW10, TW1, TW2, TW11, SW13 and SW14 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Richmond, Twickenham, Teddington, Barnes, East Sheen, Kew, Ham, St Margarets, Mortlake, Hampton and Petersham.",
+  coverageOutro:
+    "If your street sits on the Richmond border with Hounslow, Kingston upon Thames, Wandsworth or Hammersmith and Fulham, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Richmond is an affluent, conservation-heavy borough on both sides of the river, so careful handling and planned access matter. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Conservation and parking",
+      body: "Richmond, Barnes, Kew and East Sheen are prime period houses in conservation areas with tight controlled parking and narrow streets. Twickenham, Teddington and St Margarets are period terraces with controlled parking near the stations. We protect period interiors, confirm parking per street, and arrange a bay suspension where needed.",
+    },
+    {
+      label: "Twickenham rugby and roads",
+      body: "Around Twickenham Stadium, rugby match-day and event-day parking is heavily restricted, which we check against your move date. Ham, Petersham and Hampton add large riverside houses, and we plan around the A316 and Richmond town.",
+    },
+    {
+      label: "Property types",
+      body: "Richmond runs from prime period houses in conservation Richmond, Barnes, Kew and East Sheen to period terraces in Twickenham, Teddington and St Margarets and large riverside houses in Ham, Petersham and Hampton.",
+    },
+    {
+      label: "Emissions",
+      body: "Richmond sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Hounslow", href: "/areas/hounslow" },
+    { label: "Kingston upon Thames", href: "/areas/kingston-upon-thames" },
+    { label: "Wandsworth", href: "/areas/wandsworth" },
+    { label: "Hammersmith and Fulham", href: "/areas/hammersmith-and-fulham" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Richmond postcode?",
+      answer:
+        "Yes. We cover the London Borough of Richmond upon Thames, including TW9, TW10, TW1, TW2 and TW11 and the SW13 and SW14 areas, from Richmond and Barnes to Twickenham and Teddington. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Richmond"),
+    {
+      question: "Can you handle a move in conservation-area Richmond, Barnes or Kew?",
+      answer:
+        "Yes. These are prime period houses on tight, controlled streets, so we plan the loading point, arrange a bay suspension where needed, and protect period interiors and shared entrances throughout the move.",
+    },
+    {
+      question: "Do you plan around Twickenham rugby match days?",
+      answer:
+        "Yes. Parking and roads around Twickenham Stadium are heavily restricted on match and event days, so we check your move date against the fixture and event calendar and plan the timing and loading point to avoid problems.",
+    },
+    faqInsured(),
+    faqSameDay("Richmond"),
+  ],
+};
+
+/* 29. SUTTON */
+export const sutton: Borough = {
+  slug: "sutton",
+  name: "Sutton",
+  h1: "Removals in Sutton",
+  subhead:
+    "Accredited, insured man and van and removals in Sutton, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SM1, SM2, SM3, SM5 and SM6.",
+  metaTitle: "Removals Sutton | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Sutton (SM1, SM5, SM6) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+  postcodes: ["SM1", "SM2", "SM3", "SM5", "SM6"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Sutton"),
+  introLine: introLine("Sutton"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Sutton"),
+    "What sets a Top Removals move in Sutton apart is that it is a suburban outer borough where most homes have a driveway and unrestricted parking, with some period character in the Carshalton and Cheam villages. Sutton is one of the cheaper boroughs for a suspension where one is needed.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Sutton, including the SM1, SM2, SM3, SM5 and SM6 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Sutton, Carshalton, Wallington, Cheam, Belmont, Hackbridge, Beddington, North Cheam and Worcester Park.",
+  coverageOutro:
+    "If your street sits on the Sutton border with Merton, Croydon or Kingston upon Thames, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Sutton is a suburban outer borough, so most moves are easy driveway loads, with controlled parking only around the town centre. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Suburban driveways",
+      body: "Most Sutton moves are from interwar semis and detached houses with their own driveways and unrestricted street parking, which makes access easier. Sutton, Cheam, Carshalton and Wallington are large suburban houses where a driveway usually gives direct loading access. Sutton is one of the cheaper boroughs for a parking suspension where one is needed.",
+    },
+    {
+      label: "Villages and the centre",
+      body: "Carshalton and Cheam villages add some period character on tighter streets. Central Sutton is denser, with controlled parking around the town centre and station. We confirm parking per street, arrange a bay suspension only where a central move needs it, and plan around the A232 and Sutton High Street.",
+    },
+    {
+      label: "Property types",
+      body: "Sutton runs from large interwar semis and detached houses in Sutton, Cheam, Carshalton and Wallington to period houses on the tighter village streets and denser stock around central Sutton.",
+    },
+    {
+      label: "Emissions",
+      body: "Sutton sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Merton", href: "/areas/merton" },
+    { label: "Croydon", href: "/areas/croydon" },
+    { label: "Kingston upon Thames", href: "/areas/kingston-upon-thames" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Sutton postcode?",
+      answer:
+        "Yes. We cover the London Borough of Sutton, including SM1, SM2, SM3, SM5 and SM6, from Sutton and Carshalton to Wallington and Cheam. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Sutton"),
+    {
+      question: "Is parking easy for a move in Sutton?",
+      answer:
+        "Usually yes. Most of the borough is suburban, with driveways and unrestricted street parking, which makes loading easier, and Sutton is one of the cheaper boroughs for a suspension where one is needed around the town centre. We confirm parking per street.",
+    },
+    faqInsured(),
+    faqSameDay("Sutton"),
+    {
+      question: "Can you move a large house in Cheam or Carshalton?",
+      answer:
+        "Yes. These are large suburban homes, usually with a driveway that gives direct loading access, with some period houses on tighter village streets. We bring the right crew size and protection and plan the move around your schedule.",
+    },
+  ],
+};
+
+/* 30. HILLINGDON */
+export const hillingdon: Borough = {
+  slug: "hillingdon",
+  name: "Hillingdon",
+  h1: "Removals in Hillingdon",
+  subhead:
+    "Accredited, insured man and van and removals in Hillingdon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across UB3, UB4, UB7, UB8, UB10 and HA4.",
+  metaTitle: "Removals Hillingdon | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Hillingdon (UB8, UB10, HA4) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+  postcodes: ["UB3", "UB4", "UB7", "UB8", "UB10", "HA4"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Hillingdon"),
+  introLine: introLine("Hillingdon"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Hillingdon"),
+    "What sets a Top Removals move in Hillingdon apart is that it is a large outer borough running to Heathrow, where most homes are Metroland houses with driveways and unrestricted parking, with controlled parking only around the town centres and the busy Elizabeth line stations. We confirm parking per street.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Hillingdon, including the UB3, UB4, UB7, UB8, UB10 and HA4 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Uxbridge, Hayes, Ruislip, Northwood, Hillingdon, West Drayton, Yiewsley, Ickenham, Eastcote, Harefield and Cowley.",
+  coverageOutro:
+    "If your street sits on the Hillingdon border with Ealing, Harrow or Hounslow, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Hillingdon is a large outer borough running to Heathrow, so most moves are easy Metroland driveway loads. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Metroland driveways",
+      body: "Most Hillingdon moves are from suburban semis and detached houses with their own driveways and unrestricted street parking, which makes access easier. Ruislip, Ickenham, Eastcote and Northwood are large Metroland houses where a driveway usually gives direct loading access. We confirm parking per street and arrange a bay suspension only where a central move needs it.",
+    },
+    {
+      label: "Town centres and Heathrow",
+      body: "Uxbridge, Hayes and West Drayton are denser, with controlled parking around the town centres and the busy Elizabeth line stations, and new-build at Hayes. We plan around the A40 Western Avenue, with Heathrow proximity in the south.",
+    },
+    {
+      label: "Property types",
+      body: "Hillingdon runs from large Metroland houses in Ruislip, Ickenham, Eastcote and Northwood to denser stock and new-build around Uxbridge, Hayes and West Drayton.",
+    },
+    {
+      label: "Emissions",
+      body: "Hillingdon sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Ealing", href: "/areas/ealing" },
+    { label: "Harrow", href: "/areas/harrow" },
+    { label: "Hounslow", href: "/areas/hounslow" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Hillingdon postcode?",
+      answer:
+        "Yes. We cover the London Borough of Hillingdon, including UB3, UB4, UB7, UB8, UB10 and HA4, from Uxbridge and Hayes to Ruislip and Northwood. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Hillingdon"),
+    {
+      question: "Is parking easy for a move in Hillingdon?",
+      answer:
+        "Usually yes. Most of the borough is suburban Metroland housing with driveways and unrestricted street parking, which makes loading easier. Around Uxbridge, Hayes and the Elizabeth line stations the streets are controlled, so we arrange a bay suspension only where needed.",
+    },
+    faqInsured(),
+    faqSameDay("Hillingdon"),
+    {
+      question: "Can you move a large house in Ruislip or Northwood?",
+      answer:
+        "Yes. These are large suburban homes, usually with a driveway that gives direct loading access. We bring the right crew size and protection and plan the move around your schedule.",
+    },
+  ],
+};
+
+/* 31. HAVERING */
+export const havering: Borough = {
+  slug: "havering",
+  name: "Havering",
+  h1: "Removals in Havering",
+  subhead:
+    "Accredited, insured man and van and removals in Havering, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across RM1, RM2, RM3, RM11, RM12 and RM14.",
+  metaTitle: "Removals Havering | Man and Van £55/hr | Top Removals",
+  metaDescription:
+    "Accredited man and van and removals in Havering (RM1, RM11, RM14) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+  postcodes: ["RM1", "RM2", "RM3", "RM11", "RM12", "RM14"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Havering"),
+  introLine: introLine("Havering"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Havering"),
+    "What sets a Top Removals move in Havering apart is that it is the furthest east borough, largely suburban and semi-rural, where most homes have driveways and unrestricted parking, with notable period stock in Gidea Park and controlled parking only around central Romford. We confirm parking per street.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Havering, including the RM1, RM2, RM3, RM11, RM12 and RM14 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Romford, Hornchurch, Upminster, Rainham, Gidea Park, Collier Row, Elm Park, Harold Wood, Cranham and Emerson Park.",
+  coverageOutro:
+    "If your street sits on the Havering border with Redbridge or Barking and Dagenham, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Havering is the furthest east borough, largely suburban and semi-rural, so most moves are easy driveway loads. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Driveways and parking",
+      body: "Most Havering moves are from large houses with their own driveways and unrestricted street parking, which makes access easier. Hornchurch, Gidea Park, Emerson Park and Upminster are large suburban houses, with notable period stock in Gidea Park, where a driveway usually gives direct loading access. We confirm parking per street and arrange a bay suspension only where a central move needs it.",
+    },
+    {
+      label: "Romford and roads",
+      body: "Central Romford is denser, with Victorian terraces, controlled parking around the town centre and station, and new-build towers. Harold Hill adds an estate. We plan around the A12 and the A127.",
+    },
+    {
+      label: "Property types",
+      body: "Havering runs from large suburban and semi-rural houses in Hornchurch, Upminster and Emerson Park and period houses in Gidea Park to Victorian terraces, new-build towers and an estate around central Romford and Harold Hill.",
+    },
+    {
+      label: "Emissions",
+      body: "Havering sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Redbridge", href: "/areas/redbridge" },
+    { label: "Barking and Dagenham", href: "/areas/barking-and-dagenham" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Havering postcode?",
+      answer:
+        "Yes. We cover the London Borough of Havering, including RM1, RM2, RM3, RM11, RM12 and RM14, from Romford and Hornchurch to Upminster and Rainham. Send your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Havering"),
+    {
+      question: "Is parking easy for a move in Havering?",
+      answer:
+        "Usually yes. Most of the borough is suburban and semi-rural, with driveways and unrestricted street parking, which makes loading easier. Around central Romford the streets are controlled, so we arrange a bay suspension only where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Havering"),
+    {
+      question: "Can you move a large house in Emerson Park or Gidea Park?",
+      answer:
+        "Yes. These are large, often period suburban homes, usually with a driveway that gives direct loading access. We bring the right crew size and protection and plan the move around your schedule.",
+    },
+  ],
+};
+
+/* 32. CITY OF LONDON (office-led) */
+export const cityOfLondon: Borough = {
+  slug: "city-of-london",
+  name: "City of London",
+  h1: "Removals in the City of London",
+  subhead:
+    "Accredited, insured office and home removals in the City of London, from £55 per hour plus VAT, 7 days a week, with real knowledge of building access, out-of-hours moves and the Square Mile across EC1, EC2, EC3 and EC4.",
+  metaTitle: "Removals City of London | Office Moves | Top Removals",
+  metaDescription:
+    "Accredited office and home removals in the City of London (EC1 to EC4) from £55/hr plus VAT. Insured, Barbican service-lift and Congestion Charge managed.",
+  postcodes: ["EC1", "EC2", "EC3", "EC4"],
+  areaServedName: "City of London",
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("the City of London"),
+  introLine:
+    "A BAR and NGRS accredited removals company that genuinely serves and knows the City of London, for office relocations and the residential estates alike.",
+  valueLine: VALUE_LINE,
+  localBody: [
+    "Top Removals runs office and home removals across the whole of the City of London, 7 days a week. We are a fully accredited and insured London removals company, not an unaccredited local operator and not a booking marketplace, and we plan City moves around building access, goods lifts and out-of-hours timing, with one point of contact from quote to completion.",
+    "What sets a Top Removals move in the City apart is that the Square Mile is the financial district, so most moves are office relocations booked through building management and run in the evening or at the weekend. We also move Barbican and Golden Lane residents, handle high-value contents with insured crews, and manage the Congestion Charge.",
+  ],
+  coverageIntro:
+    "We cover the whole of the City of London, the Square Mile, including the EC1, EC2, EC3 and EC4 postcodes. Areas we move offices and homes in and out of every week include:",
+  neighbourhoods:
+    "Barbican, Smithfield, Bank, Liverpool Street, Moorgate, Blackfriars, St Paul's, Temple, Aldgate and Golden Lane.",
+  coverageOutro:
+    "If your address sits on the City border with Islington, Hackney, Tower Hamlets, Westminster or Southwark, we cover that too. Tell us your address and the type of move and we will confirm a plan and a price.",
+  knowIntro:
+    "The City of London is the financial district, so most moves are office relocations, and the planning is about building access and timing. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Office building access and timing",
+      body: "City buildings have managed access with goods lifts and loading bays booked through building management, tight loading windows, and many out-of-hours and weekend moves to avoid the working week. We book the lift and bay, plan around the access window, and coordinate the whole move so the office is ready to work.",
+    },
+    {
+      label: "Congestion Charge and loading",
+      body: "On-street parking is effectively unavailable in the City, so we use booked loading bays and arrange access in advance through the building and the City Corporation. The streets are narrow and historic with red routes, pedestrianised areas and security controls, which we plan the route around.",
+    },
+    {
+      label: "Barbican and Golden Lane estates",
+      body: "Residential in the City is limited and specific, mainly the Barbican and Golden Lane estates, both large, listed and access-controlled, plus converted and riverside apartments and the legal chambers around the Temple. These estates require service-lift and access booking through estate management, which we coordinate.",
+    },
+    {
+      label: "Emissions and charges",
+      body: "The City sits within both the Greater London Ultra Low Emission Zone and the central Congestion Charge zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. The Congestion Charge is £18 a day, which we manage as part of the move.",
+    },
+  ],
+  nearby: [
+    { label: "Islington", href: "/areas/islington" },
+    { label: "Hackney", href: "/areas/hackney" },
+    { label: "Tower Hamlets", href: "/areas/tower-hamlets" },
+    { label: "Westminster", href: "/areas/westminster" },
+    { label: "Southwark", href: "/areas/southwark" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover the City of London?",
+      answer:
+        "Yes. We cover the whole Square Mile, EC1 to EC4, for office relocations and for the residential estates such as the Barbican and Golden Lane. Tell us your address and the type of move and we will confirm a plan and a price.",
+    },
+    {
+      question: "How much does a move in the City cost?",
+      answer:
+        "Our man and van starts at £55 per hour plus VAT, and office relocations are fixed after a free survey because they depend on the size, the building access and the timing. The price includes insurance, and we manage the Congestion Charge and the loading access.",
+    },
+    {
+      question: "Can you do an out-of-hours or weekend office move?",
+      answer:
+        "Yes. Most City office moves run in the evening or at the weekend to avoid the working week, and we plan around the building's access windows, book the goods lift and loading bay through building management, and coordinate the whole move so the office is ready to work.",
+    },
+    {
+      question: "How do parking and the Congestion Charge work in the City?",
+      answer:
+        "On-street parking is effectively unavailable in the City, so we use booked loading bays and arrange access through the building and the City Corporation in advance. The Square Mile is inside the Congestion Charge zone, which we manage as part of the move.",
+    },
+    {
+      question: "Can you move within the Barbican or Golden Lane estate?",
+      answer:
+        "Yes. These estates have controlled access and service lifts, so we book the lift and loading slot through estate management in advance and plan the route through the estate so the move runs smoothly.",
+    },
+    faqInsured(),
+  ],
+};
+
 /** Registry of fully-built borough pages. Add each cloned borough here. */
 export const boroughs: Record<string, Borough> = {
   islington,
@@ -2153,4 +2607,10 @@ export const boroughs: Record<string, Borough> = {
   harrow,
   "barking-and-dagenham": barkingAndDagenham,
   bexley,
+  "kingston-upon-thames": kingstonUponThames,
+  "richmond-upon-thames": richmondUponThames,
+  sutton,
+  hillingdon,
+  havering,
+  "city-of-london": cityOfLondon,
 };
